@@ -1,0 +1,50 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.ExtraItem
+@{
+    string campId = (string)Session["campId"]; // for filtering when returning back to Index
+    string month = (string)Session["month"];
+    var platforms = (IEnumerable<DirectAgents.Domain.Entities.CPProg.Platform>)ViewBag.Platforms;
+    var platformSelectList = new SelectList(platforms, "Id", "Name", Model.PlatformId);
+}
+
+<fieldset>
+    <legend>Edit Extra Item</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.CampaignId)
+        <div style="float:left">
+            Campaign: @Model.Campaign.Name
+            <br /><br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Id)</td>
+                    <td>@Html.DisplayFor(m =>m.Id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Date)</td>
+                    <td>@Html.TextBoxFor(m => m.Date, "{0:M/d/yyyy}")</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Platform, "Partner")</td>
+                    <td>@Html.DropDownListFor(m => m.PlatformId, platformSelectList)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Description)</td>
+                    <td>@Html.EditorFor(m => m.Description)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Cost)</td>
+                    <td>@Html.EditorFor(m => m.Cost)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Revenue)</td>
+                    <td>@Html.EditorFor(m => m.Revenue)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index", new { campId = campId, month = month })
+        </div>
+    }
+</fieldset>

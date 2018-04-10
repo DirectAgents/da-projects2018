@@ -1,0 +1,31 @@
+﻿@model DirectAgents.Domain.Entities.AB.ClientAccount
+@{
+    var campWraps = (IEnumerable<DirectAgents.Domain.Entities.AB.CampaignWrap>)ViewBag.CampaignWraps;
+}
+<h2>Campaigns/SpendBuckets</h2>
+
+Client: @Html.ActionLink(Model.Client.Name, "Show", "Clients", new { id = Model.ClientId }, null)<br />
+Account: @Html.ActionLink(Model.Name, "Show", "ClientAccounts", new { id = Model.Id }, null)<br />
+<br />
+
+<table>
+<tr>
+    <th>Campaign</th>
+    <th>SpendBucket?</th>
+</tr>
+@foreach (var cw in campWraps.OrderBy(x => x.Campaign.Name))
+{
+    bool hasBucket = cw.AcctIds.Contains(Model.Id);
+    <tr>
+        <td>@cw.Campaign.Name</td>
+        <td>
+            @if (hasBucket) {
+                <text>Y</text>
+            } else {
+                @Html.ActionLink("create", "New", "SpendBuckets", new { acctId = Model.Id, campId = cw.Campaign.Id }, null)
+            }
+        </td>
+    </tr>
+}
+</table>
+[@Html.ActionLink("new", "New", "SpendBuckets", new { acctId = Model.Id }, null)]

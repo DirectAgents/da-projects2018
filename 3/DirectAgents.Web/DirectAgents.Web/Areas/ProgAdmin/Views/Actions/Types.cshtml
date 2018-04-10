@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPProg.ActionType>
+
+<h2>Action Types</h2>
+
+<table>
+<tr>
+    <th>Id</th>
+    <th>Code</th>
+    <th>DisplayName</th>
+</tr>
+@foreach (var type in Model)
+{
+<tr>
+    <td>@type.Id</td>
+    <td>@type.Code</td>
+    <td>@type.DisplayName</td>
+</tr>
+}
+</table>

@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DAMain1Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DAMain1ModelStoreContainer">
+          <EntitySet Name="DADatabase" EntityType="DAMain1Model.Store.DADatabase" store:Type="Tables" store:Schema="dbo" store:Name="DADatabase">
+            <DefiningQuery>SELECT 
+      [DADatabase].[id] AS [id], 
+      [DADatabase].[name] AS [name], 
+      [DADatabase].[connection_string] AS [connection_string], 
+      [DADatabase].[effective_date] AS [effective_date], 
+      [DADatabase].[am_view_name] AS [am_view_name], 
+      [DADatabase].[initialized] AS [initialized]
+      FROM [dbo].[DADatabase] AS [DADatabase]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PublisherNotes" EntityType="DAMain1Model.Store.PublisherNotes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Settings" EntityType="DAMain1Model.Store.Settings" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'DAMain1.dbo.DADatabase' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="DADatabase">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="connection_string" />
+            <PropertyRef Name="am_view_name" />
+            <PropertyRef Name="initialized" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="connection_string" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="effective_date" Type="datetime" />
+          <Property Name="am_view_name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="initialized" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PublisherNotes">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="publisher_name" Type="varchar(max)" Nullable="false" />
+          <Property Name="note" Type="varchar(max)" Nullable="false" />
+          <Property Name="added_by_system_user" Type="varchar" MaxLength="255" />
+          <Property Name="created" Type="datetime" Nullable="false" StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Name="SettingId" Type="int" Nullable="false" />
+          <Property Name="SettingName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="SettingValue" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DAMain1Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DAMain1Entities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+          <EntitySet Name="DADatabases" EntityType="DAMain1Model.DADatabase" />
+          <EntitySet Name="PublisherNotes" EntityType="DAMain1Model.PublisherNote" />
+          <EntitySet Name="Settings" EntityType="DAMain1Model.Setting" />
+        </EntityContainer>
+        <EntityType Name="DADatabase">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="name" />
+            <PropertyRef Name="connection_string" />
+            <PropertyRef Name="am_view_name" />
+            <PropertyRef Name="initialized" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="connection_string" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="effective_date" Type="DateTime" Precision="3" />
+          <Property Name="am_view_name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Boolean" Name="initialized" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PublisherNote">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Type="String" Name="publisher_name" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="note" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="added_by_system_user" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="created" Nullable="false" Precision="3" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="SettingId" />
+          </Key>
+          <Property Type="Int32" Name="SettingId" Nullable="false" />
+          <Property Type="String" Name="SettingName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SettingValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DAMain1ModelStoreContainer" CdmEntityContainer="DAMain1Entities">
+          <EntitySetMapping Name="DADatabases"><EntityTypeMapping TypeName="DAMain1Model.DADatabase"><MappingFragment StoreEntitySet="DADatabase">
+            <ScalarProperty Name="initialized" ColumnName="initialized" />
+                <ScalarProperty Name="id" ColumnName="id" />
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="connection_string" ColumnName="connection_string" />
+            <ScalarProperty Name="effective_date" ColumnName="effective_date" />
+            <ScalarProperty Name="am_view_name" ColumnName="am_view_name" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PublisherNotes">
+            <EntityTypeMapping TypeName="DAMain1Model.PublisherNote">
+              <MappingFragment StoreEntitySet="PublisherNotes">
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="added_by_system_user" ColumnName="added_by_system_user" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="publisher_name" ColumnName="publisher_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="DAMain1Model.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="SettingValue" ColumnName="SettingValue" />
+                <ScalarProperty Name="SettingName" ColumnName="SettingName" />
+                <ScalarProperty Name="SettingId" ColumnName="SettingId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="DAMain1">
+        <EntityTypeShape EntityType="DAMain1Model.DADatabase" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAMain1Model.PublisherNote" Width="1.875" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DAMain1Model.Setting" Width="1.5" PointX="5" PointY="0.75" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

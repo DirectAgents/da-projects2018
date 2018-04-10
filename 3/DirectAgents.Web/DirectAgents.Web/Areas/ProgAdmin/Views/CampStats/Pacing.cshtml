@@ -1,0 +1,96 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.CampaignPacingVM
+@{
+    string date = Request["date"]; // null if current month
+}
+
+@if (!Model.ShowPerfStats) {
+    <h2>Budget and Pacing</h2>
+} else {
+    <h2>Performance</h2>
+}
+@Html.Partial("ChooseMonth", (SelectList)ViewBag.ChooseMonthSelectList)
+
+<table>
+<tr>
+    <th>Advertiser</th>
+    <th>Campaign</th>
+    <th>Partner</th>
+    <th>Budget</th>
+    <th>%Completed</th>
+    <th>DA Cost</th>
+    <th>Client Cost</th>
+    <th>Revenue</th>
+    <th>Margin</th>
+    <th>Margin%</th>
+    @if (!Model.ShowPerfStats)
+    {
+        <th>Sales Rep</th>
+        <th>AM</th>
+    } else {
+        <th>Impressions</th>
+        <th>Clicks</th>
+        <th>Total Conv</th>
+        <th>Post-Click Conv</th>
+        <th>Post-View Conv</th>
+        <th>Click Rate (CTR)</th>
+        <th>eCPA</th>
+    }
+</tr>
+@foreach (var cStat in Model.CampStats)
+{
+<tr>
+    <td>@cStat.Campaign.Advertiser.Name</td>
+    <td>@cStat.Campaign.Name</td>
+    <td></td>
+    <td>@cStat.Budget.ClientCost.ToString("C")</td>
+    <td>@cStat.FractionReached().ToString("#0.##%")</td>
+    <td>@cStat.DACost.ToString("C")</td>
+    <td>@cStat.ClientCost.ToString("C")</td>
+    <td>@cStat.TotalRevenue.ToString("C")</td>
+    <td>@cStat.Margin.ToString("C")</td>
+    <td>@(cStat.MarginPct.HasValue ? cStat.MarginPct.Value.ToString("#0.## \\%") : "N/A")</td>
+    @if (!Model.ShowPerfStats)
+    {
+        <td>@cStat.Campaign.Advertiser.SalesRepName()</td>
+        <td>@cStat.Campaign.Advertiser.AMName()</td>
+    } else {
+        <td>@cStat.Impressions.ToString("N0")</td>
+        <td>@cStat.Clicks.ToString("N0")</td>
+        <td>@cStat.TotalConv.ToString("N0")</td>
+        <td>@cStat.PostClickConv.ToString("N0")</td>
+        <td>@cStat.PostViewConv.ToString("N0")</td>
+        <td>@cStat.CTR.ToString("#0.##%")</td>
+        <td>@cStat.CPA.ToString("C")</td>
+    }
+</tr>
+    if (cStat.LineItems.Any())
+    {
+        foreach (var li in cStat.LineItems)
+        {
+            decimal budget = li.Budget.ClientCost;
+<tr>
+    <td colspan="2"></td>
+    <td>@li.Platform.Name</td>
+    <td>@(budget != 0 ? budget.ToString("C") : "")</td>
+    <td>@(budget != 0 ? li.FractionReached().ToString("#0.##%") : "")</td>
+    <td>@li.DACost.ToString("C")</td>
+    <td>@li.ClientCost.ToString("C")</td>
+    <td>@li.TotalRevenue.ToString("C")</td>
+    <td>@li.Margin.ToString("C")</td>
+    <td>@(li.MarginPct.HasValue ? li.MarginPct.Value.ToString("#0.## \\%") : "N/A")</td>
+    @if (Model.ShowPerfStats)
+    {
+        <td>@li.Impressions.ToString("N0")</td>
+        <td>@li.Clicks.ToString("N0")</td>
+        <td>@li.TotalConv.ToString("N0")</td>
+        <td>@li.PostClickConv.ToString("N0")</td>
+        <td>@li.PostViewConv.ToString("N0")</td>
+        <td>@li.CTR.ToString("#0.##%")</td>
+        <td>@li.CPA.ToString("C")</td>
+    }
+</tr>
+        }
+    }
+}
+</table>
+

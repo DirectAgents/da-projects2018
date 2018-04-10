@@ -1,0 +1,50 @@
+﻿@model DirectAgents.Domain.Entities.AB.ABClient
+
+<h2>View/Edit ClientX</h2>
+
+Id: @Model.Id<br />
+Name: @Model.Name<br />
+ExtCredit: @Model.ExtCredit<br />
+IntCredit: @Model.IntCredit<br />
+<br /><br />
+
+<b>Jobs:</b>
+@Html.ActionLink("view/edit", "Index", "Jobs", new { clientId = Model.Id }, null)
+<table>
+@foreach (var job in Model.Jobs.OrderBy(j => j.Name))
+{
+    <tr>
+        <td>@job.Name</td>
+    </tr>
+}
+</table>
+<br />
+
+<b>Budgets:</b><br />
+@if (Model.ClientBudgets != null && Model.ClientBudgets.Any())
+{
+    var cb = Model.ClientBudgets.OrderByDescending(x => x.Date).First();
+    <text>@cb.Date.ToShortDateString() Budget: @cb.Value
+    &nbsp; &nbsp;@Html.ActionLink("testlink", "EditViaLink", "ClientBudgets", new { clientId = cb.ClientId, date = cb.Date.ToShortDateString(), value = cb.Value }, null)</text>
+} else {
+    <text>[@Html.ActionLink("new budget", "NewBudget", new { id = Model.Id })]</text>
+}
+<br /><br />
+
+<b>Payments:</b>&nbsp;
+@Html.ActionLink("view/edit", "Index", "ClientPayments", new { clientId = Model.Id }, null)
+<table>
+@foreach (var payment in Model.ClientPayments.OrderBy(x => x.Date))
+{
+    <tr>
+        <td>@payment.Date.ToShortDateString()</td>
+        <td>@payment.TotalValue()</td>
+        <td>@Html.ActionLink("testlink", "EditViaLink", "ClientPayments", new { id = payment.Id, date = payment.Date.ToShortDateString(), value = payment.TotalValue() }, null)</td>
+    </tr>
+}
+</table>
+<br />
+
+Links:<br />
+@Html.ActionLink("Single Client Detail", "Client", "Dashboard", new { id = Model.Id }, null)<br />
+@Html.ActionLink("List All Clients", "Index")

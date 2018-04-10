@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.AB.ABClient>
+
+<h2>Clients</h2>
+
+<table>
+@foreach (var client in Model.OrderBy(c => c.Name))
+{
+    <tr>
+        <td>@client.Id</td>
+        <td>@client.Name</td>
+        <td>@Html.ActionLink("view/edit", "Show", new { id = client.Id })</td>
+    </tr>
+}
+</table>

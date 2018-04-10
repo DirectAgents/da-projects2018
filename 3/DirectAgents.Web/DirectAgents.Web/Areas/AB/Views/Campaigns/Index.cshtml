@@ -1,0 +1,25 @@
+﻿@model DirectAgents.Domain.Entities.AB.ABClient
+
+<h2>Campaigns</h2>
+
+Client: @Html.ActionLink(Model.Name, "Show", "Clients", new { id = Model.Id }, null)
+<br /><br />
+
+<table>
+<tr>
+    <th>Campaign</th>
+    <th>Bucket for Accounts:</th>
+</tr>
+@foreach (var cw in Model.CampaignWraps.OrderBy(x => x.Campaign.Name))
+{
+    <tr>
+        <td>@cw.Campaign.Name</td>
+        <td>
+            @foreach (var sb in cw.SpendBuckets.OrderBy(x => x.AcctId))
+            {
+                <text>@sb.ClientAccount.Name</text>
+            }
+        </td>
+    </tr>
+}
+</table>

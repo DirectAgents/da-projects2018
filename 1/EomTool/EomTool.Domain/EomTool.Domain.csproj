@@ -1,0 +1,342 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F41DA2E2-D584-479A-9F24-9B2D3D33F927}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EomTool.Domain</RootNamespace>
+    <AssemblyName>EomTool.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\..\..\3\DirectAgents.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\3\DirectAgents.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\3\DirectAgents.Web\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IDAMain1Repository.cs" />
+    <Compile Include="Abstract\IPaymentBatchRepository.cs" />
+    <Compile Include="Concrete\DAMain1Repository.cs" />
+    <Compile Include="Abstract\IAffiliateRepository.cs" />
+    <Compile Include="Abstract\IBatchRepository.cs" />
+    <Compile Include="Abstract\IMainRepository.cs" />
+    <Compile Include="Abstract\ISecurityRepository.cs" />
+    <Compile Include="Concrete\AffiliateRepository.cs" />
+    <Compile Include="Concrete\BatchRepository.cs" />
+    <Compile Include="Concrete\MainRepository.cs" />
+    <Compile Include="Concrete\MediaBuyerApprovalRepository.cs" />
+    <Compile Include="Concrete\PaymentBatchRepository.cs" />
+    <Compile Include="Concrete\PublisherRelatedItemsRepository.cs" />
+    <Compile Include="Concrete\SecurityRepository.cs" />
+    <Compile Include="DTOs\AuditSummary.cs" />
+    <Compile Include="DTOs\CampAffId.cs" />
+    <Compile Include="DTOs\CampaignAmount.cs" />
+    <Compile Include="Entities\AccountManager.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AdManager.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Advertiser.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Affiliate.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AffiliatePaymentMethod.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Analyst.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AnalystManager.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\AnalystRole.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Audit.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Batch.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BatchUpdate.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CampAff.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Campaign.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CampaignNote.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CampaignsPublisherReportDetail.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CampaignsPublisherReportSummary.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CampaignStatus.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Currency.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DADatabase.cs">
+      <DependentUpon>DAMain1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DAMain1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DAMain1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DAMain1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DAMain1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DAMain1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DAMain1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EomEntities.cs" />
+    <Compile Include="Entities\EomModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EomModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EomModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EomModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EomModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EomToolSecurity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EomToolSecurity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EomToolSecurity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EomToolSecurity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EomToolSecurity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EomToolSecurity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Abstract\IEomEntitiesConfig.cs" />
+    <Compile Include="Entities\Group.cs">
+      <DependentUpon>EomToolSecurity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\IncomeType.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Invoice.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\InvoiceItem.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\InvoiceNote.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\InvoicePartial.cs" />
+    <Compile Include="Entities\InvoiceStatus.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Item.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemAccountingStatus.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ItemPartial.cs" />
+    <Compile Include="Entities\MarginApproval.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MediaBuyer.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MediaBuyerApprovalStatus.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\NetTermType.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PaymentBatch.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PaymentBatchState.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Permission.cs">
+      <DependentUpon>EomToolSecurity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Person.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PubAttachment.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherNote.cs">
+      <DependentUpon>DAMain1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherPayment.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherPayout.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherRelatedItemCount.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherReport.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherReportDetail.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherReportSummary.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\PublisherSummary.cs" />
+    <Compile Include="Entities\PubNote.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Role.cs">
+      <DependentUpon>EomToolSecurity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Setting.cs">
+      <DependentUpon>DAMain1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Source.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Strategist.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TrackingSystem.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UnitType.cs">
+      <DependentUpon>EomModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Util.cs" />
+    <Compile Include="GlobalSettings.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Entities\EomModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EomModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Entities\EomToolSecurity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EomToolSecurity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Entities\DAMain1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DAMain1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\DAMain1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DAMain1.Context.cs</LastGenOutput>
+      <DependentUpon>DAMain1.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\DAMain1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DAMain1.cs</LastGenOutput>
+      <DependentUpon>DAMain1.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\EomModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EomModel.Context.cs</LastGenOutput>
+      <DependentUpon>EomModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\EomModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EomModel.cs</LastGenOutput>
+      <DependentUpon>EomModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\EomToolSecurity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EomToolSecurity.Context.cs</LastGenOutput>
+      <DependentUpon>EomToolSecurity.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\EomToolSecurity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EomToolSecurity.cs</LastGenOutput>
+      <DependentUpon>EomToolSecurity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

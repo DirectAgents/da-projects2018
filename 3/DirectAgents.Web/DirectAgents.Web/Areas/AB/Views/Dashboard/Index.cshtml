@@ -1,0 +1,38 @@
+﻿@model DirectAgents.Web.Areas.AB.Models.DashboardVM
+
+<h2>AB Dashboard</h2>
+
+@Html.Partial("ChooseMonth", (SelectList)ViewBag.ChooseMonthSelectList)
+
+<table>
+<tr>
+    <th>Client</th>
+    <th>Budget</th>
+    <th>Revenue</th>
+    <th>Budget vs Actual</th>
+    <th>%Reached</th>
+    <th>ExtCredit</th>
+    <th>IntCredit</th>
+    <th>&nbsp;&nbsp;&nbsp;</th>
+    <th>StartingBal</th>
+    <th>OpenBal</th>
+</tr>
+@foreach (var stat in Model.ABStats)
+{
+<tr>
+    <td>@Html.ActionLink("+", "LineItems", new { clientId = stat.Id }) @stat.Client</td>
+    <td>@stat.Budget</td>
+    <td>@stat.Rev</td>
+    <td>@stat.OverBudget</td>
+    <td>@stat.FractionBudget.ToString("P2")</td>
+    <td>@stat.ExtCred</td>
+    <td>@stat.IntCred</td>
+    <td></td>
+    <td>@stat.StartBal</td>
+    <td>@stat.CurrBal</td>
+    <td>@Html.ActionLink("detail", "Client", new { id = stat.Id })</td>
+@*    <td>@Html.ActionLink("test", "EditClientStat", new { id = stat.Id, sb = stat.StartBal, ec = stat.ExtCred, ic = stat.IntCred })</td>*@
+</tr>
+}
+</table>
+@Model.ABStats.Count()

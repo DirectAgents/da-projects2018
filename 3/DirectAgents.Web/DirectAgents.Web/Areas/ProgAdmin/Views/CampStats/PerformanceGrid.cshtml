@@ -1,0 +1,130 @@
+﻿
+<style type="text/css">
+    .k-grid {
+        font-size: 12px;
+    }
+</style>
+
+<h2>Performance</h2>
+
+<div id="budgetGrid"></div>
+
+@section scripts {
+<script>
+    $(document).ready(function () {
+        var gridDS = CreateGridDataSource();
+        SetupGrid(gridDS);
+        gridDS.read();
+    });
+
+    function CreateGridDataSource() {
+        var datasource = new kendo.data.DataSource({
+            serverAggregates: true,
+            serverFiltering: true,
+            serverPaging: true,
+            serverSorting: true,
+            pageSize: 100,
+            batch: true,
+            transport: {
+                read: {
+                    url: '@Url.Action("PerformanceData")',
+                    type: 'post', dataType: 'json'
+                },
+                //parameterMap: function (data, type) {
+                //    return kendo.stringify(data);
+                //}
+            },
+            schema: {
+                data: 'data',
+                total: 'total',
+                aggregates: 'aggregates',
+                model: {
+                    id: 'CampaignId',
+                    fields: {
+                        CampaignId: { type: 'number' },
+                        Campaign: { type: 'string' },
+                        Budget: { type: 'number' },
+                        DACost: { type: 'number' },
+                        ClientCost: { type: 'number' },
+                        TotalRev: { type: 'number' },
+                        Margin: { type: 'number' },
+                        MarginPct: { type: 'number' },
+                        //Platform: { type: 'string' },
+                        PctOfGoal: { type: 'number' },
+                        Impressions: { type: 'number' },
+                        Clicks: { type: 'number' },
+                        TotalConv: { type: 'number' },
+                        PostClickConv: { type: 'number' },
+                        PostViewConv: { type: 'number' },
+                        CTR: { type: 'number' },
+                        CPA: { type: 'number' }
+                    }
+                }
+            },
+            aggregate: [
+                //{ field: 'NumExtAccts', aggregate: 'sum' },
+                { field: 'Budget', aggregate: 'sum' },
+                { field: 'DACost', aggregate: 'sum' },
+                { field: 'ClientCost', aggregate: 'sum' },
+                { field: 'TotalRev', aggregate: 'sum' },
+                { field: 'Margin', aggregate: 'sum' },
+                { field: 'MarginPct', aggregate: 'agg' },
+                { field: 'PctOfGoal', aggregate: 'agg' },
+                { field: 'Impressions', aggregate: 'sum' },
+                { field: 'Clicks', aggregate: 'sum' },
+                { field: 'TotalConv', aggregate: 'sum' },
+                { field: 'PostClickConv', aggregate: 'sum' },
+                { field: 'PostViewConv', aggregate: 'sum' },
+                { field: 'CTR', aggregate: 'agg' },
+                { field: 'CPA', aggregate: 'agg' },
+            ],
+            sort: [
+                { field: 'Campaign', dir: 'asc' }
+            ]
+        });
+        datasource.bind('error', datasource_error);
+        return datasource;
+    }
+    function datasource_error(e) {
+        alert('Grid error:\n' + e.errorThrown);
+        //var grid = $("#budgetGrid").data("kendoGrid");
+        //grid.cancelChanges();
+    }
+
+    function SetupGrid(datasource) {
+        //$('#budgetGrid').html(''); // ???
+
+        $('#budgetGrid').kendoGrid({
+            dataSource: datasource,
+            autoBind: false,
+            filterable: true,
+            pageable: true,
+            sortable: true,
+            columns: [
+                //{ field: 'NumExtAccts', title: '#Accts', width: 80, attributes: { style: "text-align:center" }, footerTemplate: "#: data.NumExtAccts.sum #", footerAttributes: { style: "text-align:center" } },
+                //{ field: 'Advertiser' },
+                { field: 'CampaignId', title: 'ID', width: 50, attributes: { style: "text-align:center" } },
+                { field: 'Campaign' },
+                { field: 'Budget', format: '{0:n2}', attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.Budget.sum, 'n2') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'PctOfGoal', title: '%Used', width: 80, format: "{0:p}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.PctOfGoal.agg, 'p') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'DACost', title: 'DACost', format: '{0:n2}', attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.DACost.sum, 'n2') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'ClientCost', format: '{0:n2}', attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.ClientCost.sum, 'n2') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'TotalRev', title: 'Revenue', format: '{0:n2}', attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.TotalRev.sum, 'n2') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'Margin', format: '{0:n2}', attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.Margin.sum, 'n2') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'MarginPct', format: "{0:p}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.MarginPct.agg, 'p') #", footerAttributes: { style: "text-align:right" } },
+                //{ field: 'Platform', title: 'Platforms' },
+                { field: 'Impressions', format: "{0:n0}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.Impressions.sum, 'n0') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'Clicks', format: "{0:n0}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.Clicks.sum, 'n0') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'TotalConv', format: "{0:n0}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.TotalConv.sum, 'n0') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'PostClickConv', format: "{0:n0}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.PostClickConv.sum, 'n0') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'PostViewConv', format: "{0:n0}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.PostViewConv.sum, 'n0') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'CTR', format: "{0:p}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.CTR.agg, 'p') #", footerAttributes: { style: "text-align:right" } },
+                { field: 'CPA', format: "{0:n2}", attributes: { style: "text-align:right" }, footerTemplate: "#: kendo.toString(data.CPA.agg, 'n2') #", footerAttributes: { style: "text-align:right" } },
+            ],
+            columnMenu: true,
+            reorderable: true,
+            resizable: true
+        });
+    }
+</script>
+}

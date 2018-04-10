@@ -1,0 +1,516 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2E621B59-9455-4FA5-B9BD-6BDC418FFBFA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ClientPortal.Data</RootNamespace>
+    <AssemblyName>ClientPortal.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ClientPortal.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\ClientPortal.Web\packages\EntityFramework.Extended.6.1.0.133\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\ClientPortal.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq">
+      <HintPath>..\ClientPortal.Web\packages\morelinq.1.0.16006\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common.cs" />
+    <Compile Include="Contexts\Advertiser.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\AdvertiserContact.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Affiliate.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CakeContact.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CakeRole.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CallDailySummary.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Campaign.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CampaignDrop.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ClientInfo.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ClientPortal.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientPortal.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ClientPortal.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ClientPortal.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientPortal.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ClientPortalDW.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientPortalDW.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ClientPortalDW.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ClientPortalDW.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ClientPortalDW.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Contact.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Conversion.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ConversionData.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ConversionsByRegion.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CPMReport.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Creative.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CreativeFile.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CreativeStat.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CreativeSummary.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CreativeType.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Currency.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\CurrencyConversion.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DailySummary.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DeviceClicks.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimAdvertiser.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimAffiliate.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimBrowser.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimCountry.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimDate.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimDevice.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimOffer.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\DimRegion.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\EmailStatus.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\FactClick.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\FactConversion.cs">
+      <DependentUpon>ClientPortalDW.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\FileUpload.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Goal.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\GoalMetric.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\GoalType.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\GoogleAnalyticsSummary.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Metric.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\MetricCount.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\MetricValue.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\Offer.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\OfferDailySummary.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ReportStatus.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\ReportType.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchAccount.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchCampaign.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchChannel.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchConvSummary.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchConvType.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchDailySummary.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchDailySummary2.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchProfile.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SearchProfileContact.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\SimpleReport.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\TDContext.cs" />
+    <Compile Include="Contexts\UserEvent.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contexts\UserProfile.cs">
+      <DependentUpon>ClientPortal.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contracts\IClientPortalRepository.cs" />
+    <Compile Include="Contracts\ITDRepository.cs" />
+    <Compile Include="DTOs\AffiliateSummary.cs" />
+    <Compile Include="DTOs\CalenderWeek.cs" />
+    <Compile Include="DTOs\DateRangeSummary.cs" />
+    <Compile Include="DTOs\ConversionInfo.cs" />
+    <Compile Include="DTOs\ConversionSummary.cs" />
+    <Compile Include="DTOs\MonthlyInfo.cs" />
+    <Compile Include="DTOs\DailyInfo.cs" />
+    <Compile Include="DTOs\OfferInfo.cs" />
+    <Compile Include="DTOs\SearchStat.cs" />
+    <Compile Include="DTOs\TD\CreativeStatsSummary.cs" />
+    <Compile Include="DTOs\TD\RangeStat.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DTOs\TD\StatsRollup.cs" />
+    <Compile Include="DTOs\TD\StatsSummary.cs" />
+    <Compile Include="DTOs\WeeklySearchStat.cs" />
+    <Compile Include="Entities\Advertiser.cs" />
+    <Compile Include="Entities\Affiliate.cs" />
+    <Compile Include="Entities\CakeContact.cs" />
+    <Compile Include="Entities\CallDailySummary.cs" />
+    <Compile Include="Entities\Campaign.cs" />
+    <Compile Include="Entities\CampaignDrop.cs" />
+    <Compile Include="Entities\Contact.cs" />
+    <Compile Include="Entities\CPMReport.cs" />
+    <Compile Include="Entities\Creative.cs" />
+    <Compile Include="Entities\CreativeStat.cs" />
+    <Compile Include="Entities\Goal.cs" />
+    <Compile Include="Entities\Offer.cs" />
+    <Compile Include="Entities\SearchAccount.cs" />
+    <Compile Include="Entities\SearchDailySummary.cs" />
+    <Compile Include="Entities\SearchProfile.cs" />
+    <Compile Include="Entities\SimpleReport.cs" />
+    <Compile Include="Entities\TD\AdRoll\AdDailySummary.cs" />
+    <Compile Include="Entities\TD\AdRoll\AdRollAd.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\TD\AdRoll\AdRollProfile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\TD\DBM\Conversion.cs" />
+    <Compile Include="Entities\TD\DBM\Creative.cs" />
+    <Compile Include="Entities\TD\DBM\CreativeDailySummary.cs" />
+    <Compile Include="Entities\TD\DBM\DailyLocationStat.cs" />
+    <Compile Include="Entities\TD\DBM\DBMDailySummary.cs" />
+    <Compile Include="Entities\TD\DBM\InsertionOrder.cs" />
+    <Compile Include="Entities\TD\DBM\UserListStat.cs" />
+    <Compile Include="Entities\TD\TradingDeskAccount.cs" />
+    <Compile Include="Migrations\201406271827066_InitialCreate.cs" />
+    <Compile Include="Migrations\201406271827066_InitialCreate.Designer.cs">
+      <DependentUpon>201406271827066_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407082007021_CreativeDailySummary.cs" />
+    <Compile Include="Migrations\201407082007021_CreativeDailySummary.Designer.cs">
+      <DependentUpon>201407082007021_CreativeDailySummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407171938435_TradingDeskAccount.cs" />
+    <Compile Include="Migrations\201407171938435_TradingDeskAccount.Designer.cs">
+      <DependentUpon>201407171938435_TradingDeskAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407221555047_Mig_TDShowConversions.cs" />
+    <Compile Include="Migrations\201407221555047_Mig_TDShowConversions.Designer.cs">
+      <DependentUpon>201407221555047_Mig_TDShowConversions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201407311458183_Mig_FixedMetric.cs" />
+    <Compile Include="Migrations\201407311458183_Mig_FixedMetric.Designer.cs">
+      <DependentUpon>201407311458183_Mig_FixedMetric.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408112123400_Mig_DBMDailySummary.cs" />
+    <Compile Include="Migrations\201408112123400_Mig_DBMDailySummary.Designer.cs">
+      <DependentUpon>201408112123400_Mig_DBMDailySummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408121512151_Mig_AdDailySummary.cs" />
+    <Compile Include="Migrations\201408121512151_Mig_AdDailySummary.Designer.cs">
+      <DependentUpon>201408121512151_Mig_AdDailySummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201408141549089_Mig_ManagementFeePct.cs" />
+    <Compile Include="Migrations\201408141549089_Mig_ManagementFeePct.Designer.cs">
+      <DependentUpon>201408141549089_Mig_ManagementFeePct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201409092206193_Mig_ModDbmDailySummaries.cs" />
+    <Compile Include="Migrations\201409092206193_Mig_ModDbmDailySummaries.Designer.cs">
+      <DependentUpon>201409092206193_Mig_ModDbmDailySummaries.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501142218058_Mig_AdSummary_update.cs" />
+    <Compile Include="Migrations\201501142218058_Mig_AdSummary_update.Designer.cs">
+      <DependentUpon>201501142218058_Mig_AdSummary_update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501151727433_Mig_AdRollProfile_Eid.cs" />
+    <Compile Include="Migrations\201501151727433_Mig_AdRollProfile_Eid.Designer.cs">
+      <DependentUpon>201501151727433_Mig_AdRollProfile_Eid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501221724098_Mig_AdDailySummary_precision.cs" />
+    <Compile Include="Migrations\201501221724098_Mig_AdDailySummary_precision.Designer.cs">
+      <DependentUpon>201501221724098_Mig_AdDailySummary_precision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201502062106311_Mig_Bucket.cs" />
+    <Compile Include="Migrations\201502062106311_Mig_Bucket.Designer.cs">
+      <DependentUpon>201502062106311_Mig_Bucket.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503132049077_Mig_DBMConversion.cs" />
+    <Compile Include="Migrations\201503132049077_Mig_DBMConversion.Designer.cs">
+      <DependentUpon>201503132049077_Mig_DBMConversion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503261948106_Mig_RmIdentity_ARP.cs" />
+    <Compile Include="Migrations\201503261948106_Mig_RmIdentity_ARP.Designer.cs">
+      <DependentUpon>201503261948106_Mig_RmIdentity_ARP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503262049340_Mig_RmIdentity_TDA.cs" />
+    <Compile Include="Migrations\201503262049340_Mig_RmIdentity_TDA.Designer.cs">
+      <DependentUpon>201503262049340_Mig_RmIdentity_TDA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201504231735446_Mig_DBMConversionFields.cs" />
+    <Compile Include="Migrations\201504231735446_Mig_DBMConversionFields.Designer.cs">
+      <DependentUpon>201504231735446_Mig_DBMConversionFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201505281601539_Mig_UserListStat.cs" />
+    <Compile Include="Migrations\201505281601539_Mig_UserListStat.Designer.cs">
+      <DependentUpon>201505281601539_Mig_UserListStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506041516483_Mig_DailyLocationStat.cs" />
+    <Compile Include="Migrations\201506041516483_Mig_DailyLocationStat.Designer.cs">
+      <DependentUpon>201506041516483_Mig_DailyLocationStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603171654404_Mig_Conv_IP.cs" />
+    <Compile Include="Migrations\201603171654404_Mig_Conv_IP.Designer.cs">
+      <DependentUpon>201603171654404_Mig_Conv_IP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ChangeIdentityOperation.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ClientPortalRepository.cs" />
+    <Compile Include="Services\SearchRepository.cs" />
+    <Compile Include="Services\StatsRepository.cs" />
+    <Compile Include="Services\TDRepository.cs" />
+    <Compile Include="Services\TDStatsRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="Contexts\ClientPortal.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ClientPortal.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Contexts\ClientPortal.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClientPortal.Context.cs</LastGenOutput>
+      <DependentUpon>ClientPortal.edmx</DependentUpon>
+    </None>
+    <None Include="Contexts\ClientPortal.edmx.diagram">
+      <DependentUpon>ClientPortal.edmx</DependentUpon>
+    </None>
+    <EntityDeploy Include="Contexts\ClientPortalDW.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ClientPortalDW.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Contexts\ClientPortal.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClientPortal.cs</LastGenOutput>
+      <DependentUpon>ClientPortal.edmx</DependentUpon>
+    </None>
+    <None Include="Contexts\ClientPortalDW.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClientPortalDW.Context.cs</LastGenOutput>
+      <DependentUpon>ClientPortalDW.edmx</DependentUpon>
+    </None>
+    <None Include="Contexts\ClientPortalDW.edmx.diagram">
+      <DependentUpon>ClientPortalDW.edmx</DependentUpon>
+    </None>
+    <None Include="Contexts\ClientPortalDW.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ClientPortalDW.cs</LastGenOutput>
+      <DependentUpon>ClientPortalDW.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201406271827066_InitialCreate.resx">
+      <DependentUpon>201406271827066_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407082007021_CreativeDailySummary.resx">
+      <DependentUpon>201407082007021_CreativeDailySummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407171938435_TradingDeskAccount.resx">
+      <DependentUpon>201407171938435_TradingDeskAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407221555047_Mig_TDShowConversions.resx">
+      <DependentUpon>201407221555047_Mig_TDShowConversions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201407311458183_Mig_FixedMetric.resx">
+      <DependentUpon>201407311458183_Mig_FixedMetric.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408112123400_Mig_DBMDailySummary.resx">
+      <DependentUpon>201408112123400_Mig_DBMDailySummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408121512151_Mig_AdDailySummary.resx">
+      <DependentUpon>201408121512151_Mig_AdDailySummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201408141549089_Mig_ManagementFeePct.resx">
+      <DependentUpon>201408141549089_Mig_ManagementFeePct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201409092206193_Mig_ModDbmDailySummaries.resx">
+      <DependentUpon>201409092206193_Mig_ModDbmDailySummaries.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501142218058_Mig_AdSummary_update.resx">
+      <DependentUpon>201501142218058_Mig_AdSummary_update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501151727433_Mig_AdRollProfile_Eid.resx">
+      <DependentUpon>201501151727433_Mig_AdRollProfile_Eid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501221724098_Mig_AdDailySummary_precision.resx">
+      <DependentUpon>201501221724098_Mig_AdDailySummary_precision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201502062106311_Mig_Bucket.resx">
+      <DependentUpon>201502062106311_Mig_Bucket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503132049077_Mig_DBMConversion.resx">
+      <DependentUpon>201503132049077_Mig_DBMConversion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503261948106_Mig_RmIdentity_ARP.resx">
+      <DependentUpon>201503261948106_Mig_RmIdentity_ARP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503262049340_Mig_RmIdentity_TDA.resx">
+      <DependentUpon>201503262049340_Mig_RmIdentity_TDA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201504231735446_Mig_DBMConversionFields.resx">
+      <DependentUpon>201504231735446_Mig_DBMConversionFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201505281601539_Mig_UserListStat.resx">
+      <DependentUpon>201505281601539_Mig_UserListStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506041516483_Mig_DailyLocationStat.resx">
+      <DependentUpon>201506041516483_Mig_DailyLocationStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603171654404_Mig_Conv_IP.resx">
+      <DependentUpon>201603171654404_Mig_Conv_IP.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

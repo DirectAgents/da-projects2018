@@ -1,0 +1,30 @@
+﻿@model DirectAgents.Domain.Entities.AB.ABClient
+
+<h2>Payments</h2>
+
+Client: @Model.Name
+<br /><br />
+
+<table>
+    <tr>
+        <th></th>
+        <th>Date</th>
+        <th>Total Received</th>
+        <th>General Spend...</th>
+    </tr>
+@foreach (var payment in Model.Payments.OrderBy(x => x.Date))
+{
+    <tr>
+        <td>@Html.ActionLink("edit", "Edit", new { id = payment.Id })</td>
+        <td>@payment.Date.ToShortDateString()</td>
+        <td style="text-align:right">@payment.TotalValue()</td>
+        <td style="text-align:right">?</td>
+    </tr>
+}
+</table>
+[@Html.ActionLink("new payment", "New", new { clientId = Model.Id })]
+
+<br /><br />
+Links:<br />
+@Html.ActionLink("View/Edit ClientX", "ShowX", "Clients", new { id = Model.Id }, null)<br />
+@Html.ActionLink("Single Client Detail", "Client", "Dashboard", new { id = Model.Id }, null)

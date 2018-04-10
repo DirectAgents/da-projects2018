@@ -1,0 +1,44 @@
+﻿@model DirectAgents.Domain.Entities.CPSearch.SearchAccount
+
+
+<fieldset>
+    <legend>Edit SearchAccount</legend>
+    SearchProfile: @Model.SearchProfile.SearchProfileName (ID: @Model.SearchProfileId)
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.SearchProfileId)
+        @Html.HiddenFor(m => m.SearchAccountId)
+        @Html.HiddenFor(m => m.AdvertiserId)
+        @Html.HiddenFor(m => m.Channel)
+        @Html.HiddenFor(m => m.RevPerOrder)
+        @Html.HiddenFor(m => m.MinSynchDate)
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.SearchAccountId, "ID")</td>
+                    <td>@Html.DisplayFor(m => m.SearchAccountId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Channel)</td>
+                    <td>@Html.DisplayFor(m => m.Channel)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name)</td>
+                    <td>@Html.EditorFor(m => m.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AccountCode)</td>
+                    <td>@Html.EditorFor(m => m.AccountCode)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.ExternalId, "ExtId")</td>
+                    <td>@Html.EditorFor(m => m.ExternalId)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index", new { spId = Model.SearchProfileId })
+        </div>
+        }
+</fieldset>

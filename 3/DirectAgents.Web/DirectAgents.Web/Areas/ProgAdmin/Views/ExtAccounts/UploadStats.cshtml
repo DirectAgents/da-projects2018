@@ -1,0 +1,71 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.ExtAccount
+@{
+    var statsTypeList = new[] { "Daily", "Strategy", "AdSet", "Creative", "Site", "Conv", "DailyAndStrategy" };
+    var url = Url.Action("UploadFile", new { id = Model.Id });
+}
+<h2>Upload Stats for External Account</h2>
+
+Partner: @Model.Platform.Name<br />
+ExtAccount: @Model.Name
+<br />
+
+<div id="filesMessage" style="margin: 0px 0px 18px 5px"></div>
+
+<form method="post" action="@url" enctype="multipart/form-data">
+    <div>
+        Stats Type:
+        @Html.DropDownList("statsType", new SelectList(statsTypeList), new { style = "height:30px" })
+        <br /><br />
+        <div id="divStatsDate" style="display:none">
+            Month: <input id="statsDate" name="statsDate" type="text" /> (leave blank if "Month" column exists in file)
+            <br /><br />
+        </div>
+        <input id="fileUpload" name="file" type="file" />
+    </div>
+</form>
+
+<br />
+Back to:
+@if (Model.CampaignId.HasValue)
+{
+    @Html.ActionLink("Campaign Details", "Show", "Campaigns", new { id = Model.CampaignId.Value }, null)
+    <text> | </text>
+}
+@Html.ActionLink("ExtAccounts", "Index")
+
+<script>
+    $(function () {
+        var today = new Date();
+        //var firstOfMonth = new Date(today.getFullYear(), today.getMonth());
+        var firstOfMonth = "";
+        $("#statsDate").kendoDatePicker({ start: "year", depth: "year", format: "M/1/yyyy", value: firstOfMonth, footer: ' ' });
+
+        $("#fileUpload").kendoUpload({
+            async: {
+                saveUrl: "@url",
+                autoUpload: false
+            },
+            localization: {
+                select: "Select&nbsp;file...",
+                uploadSelectedFiles: "Upload and Process"
+            },
+            multiple: false,
+            upload: OnUpload,
+            complete: UploadComplete
+        });
+        $('#statsType').change(OnStatsTypeChange);
+    });
+
+    function OnStatsTypeChange() {
+        if ($('#statsType').val() == "Site")
+            $('#divStatsDate').show();
+        else
+            $('#divStatsDate').hide();
+    }
+    function OnUpload(e) {
+        e.data = { statsType: $('#statsType').val(), statsDate: $('#statsDate').val() };
+    }
+    function UploadComplete() {
+        $('#filesMessage').html('Done processing.');
+    }
+</script>

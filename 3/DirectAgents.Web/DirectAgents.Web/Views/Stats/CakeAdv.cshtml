@@ -1,0 +1,48 @@
+﻿@model DirectAgents.Web.Models.ScreensVM
+
+<h2>Advertisers</h2>
+
+<table>
+<tr>
+    <th></th>
+    <th>Views</th>
+    <th>Clicks</th>
+    <th>Conversions</th>
+    <th>Paid</th>
+    <th>Sellable</th>
+    <th>Revenue</th>
+    <th>Cost</th>
+    <th>Margin</th>
+</tr>
+@foreach (var advStats in Model.AdvStats)
+{
+<tr>
+    <td>@advStats.Name</td>
+    <td style="text-align:right">@advStats.Views</td>
+    <td style="text-align:right">@advStats.Clicks</td>
+    <td style="text-align:right">@advStats.Conversions</td>
+    <td style="text-align:right">@advStats.Paid</td>
+    <td style="text-align:right">@advStats.Sellable</td>
+    <td style="text-align:right">@advStats.Revenue</td>
+    <td style="text-align:right">@advStats.Cost</td>
+    <td style="text-align:right">@advStats.Margin</td>
+</tr>
+}
+@{
+    var totals = Model.Total;
+}
+<tr style="font-weight:bold">
+    <td>TOTALS</td>
+    <td style="text-align:right">@totals.Views.ToString("N0")</td>
+    <td style="text-align:right">@totals.Clicks.ToString("N0")</td>
+    <td style="text-align:right">@totals.Conversions.ToString("N0")</td>
+    <td style="text-align:right">@totals.Paid.ToString("N0")</td>
+    <td style="text-align:right">@totals.Sellable.ToString("N0")</td>
+    <td style="text-align:right">@totals.Revenue.ToString("N2")</td>
+    <td style="text-align:right">@totals.Cost.ToString("N2")</td>
+    <td style="text-align:right">@totals.Margin.ToString("N2")</td>
+</tr>
+</table>
+
+@Model.AdvStats.Count() advertisers
+<br />

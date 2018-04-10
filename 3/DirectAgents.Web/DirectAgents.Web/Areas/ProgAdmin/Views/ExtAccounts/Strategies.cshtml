@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPProg.Strategy>
+
+<h2>Strategies</h2>
+
+<table>
+<tr>
+    <th>Id</th>
+    <th>Name</th>
+    <th>ExternalId</th>
+</tr>
+@foreach (var strat in Model)
+{
+<tr>
+    <td>@strat.Id</td>
+    <td>@strat.Name</td>
+    <td>@strat.ExternalId</td>
+</tr>
+}
+</table>

@@ -1,0 +1,908 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{278911AB-CB92-4316-843E-4571CD0C3410}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DirectAgents.Domain</RootNamespace>
+    <AssemblyName>DirectAgents.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\3\DirectAgents.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\3\DirectAgents.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Z.EntityFramework.Plus.EF6, Version=1.7.15.0, Culture=neutral, PublicKeyToken=59b66d028979105b, processorArchitecture=MSIL">
+      <HintPath>..\..\3\DirectAgents.Web\packages\Z.EntityFramework.Plus.EF6.1.7.15\lib\net45\Z.EntityFramework.Plus.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstract\IABRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstract\IAdmin.cs" />
+    <Compile Include="Abstract\ICampaignRepository.cs" />
+    <Compile Include="Abstract\ICPProgRepository.cs" />
+    <Compile Include="Abstract\ICPSearchRepository.cs" />
+    <Compile Include="Abstract\IDepartmentRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Abstract\IMainRepository.cs" />
+    <Compile Include="Abstract\IRevTrackRepository.cs" />
+    <Compile Include="Abstract\ISecurityRepository.cs" />
+    <Compile Include="Abstract\ISuperRepository.cs" />
+    <Compile Include="Abstract\ITDRepository.cs" />
+    <Compile Include="Abstract\TopCampaignBy.cs" />
+    <Compile Include="Concrete\ABRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Concrete\AdminImpl.cs" />
+    <Compile Include="Concrete\CampaignRepository.cs" />
+    <Compile Include="Concrete\CountryLookup.cs" />
+    <Compile Include="Concrete\CPProgRepository.cs" />
+    <Compile Include="Concrete\CPProgStatsRepository.cs" />
+    <Compile Include="Concrete\CPSearchRepository.cs" />
+    <Compile Include="Concrete\DepartmentRepository.cs" />
+    <Compile Include="Concrete\Extensions.cs" />
+    <Compile Include="Concrete\MainRepository.cs" />
+    <Compile Include="Concrete\RevTrackRepository.cs" />
+    <Compile Include="Concrete\SecurityRepository.cs" />
+    <Compile Include="Concrete\SuperRepository.cs" />
+    <Compile Include="Concrete\TDRepository.cs" />
+    <Compile Include="Contexts\ABContext.cs" />
+    <Compile Include="Contexts\ClientPortalSearchContext.cs" />
+    <Compile Include="Contexts\RevTrackContext.cs" />
+    <Compile Include="Contexts\HistoryContext.cs" />
+    <Compile Include="Contexts\ClientPortalProgContext.cs" />
+    <Compile Include="DTO\ABStat.cs" />
+    <Compile Include="DTO\CampaignSummary.cs" />
+    <Compile Include="DTO\ProgClientStats.cs" />
+    <Compile Include="DTO\ProgMediaStat.cs" />
+    <Compile Include="DTO\RTLineItem.cs" />
+    <Compile Include="DTO\TDCampStats.cs" />
+    <Compile Include="DTO\TDLineItem.cs" />
+    <Compile Include="DTO\TDStat.cs" />
+    <Compile Include="DTO\TDStatsGauge.cs" />
+    <Compile Include="Entities\AB\Campaign.cs" />
+    <Compile Include="Entities\AB\Client.cs" />
+    <Compile Include="Entities\AB\ClientAccount.cs" />
+    <Compile Include="Entities\AB\ClientPayment.cs" />
+    <Compile Include="Entities\AB\ExtraItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\AB\Job.cs" />
+    <Compile Include="Entities\AB\Payment.cs" />
+    <Compile Include="Entities\AB\Period.cs" />
+    <Compile Include="Entities\AB\ProtoCampaign.cs" />
+    <Compile Include="Entities\AB\ProtoInvoice.cs" />
+    <Compile Include="Entities\AB\ProtoPayment.cs" />
+    <Compile Include="Entities\AB\ProtoPeriod.cs" />
+    <Compile Include="Entities\AB\ProtoSpendBit.cs" />
+    <Compile Include="Entities\AB\SpendBucket.cs" />
+    <Compile Include="Entities\AB\UnitType.cs" />
+    <Compile Include="Entities\AB\Vendor.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\AB\Wraps.cs" />
+    <Compile Include="Entities\AdRoll\Ad.cs" />
+    <Compile Include="Entities\AdRoll\AdDailySummary.cs" />
+    <Compile Include="Entities\AdRoll\Advertisable.cs" />
+    <Compile Include="Entities\Cake\Advertiser.cs" />
+    <Compile Include="Entities\Cake\Affiliate.cs" />
+    <Compile Include="Entities\Cake\Camp.cs" />
+    <Compile Include="Entities\Cake\CampSum.cs" />
+    <Compile Include="Entities\Cake\Contact.cs" />
+    <Compile Include="Entities\Cake\EventConversion.cs" />
+    <Compile Include="Entities\Cake\Offer.cs" />
+    <Compile Include="Contexts\DAContext.cs" />
+    <Compile Include="Entities\Cake\OfferContract.cs" />
+    <Compile Include="Entities\Cake\OfferDailySummary.cs" />
+    <Compile Include="Entities\Cake\OfferStatus.cs" />
+    <Compile Include="Entities\Cake\OfferType.cs" />
+    <Compile Include="Entities\Cake\Role.cs" />
+    <Compile Include="Entities\Cake\Vertical.cs" />
+    <Compile Include="Entities\CPProg\Actions.cs" />
+    <Compile Include="Entities\CPSearch\CallDailySummary.cs" />
+    <Compile Include="Entities\CPSearch\ClientReport.cs" />
+    <Compile Include="Entities\CPSearch\SearchAccount.cs" />
+    <Compile Include="Entities\CPSearch\SearchCampaign.cs" />
+    <Compile Include="Entities\CPSearch\SearchConvSummary.cs" />
+    <Compile Include="Entities\CPSearch\SearchConvType.cs" />
+    <Compile Include="Entities\CPSearch\SearchDailySummary.cs" />
+    <Compile Include="Entities\CPSearch\SearchProfile.cs" />
+    <Compile Include="Entities\Currency.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\DBM\Creative.cs" />
+    <Compile Include="Entities\DBM\CreativeDailySummary.cs" />
+    <Compile Include="Entities\DBM\InsertionOrder.cs" />
+    <Compile Include="Entities\OfferBudget.cs" />
+    <Compile Include="Entities\Employee.cs" />
+    <Compile Include="Entities\RevTrack\ProgClientVendor.cs" />
+    <Compile Include="Entities\RevTrack\ProgSummary.cs" />
+    <Compile Include="Entities\Screen\Salesperson.cs" />
+    <Compile Include="Entities\Screen\SalespersonStat.cs" />
+    <Compile Include="Entities\Security\Group.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Security\Permission.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Security\Role.cs">
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Security\SecurityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Security\SecurityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Security\SecurityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CPProg\Advertiser.cs" />
+    <Compile Include="Entities\CPProg\CampaignBudget.cs" />
+    <Compile Include="Entities\CPProg\Conv.cs" />
+    <Compile Include="Entities\CPProg\DailySummary.cs" />
+    <Compile Include="Entities\CPProg\ExtraItem.cs" />
+    <Compile Include="Entities\CPProg\FunctionEntities.cs" />
+    <Compile Include="Entities\CPProg\PlatformAccount.cs" />
+    <Compile Include="Entities\Variable.cs" />
+    <Compile Include="Entities\WikiPartials\Campaign.cs" />
+    <Compile Include="Entities\WikiPartials\Country.cs" />
+    <Compile Include="Entities\WikiPartials\Status.cs" />
+    <Compile Include="Entities\Wiki\Campaign.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\Conversion.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\Country.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\DailySummary.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\Person.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\Status.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\TrafficType.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\Vertical.cs">
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\WikiModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WikiModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\WikiModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WikiModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Wiki\WikiModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WikiModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201612201825281_InitialCreate.cs" />
+    <Compile Include="MigrationsAB\201612201825281_InitialCreate.Designer.cs">
+      <DependentUpon>201612201825281_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701102152531_Mig_ClientAccount.cs" />
+    <Compile Include="MigrationsAB\201701102152531_Mig_ClientAccount.Designer.cs">
+      <DependentUpon>201701102152531_Mig_ClientAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701111928532_Mig_CreditLimits.cs" />
+    <Compile Include="MigrationsAB\201701111928532_Mig_CreditLimits.Designer.cs">
+      <DependentUpon>201701111928532_Mig_CreditLimits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701131938457_Mig_ClientBudget.cs" />
+    <Compile Include="MigrationsAB\201701131938457_Mig_ClientBudget.Designer.cs">
+      <DependentUpon>201701131938457_Mig_ClientBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701172250032_Mig_ClientPayment.cs" />
+    <Compile Include="MigrationsAB\201701172250032_Mig_ClientPayment.Designer.cs">
+      <DependentUpon>201701172250032_Mig_ClientPayment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701251554500_Mig_ClientPaymentBit.cs" />
+    <Compile Include="MigrationsAB\201701251554500_Mig_ClientPaymentBit.Designer.cs">
+      <DependentUpon>201701251554500_Mig_ClientPaymentBit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701251653334_Mig_Job.cs" />
+    <Compile Include="MigrationsAB\201701251653334_Mig_Job.Designer.cs">
+      <DependentUpon>201701251653334_Mig_Job.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701251946452_Mig_ExtraItem.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MigrationsAB\201701251946452_Mig_ExtraItem.Designer.cs">
+      <DependentUpon>201701251946452_Mig_ExtraItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201701262112310_Mig_PaymentBitJob.cs" />
+    <Compile Include="MigrationsAB\201701262112310_Mig_PaymentBitJob.Designer.cs">
+      <DependentUpon>201701262112310_Mig_PaymentBitJob.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702072052477_Mig_ProtoObjs.cs" />
+    <Compile Include="MigrationsAB\201702072052477_Mig_ProtoObjs.Designer.cs">
+      <DependentUpon>201702072052477_Mig_ProtoObjs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702092040550_Mig_RmAccountBudget.cs" />
+    <Compile Include="MigrationsAB\201702092040550_Mig_RmAccountBudget.Designer.cs">
+      <DependentUpon>201702092040550_Mig_RmAccountBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702092133451_Mig_AcctPayInvCamp.cs" />
+    <Compile Include="MigrationsAB\201702092133451_Mig_AcctPayInvCamp.Designer.cs">
+      <DependentUpon>201702092133451_Mig_AcctPayInvCamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702152230227_Mig_Campaign.cs" />
+    <Compile Include="MigrationsAB\201702152230227_Mig_Campaign.Designer.cs">
+      <DependentUpon>201702152230227_Mig_Campaign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702162051182_Mig_NewSpendBucketsBits.cs" />
+    <Compile Include="MigrationsAB\201702162051182_Mig_NewSpendBucketsBits.Designer.cs">
+      <DependentUpon>201702162051182_Mig_NewSpendBucketsBits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702162100330_Mig_RmAcctSpendBucketsBits.cs" />
+    <Compile Include="MigrationsAB\201702162100330_Mig_RmAcctSpendBucketsBits.Designer.cs">
+      <DependentUpon>201702162100330_Mig_RmAcctSpendBucketsBits.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702162126075_Mig_Vendor.cs" />
+    <Compile Include="MigrationsAB\201702162126075_Mig_Vendor.Designer.cs">
+      <DependentUpon>201702162126075_Mig_Vendor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201702162147438_Mig_UnitType.cs" />
+    <Compile Include="MigrationsAB\201702162147438_Mig_UnitType.Designer.cs">
+      <DependentUpon>201702162147438_Mig_UnitType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201703071529348_Mig_RmAcctPayInv.cs" />
+    <Compile Include="MigrationsAB\201703071529348_Mig_RmAcctPayInv.Designer.cs">
+      <DependentUpon>201703071529348_Mig_RmAcctPayInv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\201703101941100_Mig_Payment.cs" />
+    <Compile Include="MigrationsAB\201703101941100_Mig_Payment.Designer.cs">
+      <DependentUpon>201703101941100_Mig_Payment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsAB\Configuration.cs" />
+    <Compile Include="MigrationsRT\201611292020284_InitialCreate.cs" />
+    <Compile Include="MigrationsRT\201611292020284_InitialCreate.Designer.cs">
+      <DependentUpon>201611292020284_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsRT\201612062251380_Mig_ProgCampaign.cs" />
+    <Compile Include="MigrationsRT\201612062251380_Mig_ProgCampaign.Designer.cs">
+      <DependentUpon>201612062251380_Mig_ProgCampaign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsRT\201612062302201_Mig_ProgBudgetInfos.cs" />
+    <Compile Include="MigrationsRT\201612062302201_Mig_ProgBudgetInfos.Designer.cs">
+      <DependentUpon>201612062302201_Mig_ProgBudgetInfos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsRT\201612062313024_Mig_ProgSummary.cs" />
+    <Compile Include="MigrationsRT\201612062313024_Mig_ProgSummary.Designer.cs">
+      <DependentUpon>201612062313024_Mig_ProgSummary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsRT\201612212101261_Mig_ProgABClientId.cs" />
+    <Compile Include="MigrationsRT\201612212101261_Mig_ProgABClientId.Designer.cs">
+      <DependentUpon>201612212101261_Mig_ProgABClientId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsRT\Configuration.cs" />
+    <Compile Include="MigrationsTD\201507282051383_Initial.cs" />
+    <Compile Include="MigrationsTD\201507282051383_Initial.Designer.cs">
+      <DependentUpon>201507282051383_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201507311921089_Mig_AdRollAds.cs" />
+    <Compile Include="MigrationsTD\201507311921089_Mig_AdRollAds.Designer.cs">
+      <DependentUpon>201507311921089_Mig_AdRollAds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201508182009561_Mig_PlatformAccountDS.cs" />
+    <Compile Include="MigrationsTD\201508182009561_Mig_PlatformAccountDS.Designer.cs">
+      <DependentUpon>201508182009561_Mig_PlatformAccountDS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201508182124301_Mig_RmAdvertisableStat.cs" />
+    <Compile Include="MigrationsTD\201508182124301_Mig_RmAdvertisableStat.Designer.cs">
+      <DependentUpon>201508182124301_Mig_RmAdvertisableStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201508192107109_Mig_DBM.cs" />
+    <Compile Include="MigrationsTD\201508192107109_Mig_DBM.Designer.cs">
+      <DependentUpon>201508192107109_Mig_DBM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201508242200333_Mig_DBM_Conv.cs" />
+    <Compile Include="MigrationsTD\201508242200333_Mig_DBM_Conv.Designer.cs">
+      <DependentUpon>201508242200333_Mig_DBM_Conv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201508251738143_Mig_DBM_DaySumConvs.cs" />
+    <Compile Include="MigrationsTD\201508251738143_Mig_DBM_DaySumConvs.Designer.cs">
+      <DependentUpon>201508251738143_Mig_DBM_DaySumConvs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201508261744525_Mig_AdvCampBudg.cs" />
+    <Compile Include="MigrationsTD\201508261744525_Mig_AdvCampBudg.Designer.cs">
+      <DependentUpon>201508261744525_Mig_AdvCampBudg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201509152158477_Mig_Employee.cs" />
+    <Compile Include="MigrationsTD\201509152158477_Mig_Employee.Designer.cs">
+      <DependentUpon>201509152158477_Mig_Employee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201509292053368_Mig_DBM_CDS_AddIOID.cs" />
+    <Compile Include="MigrationsTD\201509292053368_Mig_DBM_CDS_AddIOID.Designer.cs">
+      <DependentUpon>201509292053368_Mig_DBM_CDS_AddIOID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201510011510576_Mig_AdRollAdvProps.cs" />
+    <Compile Include="MigrationsTD\201510011510576_Mig_AdRollAdvProps.Designer.cs">
+      <DependentUpon>201510011510576_Mig_AdRollAdvProps.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201510151453368_Mig_PlatformBudgetInfo.cs" />
+    <Compile Include="MigrationsTD\201510151453368_Mig_PlatformBudgetInfo.Designer.cs">
+      <DependentUpon>201510151453368_Mig_PlatformBudgetInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201511032229487_Mig_ExtraItem.cs" />
+    <Compile Include="MigrationsTD\201511032229487_Mig_ExtraItem.Designer.cs">
+      <DependentUpon>201511032229487_Mig_ExtraItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201512101637483_Mig_PlatColMapping.cs" />
+    <Compile Include="MigrationsTD\201512101637483_Mig_PlatColMapping.Designer.cs">
+      <DependentUpon>201512101637483_Mig_PlatColMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201512222321389_Mig_Strategy.cs" />
+    <Compile Include="MigrationsTD\201512222321389_Mig_Strategy.Designer.cs">
+      <DependentUpon>201512222321389_Mig_Strategy.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201601052300172_Mig_TDad.cs" />
+    <Compile Include="MigrationsTD\201601052300172_Mig_TDad.Designer.cs">
+      <DependentUpon>201601052300172_Mig_TDad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201601082136085_Mig_Site.cs" />
+    <Compile Include="MigrationsTD\201601082136085_Mig_Site.Designer.cs">
+      <DependentUpon>201601082136085_Mig_Site.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201601111845000_Mig_Conv.cs" />
+    <Compile Include="MigrationsTD\201601111845000_Mig_Conv.Designer.cs">
+      <DependentUpon>201601111845000_Mig_Conv.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201601291719443_Mig_Conv2.cs" />
+    <Compile Include="MigrationsTD\201601291719443_Mig_Conv2.Designer.cs">
+      <DependentUpon>201601291719443_Mig_Conv2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201602122137175_Mig_MoreColMapping.cs" />
+    <Compile Include="MigrationsTD\201602122137175_Mig_MoreColMapping.Designer.cs">
+      <DependentUpon>201602122137175_Mig_MoreColMapping.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201603212004059_Mig_BudgInfo_Id.cs" />
+    <Compile Include="MigrationsTD\201603212004059_Mig_BudgInfo_Id.Designer.cs">
+      <DependentUpon>201603212004059_Mig_BudgInfo_Id.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201604221549032_AdvUpdates.cs" />
+    <Compile Include="MigrationsTD\201604221549032_AdvUpdates.Designer.cs">
+      <DependentUpon>201604221549032_AdvUpdates.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201604271705417_Mig_TDad_Url.cs" />
+    <Compile Include="MigrationsTD\201604271705417_Mig_TDad_Url.Designer.cs">
+      <DependentUpon>201604271705417_Mig_TDad_Url.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201605262050589_Mig_BodyHeadlineMessage.cs" />
+    <Compile Include="MigrationsTD\201605262050589_Mig_BodyHeadlineMessage.Designer.cs">
+      <DependentUpon>201605262050589_Mig_BodyHeadlineMessage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201606022031596_Mig_CreativeURLFormat.cs" />
+    <Compile Include="MigrationsTD\201606022031596_Mig_CreativeURLFormat.Designer.cs">
+      <DependentUpon>201606022031596_Mig_CreativeURLFormat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201606072304421_Mig_AdDestinationUrl.cs" />
+    <Compile Include="MigrationsTD\201606072304421_Mig_AdDestinationUrl.Designer.cs">
+      <DependentUpon>201606072304421_Mig_AdDestinationUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201701161616211_Mig_Revenue.cs" />
+    <Compile Include="MigrationsTD\201701161616211_Mig_Revenue.Designer.cs">
+      <DependentUpon>201701161616211_Mig_Revenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201701191639153_Mig_StrategyRevenue.cs" />
+    <Compile Include="MigrationsTD\201701191639153_Mig_StrategyRevenue.Designer.cs">
+      <DependentUpon>201701191639153_Mig_StrategyRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201703031654359_Mig_ColMapRevenue.cs" />
+    <Compile Include="MigrationsTD\201703031654359_Mig_ColMapRevenue.Designer.cs">
+      <DependentUpon>201703031654359_Mig_ColMapRevenue.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201703201912582_Mig_AdSet.cs" />
+    <Compile Include="MigrationsTD\201703201912582_Mig_AdSet.Designer.cs">
+      <DependentUpon>201703201912582_Mig_AdSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201703241459105_Mig_Network.cs" />
+    <Compile Include="MigrationsTD\201703241459105_Mig_Network.Designer.cs">
+      <DependentUpon>201703241459105_Mig_Network.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201703282116465_Mig_Actions.cs" />
+    <Compile Include="MigrationsTD\201703282116465_Mig_Actions.Designer.cs">
+      <DependentUpon>201703282116465_Mig_Actions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201703301534068_Mig_AllClicks.cs" />
+    <Compile Include="MigrationsTD\201703301534068_Mig_AllClicks.Designer.cs">
+      <DependentUpon>201703301534068_Mig_AllClicks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201703302030137_Mig_AdSetAction.cs" />
+    <Compile Include="MigrationsTD\201703302030137_Mig_AdSetAction.Designer.cs">
+      <DependentUpon>201703302030137_Mig_AdSetAction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201704181943349_Mig_PlatformTokens.cs" />
+    <Compile Include="MigrationsTD\201704181943349_Mig_PlatformTokens.Designer.cs">
+      <DependentUpon>201704181943349_Mig_PlatformTokens.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201706032006209_Mig_AdSetActionVals.cs" />
+    <Compile Include="MigrationsTD\201706032006209_Mig_AdSetActionVals.Designer.cs">
+      <DependentUpon>201706032006209_Mig_AdSetActionVals.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201707142009302_Mig_Account_Disabled.cs" />
+    <Compile Include="MigrationsTD\201707142009302_Mig_Account_Disabled.Designer.cs">
+      <DependentUpon>201707142009302_Mig_Account_Disabled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201709082010188_Mig_CampFeeAdvEnd.cs" />
+    <Compile Include="MigrationsTD\201709082010188_Mig_CampFeeAdvEnd.Designer.cs">
+      <DependentUpon>201709082010188_Mig_CampFeeAdvEnd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\201710162039159_Mig_AccountFilter.cs" />
+    <Compile Include="MigrationsTD\201710162039159_Mig_AccountFilter.Designer.cs">
+      <DependentUpon>201710162039159_Mig_AccountFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MigrationsTD\Configuration.cs" />
+    <Compile Include="Migrations\201405292045335_InitialCreate.cs" />
+    <Compile Include="Migrations\201405292045335_InitialCreate.Designer.cs">
+      <DependentUpon>201405292045335_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201405301659568_OfferUpdate.cs" />
+    <Compile Include="Migrations\201405301659568_OfferUpdate.Designer.cs">
+      <DependentUpon>201405301659568_OfferUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406031449369_CakeContactAndRole.cs" />
+    <Compile Include="Migrations\201406031449369_CakeContactAndRole.Designer.cs">
+      <DependentUpon>201406031449369_CakeContactAndRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406042147505_OfferBudget.cs" />
+    <Compile Include="Migrations\201406042147505_OfferBudget.Designer.cs">
+      <DependentUpon>201406042147505_OfferBudget.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406051452281_RmOfferInfo.cs" />
+    <Compile Include="Migrations\201406051452281_RmOfferInfo.Designer.cs">
+      <DependentUpon>201406051452281_RmOfferInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406052033250_VerticalsEtc.cs" />
+    <Compile Include="Migrations\201406052033250_VerticalsEtc.Designer.cs">
+      <DependentUpon>201406052033250_VerticalsEtc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506192205420_Mig_EF6.cs" />
+    <Compile Include="Migrations\201506192205420_Mig_EF6.Designer.cs">
+      <DependentUpon>201506192205420_Mig_EF6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506192208145_Mig_AdRoll.cs" />
+    <Compile Include="Migrations\201506192208145_Mig_AdRoll.Designer.cs">
+      <DependentUpon>201506192208145_Mig_AdRoll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506221514396_Mig_AdRollStat.cs" />
+    <Compile Include="Migrations\201506221514396_Mig_AdRollStat.Designer.cs">
+      <DependentUpon>201506221514396_Mig_AdRollStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201506231617274_Mig_Variable.cs" />
+    <Compile Include="Migrations\201506231617274_Mig_Variable.Designer.cs">
+      <DependentUpon>201506231617274_Mig_Variable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507152042017_Mig_Sales.cs" />
+    <Compile Include="Migrations\201507152042017_Mig_Sales.Designer.cs">
+      <DependentUpon>201507152042017_Mig_Sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201507281756459_Mig_MoveTD.cs" />
+    <Compile Include="Migrations\201507281756459_Mig_MoveTD.Designer.cs">
+      <DependentUpon>201507281756459_Mig_MoveTD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201612191657217_Mig_ABClientId.cs" />
+    <Compile Include="Migrations\201612191657217_Mig_ABClientId.Designer.cs">
+      <DependentUpon>201612191657217_Mig_ABClientId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702241947054_Mig_CampSum.cs" />
+    <Compile Include="Migrations\201702241947054_Mig_CampSum.Designer.cs">
+      <DependentUpon>201702241947054_Mig_CampSum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201702272237109_Mig_Camp.cs" />
+    <Compile Include="Migrations\201702272237109_Mig_Camp.Designer.cs">
+      <DependentUpon>201702272237109_Mig_Camp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703012028456_Mig_OfferContract.cs" />
+    <Compile Include="Migrations\201703012028456_Mig_OfferContract.Designer.cs">
+      <DependentUpon>201703012028456_Mig_OfferContract.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703062015043_Mig_Currency.cs" />
+    <Compile Include="Migrations\201703062015043_Mig_Currency.Designer.cs">
+      <DependentUpon>201703062015043_Mig_Currency.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201703081656144_Mig_CampSum2.cs" />
+    <Compile Include="Migrations\201703081656144_Mig_CampSum2.Designer.cs">
+      <DependentUpon>201703081656144_Mig_CampSum2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706211555191_Mig_Affiliate.cs" />
+    <Compile Include="Migrations\201706211555191_Mig_Affiliate.Designer.cs">
+      <DependentUpon>201706211555191_Mig_Affiliate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706212054345_Mig_CampSumFKs.cs" />
+    <Compile Include="Migrations\201706212054345_Mig_CampSumFKs.Designer.cs">
+      <DependentUpon>201706212054345_Mig_CampSumFKs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803281659222_Mig_EventConversion.cs" />
+    <Compile Include="Migrations\201803281659222_Mig_EventConversion.Designer.cs">
+      <DependentUpon>201803281659222_Mig_EventConversion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seed\ABSeeder.cs" />
+    <Compile Include="Seed\DASeeder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Seed\TDSeeder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Entities\Wiki\WikiModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WikiModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Entities\Security\SecurityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SecurityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\Security\SecurityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+      <LastGenOutput>SecurityModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\Security\SecurityModel.edmx.diagram">
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\Security\SecurityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SecurityModel.edmx</DependentUpon>
+      <LastGenOutput>SecurityModel.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\Wiki\WikiModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WikiModel.edmx</DependentUpon>
+      <LastGenOutput>WikiModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\Wiki\WikiModel.edmx.diagram">
+      <DependentUpon>WikiModel.edmx</DependentUpon>
+    </None>
+    <None Include="Entities\Wiki\WikiModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WikiModel.edmx</DependentUpon>
+      <LastGenOutput>WikiModel.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="MigrationsAB\201612201825281_InitialCreate.resx">
+      <DependentUpon>201612201825281_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701102152531_Mig_ClientAccount.resx">
+      <DependentUpon>201701102152531_Mig_ClientAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701111928532_Mig_CreditLimits.resx">
+      <DependentUpon>201701111928532_Mig_CreditLimits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701131938457_Mig_ClientBudget.resx">
+      <DependentUpon>201701131938457_Mig_ClientBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701172250032_Mig_ClientPayment.resx">
+      <DependentUpon>201701172250032_Mig_ClientPayment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701251554500_Mig_ClientPaymentBit.resx">
+      <DependentUpon>201701251554500_Mig_ClientPaymentBit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701251653334_Mig_Job.resx">
+      <DependentUpon>201701251653334_Mig_Job.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701251946452_Mig_ExtraItem.resx">
+      <DependentUpon>201701251946452_Mig_ExtraItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201701262112310_Mig_PaymentBitJob.resx">
+      <DependentUpon>201701262112310_Mig_PaymentBitJob.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702072052477_Mig_ProtoObjs.resx">
+      <DependentUpon>201702072052477_Mig_ProtoObjs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702092040550_Mig_RmAccountBudget.resx">
+      <DependentUpon>201702092040550_Mig_RmAccountBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702092133451_Mig_AcctPayInvCamp.resx">
+      <DependentUpon>201702092133451_Mig_AcctPayInvCamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702152230227_Mig_Campaign.resx">
+      <DependentUpon>201702152230227_Mig_Campaign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702162051182_Mig_NewSpendBucketsBits.resx">
+      <DependentUpon>201702162051182_Mig_NewSpendBucketsBits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702162100330_Mig_RmAcctSpendBucketsBits.resx">
+      <DependentUpon>201702162100330_Mig_RmAcctSpendBucketsBits.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702162126075_Mig_Vendor.resx">
+      <DependentUpon>201702162126075_Mig_Vendor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201702162147438_Mig_UnitType.resx">
+      <DependentUpon>201702162147438_Mig_UnitType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201703071529348_Mig_RmAcctPayInv.resx">
+      <DependentUpon>201703071529348_Mig_RmAcctPayInv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsAB\201703101941100_Mig_Payment.resx">
+      <DependentUpon>201703101941100_Mig_Payment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsRT\201611292020284_InitialCreate.resx">
+      <DependentUpon>201611292020284_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsRT\201612062251380_Mig_ProgCampaign.resx">
+      <DependentUpon>201612062251380_Mig_ProgCampaign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsRT\201612062302201_Mig_ProgBudgetInfos.resx">
+      <DependentUpon>201612062302201_Mig_ProgBudgetInfos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsRT\201612062313024_Mig_ProgSummary.resx">
+      <DependentUpon>201612062313024_Mig_ProgSummary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsRT\201612212101261_Mig_ProgABClientId.resx">
+      <DependentUpon>201612212101261_Mig_ProgABClientId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201507282051383_Initial.resx">
+      <DependentUpon>201507282051383_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201507311921089_Mig_AdRollAds.resx">
+      <DependentUpon>201507311921089_Mig_AdRollAds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201508182009561_Mig_PlatformAccountDS.resx">
+      <DependentUpon>201508182009561_Mig_PlatformAccountDS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201508182124301_Mig_RmAdvertisableStat.resx">
+      <DependentUpon>201508182124301_Mig_RmAdvertisableStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201508192107109_Mig_DBM.resx">
+      <DependentUpon>201508192107109_Mig_DBM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201508242200333_Mig_DBM_Conv.resx">
+      <DependentUpon>201508242200333_Mig_DBM_Conv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201508251738143_Mig_DBM_DaySumConvs.resx">
+      <DependentUpon>201508251738143_Mig_DBM_DaySumConvs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201508261744525_Mig_AdvCampBudg.resx">
+      <DependentUpon>201508261744525_Mig_AdvCampBudg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201509152158477_Mig_Employee.resx">
+      <DependentUpon>201509152158477_Mig_Employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201509292053368_Mig_DBM_CDS_AddIOID.resx">
+      <DependentUpon>201509292053368_Mig_DBM_CDS_AddIOID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201510011510576_Mig_AdRollAdvProps.resx">
+      <DependentUpon>201510011510576_Mig_AdRollAdvProps.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201510151453368_Mig_PlatformBudgetInfo.resx">
+      <DependentUpon>201510151453368_Mig_PlatformBudgetInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201511032229487_Mig_ExtraItem.resx">
+      <DependentUpon>201511032229487_Mig_ExtraItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201512101637483_Mig_PlatColMapping.resx">
+      <DependentUpon>201512101637483_Mig_PlatColMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201512222321389_Mig_Strategy.resx">
+      <DependentUpon>201512222321389_Mig_Strategy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201601052300172_Mig_TDad.resx">
+      <DependentUpon>201601052300172_Mig_TDad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201601082136085_Mig_Site.resx">
+      <DependentUpon>201601082136085_Mig_Site.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201601111845000_Mig_Conv.resx">
+      <DependentUpon>201601111845000_Mig_Conv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201601291719443_Mig_Conv2.resx">
+      <DependentUpon>201601291719443_Mig_Conv2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201602122137175_Mig_MoreColMapping.resx">
+      <DependentUpon>201602122137175_Mig_MoreColMapping.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201603212004059_Mig_BudgInfo_Id.resx">
+      <DependentUpon>201603212004059_Mig_BudgInfo_Id.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201604221549032_AdvUpdates.resx">
+      <DependentUpon>201604221549032_AdvUpdates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201604271705417_Mig_TDad_Url.resx">
+      <DependentUpon>201604271705417_Mig_TDad_Url.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201605262050589_Mig_BodyHeadlineMessage.resx">
+      <DependentUpon>201605262050589_Mig_BodyHeadlineMessage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201606022031596_Mig_CreativeURLFormat.resx">
+      <DependentUpon>201606022031596_Mig_CreativeURLFormat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201606072304421_Mig_AdDestinationUrl.resx">
+      <DependentUpon>201606072304421_Mig_AdDestinationUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201701161616211_Mig_Revenue.resx">
+      <DependentUpon>201701161616211_Mig_Revenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201701191639153_Mig_StrategyRevenue.resx">
+      <DependentUpon>201701191639153_Mig_StrategyRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201703031654359_Mig_ColMapRevenue.resx">
+      <DependentUpon>201703031654359_Mig_ColMapRevenue.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201703201912582_Mig_AdSet.resx">
+      <DependentUpon>201703201912582_Mig_AdSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201703241459105_Mig_Network.resx">
+      <DependentUpon>201703241459105_Mig_Network.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201703282116465_Mig_Actions.resx">
+      <DependentUpon>201703282116465_Mig_Actions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201703301534068_Mig_AllClicks.resx">
+      <DependentUpon>201703301534068_Mig_AllClicks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201703302030137_Mig_AdSetAction.resx">
+      <DependentUpon>201703302030137_Mig_AdSetAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201704181943349_Mig_PlatformTokens.resx">
+      <DependentUpon>201704181943349_Mig_PlatformTokens.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201706032006209_Mig_AdSetActionVals.resx">
+      <DependentUpon>201706032006209_Mig_AdSetActionVals.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201707142009302_Mig_Account_Disabled.resx">
+      <DependentUpon>201707142009302_Mig_Account_Disabled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201709082010188_Mig_CampFeeAdvEnd.resx">
+      <DependentUpon>201709082010188_Mig_CampFeeAdvEnd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MigrationsTD\201710162039159_Mig_AccountFilter.resx">
+      <DependentUpon>201710162039159_Mig_AccountFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405292045335_InitialCreate.resx">
+      <DependentUpon>201405292045335_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201405301659568_OfferUpdate.resx">
+      <DependentUpon>201405301659568_OfferUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406031449369_CakeContactAndRole.resx">
+      <DependentUpon>201406031449369_CakeContactAndRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406042147505_OfferBudget.resx">
+      <DependentUpon>201406042147505_OfferBudget.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406051452281_RmOfferInfo.resx">
+      <DependentUpon>201406051452281_RmOfferInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406052033250_VerticalsEtc.resx">
+      <DependentUpon>201406052033250_VerticalsEtc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506192205420_Mig_EF6.resx">
+      <DependentUpon>201506192205420_Mig_EF6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506192208145_Mig_AdRoll.resx">
+      <DependentUpon>201506192208145_Mig_AdRoll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506221514396_Mig_AdRollStat.resx">
+      <DependentUpon>201506221514396_Mig_AdRollStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201506231617274_Mig_Variable.resx">
+      <DependentUpon>201506231617274_Mig_Variable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507152042017_Mig_Sales.resx">
+      <DependentUpon>201507152042017_Mig_Sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201507281756459_Mig_MoveTD.resx">
+      <DependentUpon>201507281756459_Mig_MoveTD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201612191657217_Mig_ABClientId.resx">
+      <DependentUpon>201612191657217_Mig_ABClientId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702241947054_Mig_CampSum.resx">
+      <DependentUpon>201702241947054_Mig_CampSum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201702272237109_Mig_Camp.resx">
+      <DependentUpon>201702272237109_Mig_Camp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703012028456_Mig_OfferContract.resx">
+      <DependentUpon>201703012028456_Mig_OfferContract.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703062015043_Mig_Currency.resx">
+      <DependentUpon>201703062015043_Mig_Currency.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201703081656144_Mig_CampSum2.resx">
+      <DependentUpon>201703081656144_Mig_CampSum2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706211555191_Mig_Affiliate.resx">
+      <DependentUpon>201706211555191_Mig_Affiliate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706212054345_Mig_CampSumFKs.resx">
+      <DependentUpon>201706212054345_Mig_CampSumFKs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803281659222_Mig_EventConversion.resx">
+      <DependentUpon>201803281659222_Mig_EventConversion.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cake.Data.Wsdl\Cake.Data.Wsdl.csproj">
+      <Project>{8656b9b9-82a6-400a-a7b7-44af044321e3}</Project>
+      <Name>Cake.Data.Wsdl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cake.Model\Cake.Model.csproj">
+      <Project>{b3b19da1-2335-4597-8dbe-9c7a12b7e92e}</Project>
+      <Name>Cake.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

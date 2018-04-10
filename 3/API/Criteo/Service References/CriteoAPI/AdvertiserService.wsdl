@@ -1,0 +1,949 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://advertising.criteo.com/API/v201010" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://advertising.criteo.com/API/v201010" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://advertising.criteo.com/API/v201010">
+      <s:element name="clientLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="source" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="clientLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="clientLoginResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="partnerLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="appToken" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="source" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="partnerLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="partnerLoginResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAccount">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAccountResult" type="tns:AdvertiserAccount" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="AdvertiserAccount">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="advertiserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="timezone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="apiHeader" type="tns:apiHeader" />
+      <s:complexType name="apiHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="authToken" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="appToken" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="clientVersion" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="getCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="campaignSelector" nillable="true" type="tns:CampaignSelectors" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CampaignSelectors">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="campaignIDs" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="budgetIDs" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="campaignStatus" type="tns:ArrayOfCampaignStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="biddingStrategy" type="tns:ArrayOfBiddingStrategy" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCampaignStatus">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CampaignStatus" type="tns:CampaignStatus" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CampaignStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="RUNNING" />
+          <s:enumeration value="DEAD" />
+          <s:enumeration value="NOT_RUNNING" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfBiddingStrategy">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="biddingStrategy" type="tns:biddingStrategy" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="biddingStrategy">
+        <s:restriction base="s:string">
+          <s:enumeration value="Cpm" />
+          <s:enumeration value="Cpc" />
+          <s:enumeration value="Cpa" />
+          <s:enumeration value="Cpo" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="getCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCampaignsResult" type="tns:ArrayOfCampaign" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="campaign" nillable="true" type="tns:campaign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="campaign">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="campaignID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="campaignName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="campaignBid" nillable="true" type="tns:bidInformation" />
+          <s:element minOccurs="1" maxOccurs="1" name="budgetID" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="remainingDays" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="status" nillable="true" type="tns:CampaignStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="categoryBids" type="tns:ArrayOfCategoryBid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="bidInformation">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="biddingStrategy" type="tns:biddingStrategy" />
+          <s:element minOccurs="1" maxOccurs="1" name="cpcBid" nillable="true" type="tns:CPCBid" />
+          <s:element minOccurs="1" maxOccurs="1" name="cpaBid" nillable="true" type="tns:CPABid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CPCBid">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cpc" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CPABid">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="postClick" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="postView" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="commission" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="percent" type="s:double" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCategoryBid">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="categoryBid" type="tns:categoryBid" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="categoryBid">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="campaignCategoryUID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="campaignID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="categoryID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="selected" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="bidInformation" type="tns:bidInformation" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="mutateCampaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listOfCampaignMutates" type="tns:ArrayOfCampaignMutate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCampaignMutate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="campaignMutate" nillable="true" type="tns:campaignMutate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="campaignMutate">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:mutate">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="campaign" type="tns:campaign" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="mutate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="operationMutate" type="tns:OperationMutate" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="OperationMutate">
+        <s:restriction base="s:string">
+          <s:enumeration value="ADD" />
+          <s:enumeration value="RESET" />
+          <s:enumeration value="SET" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="mutateCampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listOfJobResponse" type="tns:ArrayOfCampaignMutateJobResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCampaignMutateJobResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="campaignMutateJobResponse" nillable="true" type="tns:campaignMutateJobResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="campaignMutateJobResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JobResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="campaignMutate" type="tns:campaignMutate" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="JobResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="jobID" type="s:long" />
+          <s:element minOccurs="1" maxOccurs="1" name="jobStatus" type="tns:JobStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="apiException" type="tns:ApiExceptionData" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="JobStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="Pending" />
+          <s:enumeration value="InProgress" />
+          <s:enumeration value="Completed" />
+          <s:enumeration value="Failed" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ApiExceptionData">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="errorCode" type="tns:ApiExceptionErrorCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="errors" type="tns:ArrayOfApiError" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="trigger" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ApiExceptionErrorCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="NoError" />
+          <s:enumeration value="BadAuthentification" />
+          <s:enumeration value="AuthTokenExpired" />
+          <s:enumeration value="InvalidAppTokenAuthToken" />
+          <s:enumeration value="AuthentificationNotExist" />
+          <s:enumeration value="UserAccessDisabled" />
+          <s:enumeration value="UserAccessNotAllowed" />
+          <s:enumeration value="MissingData" />
+          <s:enumeration value="OperationNotSupported" />
+          <s:enumeration value="InvalidID" />
+          <s:enumeration value="AccessToThisJobNotAllowed" />
+          <s:enumeration value="InvalidFieldValue" />
+          <s:enumeration value="UnexpectedError" />
+          <s:enumeration value="AppTokenNotSupportedForPartnerLogin" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfApiError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="apiError" nillable="true" type="tns:apiError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="apiError">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="code" nillable="true" type="tns:ApiErrorCode" />
+          <s:element minOccurs="0" maxOccurs="1" name="detail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="field" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="index" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="isExemptable" nillable="true" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="textIndex" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="textLength" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="trigger" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ApiErrorCode">
+        <s:restriction base="s:string">
+          <s:enumeration value="NoError" />
+          <s:enumeration value="MissingMutateStructure" />
+          <s:enumeration value="MissingMutateObject" />
+          <s:enumeration value="MissingJobReportStructure" />
+          <s:enumeration value="UnexpectedError" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="getCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="categorySelector" nillable="true" type="tns:CategorySelectors" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CategorySelectors">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="categoryIDs" type="tns:ArrayOfInt" />
+          <s:element minOccurs="1" maxOccurs="1" name="selected" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" default="false" name="activatedOnly" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getCategoriesResult" type="tns:ArrayOfCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="category" nillable="true" type="tns:category" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="category">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="avgPrice" nillable="true" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="categoryID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="categoryName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="numberOfProducts" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="selected" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="mutateCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listofCategoryMutates" type="tns:ArrayOfCategoryMutate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCategoryMutate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="categoryMutate" nillable="true" type="tns:categoryMutate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="categoryMutate">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:mutate">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="category" type="tns:category" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="mutateCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="listOfJobResponse" type="tns:ArrayOfCategoryMutateJobResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCategoryMutateJobResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="categoryMutateJobResponse" nillable="true" type="tns:categoryMutateJobResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="categoryMutateJobResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JobResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="categoryMutate" type="tns:categoryMutate" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="getBudgets">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="budgetSelector" nillable="true" type="tns:BudgetSelectors" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="BudgetSelectors">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="budgetIDs" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="getBudgetsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getBudgetsResult" type="tns:ArrayOfBudget" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBudget">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="budget" nillable="true" type="tns:budget" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="budget">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="budgetID" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="budgetName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="totalAmount" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="remainingBudget" nillable="true" type="s:double" />
+          <s:element minOccurs="0" maxOccurs="1" name="remainingBudgetUpdated" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="scheduleReportJob">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="reportJob" type="tns:ReportJob" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReportJob">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="selectedColumns" type="tns:ArrayOfReportColumn" />
+          <s:element minOccurs="1" maxOccurs="1" name="reportSelector" type="tns:ReportSelector" />
+          <s:element minOccurs="1" maxOccurs="1" name="reportType" type="tns:ReportType" />
+          <s:element minOccurs="1" maxOccurs="1" name="aggregationType" type="tns:AggregationType" />
+          <s:element minOccurs="0" maxOccurs="1" name="startDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="endDate" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="isResultGzipped" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfReportColumn">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ReportColumn" type="tns:ReportColumn" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ReportColumn">
+        <s:restriction base="s:string">
+          <s:enumeration value="clicks" />
+          <s:enumeration value="impressions" />
+          <s:enumeration value="ctr" />
+          <s:enumeration value="revcpc" />
+          <s:enumeration value="ecpm" />
+          <s:enumeration value="cost" />
+          <s:enumeration value="sales" />
+          <s:enumeration value="convRate" />
+          <s:enumeration value="orderValue" />
+          <s:enumeration value="salesPostView" />
+          <s:enumeration value="convRatePostView" />
+          <s:enumeration value="orderValuePostView" />
+          <s:enumeration value="costOfSale" />
+          <s:enumeration value="impressionWin" />
+          <s:enumeration value="costPerOrder" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ReportSelector">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CategoryIDs" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="CampaignIDs" type="tns:ArrayOfInt" />
+          <s:element minOccurs="0" maxOccurs="1" name="BannerIDs" type="tns:ArrayOfInt" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ReportType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Campaign" />
+          <s:enumeration value="Banner" />
+          <s:enumeration value="Category" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="AggregationType">
+        <s:restriction base="s:string">
+          <s:enumeration value="Hourly" />
+          <s:enumeration value="Daily" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="scheduleReportJobResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jobResponse" type="tns:ReportJobResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ReportJobResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:JobResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="reportJob" type="tns:ReportJob" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="getJobStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getJobStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getJobStatusResult" type="tns:JobStatus" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReportDownloadUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="jobID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getReportDownloadUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="jobURL" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getStatisticsLastUpdate">
+        <s:complexType />
+      </s:element>
+      <s:element name="getStatisticsLastUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getStatisticsLastUpdateResult" type="tns:ArrayOfStatUpdate" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStatUpdate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StatUpdate" type="tns:StatUpdate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StatUpdate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Type" type="tns:StatType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Date" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="StatType">
+        <s:restriction base="s:string">
+          <s:enumeration value="ClicksAndImpressions" />
+          <s:enumeration value="Sales" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="clientLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:clientLogin" />
+  </wsdl:message>
+  <wsdl:message name="clientLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:clientLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="partnerLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:partnerLogin" />
+  </wsdl:message>
+  <wsdl:message name="partnerLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:partnerLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:getAccount" />
+  </wsdl:message>
+  <wsdl:message name="getAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:getAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAccountapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="getCampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:getCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="getCampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:getCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCampaignsapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="mutateCampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:mutateCampaigns" />
+  </wsdl:message>
+  <wsdl:message name="mutateCampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:mutateCampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="mutateCampaignsapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="getCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:getCategories" />
+  </wsdl:message>
+  <wsdl:message name="getCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:getCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCategoriesapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="mutateCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:mutateCategories" />
+  </wsdl:message>
+  <wsdl:message name="mutateCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:mutateCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="mutateCategoriesapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="getBudgetsSoapIn">
+    <wsdl:part name="parameters" element="tns:getBudgets" />
+  </wsdl:message>
+  <wsdl:message name="getBudgetsSoapOut">
+    <wsdl:part name="parameters" element="tns:getBudgetsResponse" />
+  </wsdl:message>
+  <wsdl:message name="getBudgetsapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="scheduleReportJobSoapIn">
+    <wsdl:part name="parameters" element="tns:scheduleReportJob" />
+  </wsdl:message>
+  <wsdl:message name="scheduleReportJobSoapOut">
+    <wsdl:part name="parameters" element="tns:scheduleReportJobResponse" />
+  </wsdl:message>
+  <wsdl:message name="scheduleReportJobapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="getJobStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:getJobStatus" />
+  </wsdl:message>
+  <wsdl:message name="getJobStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:getJobStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="getJobStatusapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="getReportDownloadUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:getReportDownloadUrl" />
+  </wsdl:message>
+  <wsdl:message name="getReportDownloadUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:getReportDownloadUrlResponse" />
+  </wsdl:message>
+  <wsdl:message name="getReportDownloadUrlapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:message name="getStatisticsLastUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:getStatisticsLastUpdate" />
+  </wsdl:message>
+  <wsdl:message name="getStatisticsLastUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:getStatisticsLastUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStatisticsLastUpdateapiHeader">
+    <wsdl:part name="apiHeader" element="tns:apiHeader" />
+  </wsdl:message>
+  <wsdl:portType name="CriteoAdvertiserAPISoap">
+    <wsdl:operation name="clientLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Client login is secured by using an application token, along with username and password. </wsdl:documentation>
+      <wsdl:input message="tns:clientLoginSoapIn" />
+      <wsdl:output message="tns:clientLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="partnerLogin">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Partner login is secured by using an application token, along with username and password. </wsdl:documentation>
+      <wsdl:input message="tns:partnerLoginSoapIn" />
+      <wsdl:output message="tns:partnerLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAccount">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns advertiser account information</wsdl:documentation>
+      <wsdl:input message="tns:getAccountSoapIn" />
+      <wsdl:output message="tns:getAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns campaign information, including all CPC bids per category for each campaign.</wsdl:documentation>
+      <wsdl:input message="tns:getCampaignsSoapIn" />
+      <wsdl:output message="tns:getCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mutateCampaigns">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mutate campaign information. Global CPC per campaign and specific Category Bids can be set.</wsdl:documentation>
+      <wsdl:input message="tns:mutateCampaignsSoapIn" />
+      <wsdl:output message="tns:mutateCampaignsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCategories">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns category information. All categories linked to that account are returned.</wsdl:documentation>
+      <wsdl:input message="tns:getCategoriesSoapIn" />
+      <wsdl:output message="tns:getCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="mutateCategories">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Mutate category information. Can only be used to define which categories will be selected for Bidding and Reporting.</wsdl:documentation>
+      <wsdl:input message="tns:mutateCategoriesSoapIn" />
+      <wsdl:output message="tns:mutateCategoriesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getBudgets">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns buget information.</wsdl:documentation>
+      <wsdl:input message="tns:getBudgetsSoapIn" />
+      <wsdl:output message="tns:getBudgetsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="scheduleReportJob">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Schedules a statistic report Job.</wsdl:documentation>
+      <wsdl:input message="tns:scheduleReportJobSoapIn" />
+      <wsdl:output message="tns:scheduleReportJobSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getJobStatus">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns status of a asynchronous job (report or mutate). Currently applies to jobs created for mutateCampaign and scheduleReportJob.</wsdl:documentation>
+      <wsdl:input message="tns:getJobStatusSoapIn" />
+      <wsdl:output message="tns:getJobStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getReportDownloadUrl">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Retrieve reportURL.</wsdl:documentation>
+      <wsdl:input message="tns:getReportDownloadUrlSoapIn" />
+      <wsdl:output message="tns:getReportDownloadUrlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getStatisticsLastUpdate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get statistics last update.</wsdl:documentation>
+      <wsdl:input message="tns:getStatisticsLastUpdateSoapIn" />
+      <wsdl:output message="tns:getStatisticsLastUpdateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CriteoAdvertiserAPISoap" type="tns:CriteoAdvertiserAPISoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="clientLogin">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/clientLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="partnerLogin">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/partnerLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccount">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/getAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getAccountapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaigns">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/getCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCampaignsapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mutateCampaigns">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/mutateCampaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:mutateCampaignsapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCategories">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/getCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getCategoriesapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mutateCategories">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/mutateCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:mutateCategoriesapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBudgets">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/getBudgets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getBudgetsapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="scheduleReportJob">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/scheduleReportJob" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:scheduleReportJobapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobStatus">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/getJobStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getJobStatusapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReportDownloadUrl">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/getReportDownloadUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getReportDownloadUrlapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatisticsLastUpdate">
+      <soap:operation soapAction="https://advertising.criteo.com/API/v201010/getStatisticsLastUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:getStatisticsLastUpdateapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CriteoAdvertiserAPISoap12" type="tns:CriteoAdvertiserAPISoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="clientLogin">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/clientLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="partnerLogin">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/partnerLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAccount">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/getAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getAccountapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCampaigns">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/getCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCampaignsapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mutateCampaigns">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/mutateCampaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:mutateCampaignsapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCategories">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/getCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getCategoriesapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="mutateCategories">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/mutateCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:mutateCategoriesapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getBudgets">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/getBudgets" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getBudgetsapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="scheduleReportJob">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/scheduleReportJob" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:scheduleReportJobapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getJobStatus">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/getJobStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getJobStatusapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReportDownloadUrl">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/getReportDownloadUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getReportDownloadUrlapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getStatisticsLastUpdate">
+      <soap12:operation soapAction="https://advertising.criteo.com/API/v201010/getStatisticsLastUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:getStatisticsLastUpdateapiHeader" part="apiHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CriteoAdvertiserAPI">
+    <wsdl:port name="CriteoAdvertiserAPISoap" binding="tns:CriteoAdvertiserAPISoap">
+      <soap:address location="https://advertising.criteo.com/API/v201010/AdvertiserService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CriteoAdvertiserAPISoap12" binding="tns:CriteoAdvertiserAPISoap12">
+      <soap12:address location="https://advertising.criteo.com/API/v201010/AdvertiserService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

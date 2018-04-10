@@ -1,0 +1,47 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.TDStatsVM
+
+@section scripts {
+<script>
+    function ChangeMonth(month) {
+        var url = '@Html.Raw(Url.Action(null, new { platform = Model.PlatformCode, campId = Model.CampaignId, acctId = Model.AccountId, stratId = Model.StratId, month = "monthVal" }))';
+        location.href = url.replace('monthVal', month);
+    }
+</script>
+}
+<h2>External Accounts - Action Stats</h2>
+<div style="margin-bottom:10px">
+<form>
+    @Html.DropDownList("month", (SelectList)ViewBag.ChooseMonthSelectList, new { onchange = "ChangeMonth(this.value)" })
+</form>
+</div>
+
+@if (Model.StratId.HasValue)
+{
+    <text>StrategyId: @(Model.StratId.Value)</text><br />
+}
+@if (Model.AdSetId.HasValue)
+{
+    <text>AdSetId: @(Model.AdSetId.Value)</text><br />
+}
+<table>
+<tr>
+    <th style="text-align:right">ID</th>
+    <th>Action Code</th>
+    <th>PostClicks</th>
+    <th>PC Val</th>
+    <th>PostViews</th>
+    <th>PV Val</th>
+</tr>
+@foreach (var stat in Model.Stats)
+{
+<tr>
+    <td>@stat.ActionType.Id</td>
+    <td>@stat.ActionType.Code</td>
+    <td>@stat.PostClickConv</td>
+    <td>@stat.PostClickRev</td>
+    <td>@stat.PostViewConv</td>
+    <td>@stat.PostViewRev</td>
+</tr>
+}
+</table>
+<br />

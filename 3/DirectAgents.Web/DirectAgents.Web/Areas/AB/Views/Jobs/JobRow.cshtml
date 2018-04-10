@@ -1,0 +1,32 @@
+﻿@model DirectAgents.Domain.Entities.AB.Job
+@{
+    var job = Model;
+    bool? wantEditMode = ViewBag.EditMode;
+    bool editMode = wantEditMode ?? false;
+}
+
+<td>@job.Id</td>
+<td>
+    @if (editMode)
+    {
+        @Html.TextBoxFor(m => m.Name)
+    }
+    else
+    {
+        @job.Name
+    }
+</td>
+<td>
+    @if (editMode)
+    {
+        <input type="button" value="Save" onclick="SaveJobRow(@job.Id)" />@* data-job-id ??? *@
+    }
+    else
+    {
+        <input type="button" value="Edit" onclick="LoadJobRow(@job.Id, true)" />@* data-job-id ??? *@
+    }
+    @if (!job.ExtraItems.Any())
+    {
+        @Html.ActionLink("delete", "Delete", new { id = job.Id }, new { onclick="if (!confirm('Are you sure?')) return false" })
+    }
+</td>

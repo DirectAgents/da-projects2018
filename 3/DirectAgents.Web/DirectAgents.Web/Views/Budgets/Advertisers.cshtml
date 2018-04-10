@@ -1,0 +1,59 @@
+﻿@model DirectAgents.Web.Models.BudgetsVM
+
+<h3>@Html.ActionLink("Budgets", "Start") - Advertisers</h3>
+
+@{
+    string amString = "";
+    if (Model.AccountManager != null)
+    {
+        amString = Model.AccountManager.ContactId.ToString();
+        <text>Account Manager: </text>@Model.AccountManager.FullName
+        <br />
+    }
+}
+@Model.Advertisers.Count() advertisers
+@if (!Model.ShowAll)
+{
+    <text> | </text>@Html.ActionLink("show all", "Advertisers", new { am = amString, showAll = true })
+}
+<br />
+
+
+<table style="border: 1px solid gray">
+    <tr>
+        <th>AdMgr</th>
+        <th>AdvId</th>
+        <th>Advertiser</th>
+        <th>Offers</th>
+        <th></th>
+    </tr>
+
+@foreach (var adv in Model.Advertisers)
+{
+    <tr id="advrow@(adv.AdvertiserId)">
+        @Html.Partial("AdvertiserRow", adv)
+    </tr>
+}
+
+</table>
+
+@section scripts {
+    <script type="text/javascript">
+
+        function SynchOffers(advId) {
+            $('#cmd' + advId).html('updating');
+            var url = '@Url.Action("SynchOffers")?advId=' + advId;
+            $.get(url, function (data) {
+                LoadRow(advId, false);
+            });
+        }
+
+        function LoadRow(advId, showAlert) {
+            var url = '@Url.Action("AdvertiserRow")?advId=' + advId;
+            $.get(url, function (data) {
+                $('#advrow' + advId).html(data);
+                if (showAlert) alert('Updated');
+            });
+        }
+    </script>
+}

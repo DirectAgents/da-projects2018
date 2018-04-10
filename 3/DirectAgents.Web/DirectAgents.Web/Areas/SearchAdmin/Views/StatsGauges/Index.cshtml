@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPSearch.SearchAccount>
+
+<h2>StatsGauge - Channels</h2>
+
+<table>
+    <tr>
+        <th>Channel</th>
+        <th style="text-align:center">DaySums</th>
+        <th style="text-align:center">ConvSums</th>
+        <th style="text-align:center">CallSums</th>
+    </tr>
+    @foreach (var sa in Model.OrderBy(x => x.Channel != "Google").ThenBy(x => x.Channel))
+    {
+        <tr>
+            <td>@Html.ActionLink(sa.Channel, "IndexGauge", "SearchAccounts", new { channel = sa.Channel.ToLower() }, null)</td>
+            <td style="text-align:center">@sa.MinDaySum.ToShortDateString() - @sa.MaxDaySum.ToShortDateString()</td>
+            <td style="text-align:center">@sa.MinConvSum.ToShortDateString() - @sa.MaxConvSum.ToShortDateString()</td>
+            <td style="text-align:center">@sa.MinCallSum.ToShortDateString() - @sa.MaxCallSum.ToShortDateString()</td>
+        </tr>
+    }
+</table>
+<br />
+@Html.ActionLink("By SearchAccount", "IndexGauge", "SearchAccounts")

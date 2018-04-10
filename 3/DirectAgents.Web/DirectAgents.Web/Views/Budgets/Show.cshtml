@@ -1,0 +1,98 @@
+﻿@model DirectAgents.Web.Models.OfferVM
+@{
+    var offer = Model.Offer;
+}
+
+<h3>@Html.ActionLink("Budgets", "Start") - Show Offer</h3>
+
+<fieldset>
+    <legend>Offer Details</legend>
+    <table>
+        <tr>
+            <td>@Html.LabelFor(m => m.Offer.OfferName)</td>
+            <td class="bold">@Html.DisplayFor(m => m.Offer.OfferName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Offer.OfferId)</td>
+            <td class="bold">@Html.DisplayFor(m => m.Offer.OfferId)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Offer.DateCreated)</td>
+            <td class="bold">@Html.DisplayFor(m => m.Offer.DateCreated)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Offer.Advertiser)</td>
+            <td class="bold">
+                @Html.ActionLink(offer.Advertiser.AdvertiserName, "Offers", new { advId = offer.AdvertiserId })
+            </td>
+        </tr>
+        <tr>
+            <td>AdMgr</td>
+            <td class="bold">@(offer.Advertiser.AdManager == null ? "" : offer.Advertiser.AdManager.FullName)</td>
+        </tr>
+        <tr>
+            <td>AcctMgr</td>
+            <td class="bold">
+                @Html.ActionLink(offer.Advertiser.AccountManager.FullName, "Offers", new { am = offer.Advertiser.AccountManagerId })
+            </td>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Budget Info @Html.ActionLink("[edit]", "Edit", new { offerId = Model.Offer.OfferId })</legend>
+    <table>
+        <tr>
+            <td>@Html.LabelFor(m => m.Offer.Budget)</td>
+            <td class="bold">@Html.DisplayFor(m => m.Offer.Budget, "DecimalComma")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Offer.BudgetStart)</td>
+            <td class="bold">@Html.DisplayFor(m => m.Offer.BudgetStart, "Date")</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Offer.BudgetEnd)</td>
+            <td class="bold">@Html.DisplayFor(m => m.Offer.BudgetEnd, "Date")</td>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Cake Stats <span id="resyncLink">@Html.ActionLink("[resync]", "SynchStats", new { offerId = offer.OfferId }, new { onclick = "$('#resyncLink').html('resyncing...')" })</span></legend>
+    <table>
+        <tr>
+            <td>From</td>
+            <td class="bold">@Html.DisplayFor(m => m.EarliestStatDate, "Date")</td>
+        </tr>
+        <tr>
+            <td>To</td>
+            <td class="bold">@Html.DisplayFor(m => m.LatestStatDate, "Date")</td>
+        </tr>
+        <tr>
+            <td>Revenue</td>
+            <td class="bold">@Html.DisplayFor(m => m.Revenue, "DecimalComma")</td>
+        </tr>
+        <tr>
+            <td>Clicks</td>
+            <td class="bold">@Html.DisplayFor(m => m.Clicks, "IntComma")</td>
+        </tr>
+        <tr>
+            <td>Conversions</td>
+            <td class="bold">@Html.DisplayFor(m => m.Conversions, "IntComma")</td>
+        </tr>
+    </table>
+</fieldset>
+
+<fieldset>
+    <legend>Calculated</legend>
+    <table>
+        <tr>
+            <td>Budget Remaining</td>
+            <td class="bold">@Html.DisplayFor(m => m.BudgetRemaining, "DecimalComma")</td>
+        </tr>
+        <tr>
+            <td>Percent Used</td>
+            <td class="bold">@Html.DisplayFor(m => m.BudgetUsedPercent, "Percent")</td>
+        </tr>
+    </table>
+</fieldset>

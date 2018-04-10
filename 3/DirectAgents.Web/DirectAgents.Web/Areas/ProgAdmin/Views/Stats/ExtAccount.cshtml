@@ -1,0 +1,98 @@
+﻿@using DirectAgents.Domain.Entities.CPProg
+@model DirectAgents.Web.Areas.ProgAdmin.Models.TDStatsVM
+
+@section scripts {
+<script>
+    function ChangeMonth(month) {
+        var url = '@Html.Raw(Url.Action(null, new { platform = Model.PlatformCode, campId = Model.CampaignId, acctId = Model.AccountId, month = "monthVal" }))';
+        location.href = url.replace('monthVal', month);
+    }
+</script>
+}
+<h2>External Accounts - Raw Stats</h2>
+<div style="margin-bottom:10px">
+<form>
+    @Html.DropDownList("month", (SelectList)ViewBag.ChooseMonthSelectList, new { onchange = "ChangeMonth(this.value)" })
+</form>
+</div>
+
+<table>
+<tr>
+    <th>breakdown...</th>
+    <th>Partner</th>
+    <th style="text-align:right">ID</th>
+    <th>Ext Account</th>
+    <th>Impressions</th>
+    <th>AllClicks</th>
+    <th>Clicks</th>
+    <th>CTR</th>
+    <th>CPM</th>
+    <th>CPC</th>
+    <th>CPA</th>
+    <th>PostClick Conv</th>
+    <th>PostClick Rev</th>
+    <th>PostView Conv</th>
+    <th>PostView Rev</th>
+@*    <th>Total Conv</th>*@
+    <th>Cost</th>
+</tr>
+@foreach (var stat in Model.Stats)
+{
+<tr>
+    <td>
+        by:@Html.ActionLink("strategy", "Strategy", new { acctId = stat.ExtAccount.Id, month = Model.MonthString })|@Html.ActionLink("adset", "AdSet", new { acctId = stat.ExtAccount.Id, month = Model.MonthString })|@Html.ActionLink("creative", "Creative", new { acctId = stat.ExtAccount.Id, month = Model.MonthString })|@Html.ActionLink("action", "Action", new { acctId = stat.ExtAccount.Id, month = Model.MonthString })
+        show:@Html.ActionLink("daily", "Index", "DailySummaries", new { acctId = stat.ExtAccount.Id, month = Model.MonthString }, null)|@Html.ActionLink("convs", "Conv", new { acctId = stat.ExtAccount.Id, month = Model.MonthString })|@Html.ActionLink("by-site", "Site", new { acctId = stat.ExtAccount.Id, month = Model.MonthString })
+    </td>
+    <td>@stat.ExtAccount.Platform.Name</td>
+    <td style="text-align:right">@stat.ExtAccount.Id</td>
+    <td>@stat.ExtAccount.Name</td>
+    <td style="text-align:right">@stat.Impressions</td>
+    <td style="text-align:right">@stat.AllClicks</td>
+    <td style="text-align:right">@stat.Clicks</td>
+    <td style="text-align:center">@stat.CTR</td>
+    <td style="text-align:center">@stat.CPM</td>
+    <td style="text-align:center">@stat.CPC</td>
+    <td style="text-align:center">@stat.CPA</td>
+    <td style="text-align:right">@stat.PostClickConv</td>
+    <td style="text-align:right">@stat.PostClickRev</td>
+    <td style="text-align:right">@stat.PostViewConv</td>
+    <td style="text-align:right">@stat.PostViewRev</td>
+@*    <td style="text-align:right">@stat.TotalConv</td>*@
+    <td style="text-align:right">@stat.Cost</td>
+</tr>
+}
+@if (Model.StatsTotal != null)
+{
+    var tot = Model.StatsTotal;
+<tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>@tot.Name</th>
+    <th style="text-align:right">@tot.Impressions</th>
+    <th style="text-align:right">@tot.AllClicks</th>
+    <th style="text-align:right">@tot.Clicks</th>
+    <th style="text-align:center">@tot.CTR</th>
+    <th style="text-align:center">@tot.CPM</th>
+    <th style="text-align:center">@tot.CPC</th>
+    <th style="text-align:center">@tot.CPA</th>
+    <th style="text-align:right">@tot.PostClickConv</th>
+    <th style="text-align:right">@tot.PostClickRev</th>
+    <th style="text-align:right">@tot.PostViewConv</th>
+    <th style="text-align:right">@tot.PostViewRev</th>
+@*    <th style="text-align:right">@tot.TotalConv</th>*@
+    <th style="text-align:right">@tot.Cost</th>
+</tr>
+}
+</table>
+<br />
+@if (!Model.CampaignId.HasValue && !Model.AccountId.HasValue)
+{
+    <text>Filter:
+    @Html.ActionLink("AdRoll", null, new { platform = Platform.Code_AdRoll }) |
+    @Html.ActionLink("DBM", null, new { platform = Platform.Code_DBM }) |
+    @Html.ActionLink("Facebook", null, new { platform = Platform.Code_FB }) |
+    @Html.ActionLink("(show all)", null)
+    </text>
+    <br />
+}

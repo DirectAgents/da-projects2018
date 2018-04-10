@@ -1,0 +1,19 @@
+﻿<h2>DAWeb Stats Links</h2>
+
+Cake - by Advertiser
+<br />
+- @Html.ActionLink("Last 30 days, sort by revenue", "CakeAdv", "Stats", new { numdays = 30, sort = "revenue" }, null)
+<br />
+- @Html.ActionLink("...Top 5 (JSONP)", "CakeAdv", "Stats", new { numdays = 30, sort = "revenue", take = 5, jsoncallback = "test" }, null)
+
+<br />
+<br />
+CakeSummary
+<br />
+- @Html.ActionLink("MTD (JSONP)", "CakeSummary", "Stats")
+
+<br />
+<br />
+CP - ProgAdmin
+<br />
+- @Html.ActionLink("By ExtAccount", "ExtAccount", "Stats", new { area = "progadmin" }, null)

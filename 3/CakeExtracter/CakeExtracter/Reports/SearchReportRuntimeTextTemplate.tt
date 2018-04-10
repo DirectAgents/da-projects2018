@@ -1,0 +1,151 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<table width="620" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #c7c3c7;">
+<tr><td style="font-size:0px;">
+<table width="620" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="13" rowspan="2" align="left" valign="top">&nbsp;</td>
+    <td width="195" rowspan="2" align="left" valign="top"><img src="https://portal.directagents.com/Images/logo1.png" alt="" width="152" height="86" /></td>
+    <td height="24" colspan="2" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="399" align="right" valign="top"><strong style="font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 18px;">Weekly Summary Report for <#=this.SearchProfile.SearchProfileName#></strong></td>
+    <td width="13" align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">&nbsp;</td>
+    <td colspan="2" align="left" valign="top" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">Thank you for using the Direct Agents client portal. A summary of your campaign performance is included below. Please <a href="http://portal.directagents.com/" style="color:#37A5F2;"><strong>log in</strong></a> to access your complete reports.<br><br></td>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="4" height="80" align="center" valign="middle">
+   
+    <table width="620"  align="center" cellpadding="0" cellspacing="0" style="border-top:1px solid #c7c3c7; border-bottom:1px solid #c7c3c7; border-left:0px solid #c7c3c7; border-right:0px solid #c7c3c7;">
+      <tr>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Week</td>
+      <# if (this.SearchProfile.ShowRevenue) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Revenue</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Cost</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;ROAS</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Margin</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Orders</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;CPO</td>
+      <# } else { #>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Clicks</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Impressions</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;CTR</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Spend</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Leads</td>
+      <# if (this.SearchProfile.ShowCalls) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Calls</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Total Leads</td>
+      <# } #>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;CPL</td>
+      <# } #>
+      </tr>
+
+      <tr>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Line1stat.Title#></td>
+      <# if (this.SearchProfile.ShowRevenue) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line1stat.Revenue)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line1stat.Cost)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line1stat.ROAS)#>%</td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line1stat.Margin)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line1stat.Orders)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line1stat.CPO)#></td>
+      <# } else { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line1stat.Clicks)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line1stat.Impressions)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Decimal(Line1stat.CTR)#>%</td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line1stat.Cost)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line1stat.Orders)#></td>
+      <# if (this.SearchProfile.ShowCalls) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line1stat.Calls)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line1stat.TotalLeads)#></td>
+      <# } #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line1stat.CPL)#></td>
+      <# } #>
+      </tr>
+
+<# if (this.Line2stat != null) { #>
+      <tr>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Line2stat.Title#></td>
+      <# if (this.SearchProfile.ShowRevenue) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line2stat.Revenue)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line2stat.Cost)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line2stat.ROAS)#>%</td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line2stat.Margin)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line2stat.Orders)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line2stat.CPO)#></td>
+      <# } else { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line2stat.Clicks)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line2stat.Impressions)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Decimal(Line2stat.CTR)#>%</td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line2stat.Cost)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line2stat.Orders)#></td>
+      <# if (this.SearchProfile.ShowCalls) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line2stat.Calls)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(Line2stat.TotalLeads)#></td>
+      <# } #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Line2stat.CPL)#></td>
+      <# } #>
+      </tr>
+<# } #>
+<# if (this.ChangeStat != null) { #>
+      <tr>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.ChangeStat.Title#></td>
+      <# if (this.SearchProfile.ShowRevenue) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Revenue > 0 ? "0F0" : (ChangeStat.Revenue < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(ChangeStat.Revenue,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Cost > 0 ? "0F0" : (ChangeStat.Cost < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(ChangeStat.Cost,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.ROAS > 0 ? "0F0" : (ChangeStat.ROAS < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(ChangeStat.ROAS,true)#><#= ChangeStat.ROAS == 0 ? "" : "%" #></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Margin > 0 ? "0F0" : (ChangeStat.Margin < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(ChangeStat.Margin,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Orders > 0 ? "0F0" : (ChangeStat.Orders < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(ChangeStat.Orders,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.CPO > 0 ? "0F0" : (ChangeStat.CPO < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(ChangeStat.CPO,true)#></td>
+      <# } else { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Clicks > 0 ? "0F0" : (ChangeStat.Clicks < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(ChangeStat.Clicks,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Impressions > 0 ? "0F0" : (ChangeStat.Impressions < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(ChangeStat.Impressions,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.CTR > 0 ? "0F0" : (ChangeStat.CTR < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Decimal(ChangeStat.CTR,true)#><#= ChangeStat.CTR == 0 ? "" : "%" #></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Cost > 0 ? "0F0" : (ChangeStat.Cost < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(ChangeStat.Cost,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Orders > 0 ? "0F0" : (ChangeStat.Orders < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(ChangeStat.Orders,true)#></td>
+      <# if (this.SearchProfile.ShowCalls) { #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.Calls > 0 ? "0F0" : (ChangeStat.Calls < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(ChangeStat.Calls,true)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.TotalLeads > 0 ? "0F0" : (ChangeStat.TotalLeads < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Integer(ChangeStat.TotalLeads,true)#></td>
+      <# } #>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #<#= ChangeStat.CPL > 0 ? "0F0" : (ChangeStat.CPL < 0 ? "F00" : "000") #>; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(ChangeStat.CPL,true)#></td>
+      <# } #>
+      </tr>
+<# } #>
+
+    </table>
+</td>
+  </tr>
+  <tr>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+    <td colspan="2" align="left" valign="top" ><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;" ><br>The Direct Agents Client Portal provides access to real-time reports showing campaign effectiveness and spend across all search channels. You can easily view a breakdown by individual campaign and visualize key metrics your campaign performance with interactive charts. <a href="http://portal.directagents.com/" style="color:#37A5F2;"><strong>View reports now</strong></a></span></td>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+    <td colspan="2" align="left" valign="top" ><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;" ><br>Questions? Contact your account manager, <#=this.AcctMgrName#>: <a href="mailto:<#=this.AcctMgrEmail#>" style="color:#37A5F2;"><#=this.AcctMgrEmail#></a></span></td>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="13" colspan="4" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+    <td height="80" colspan="2" align="left" valign="middle"><table width="593" border="0" align="left" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="68" align="center" valign="top"><img src="https://portal.directagents.com/Images/icon_reports.gif" alt="" style="width:60%; height:auto;" /></td>
+          <td width="450" align="left" valign="middle"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;"><strong>Top Tip: You can export your data from your reports in CSV format. </strong><a href="http://portal.directagents.com/" style="color:#37A5F2;"><strong>Log in</strong></a></span></td>
+        </tr>
+    </table></td>
+    <td width="13" align="right" valign="top">&nbsp;</td>
+  </tr>
+</table>
+</td>
+</tr>
+</table>

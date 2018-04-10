@@ -1,0 +1,40 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.TDStatsVM
+
+@section scripts {
+<script>
+    function ChangeMonth(month) {
+        var url = '@Html.Raw(Url.Action(null, new { platform = Model.PlatformCode, campId = Model.CampaignId, acctId = Model.AccountId, month = "monthVal" }))';
+        location.href = url.replace('monthVal', month);
+    }
+</script>
+}
+<h2>External Accounts - Conversions</h2>
+<div style="margin-bottom:10px">
+<form>
+    @Html.DropDownList("month", (SelectList)ViewBag.ChooseMonthSelectList, new { onchange = "ChangeMonth(this.value)" })
+</form>
+</div>
+
+<table>
+<tr>
+    <th>Time</th>
+    <th>Type</th>
+    <th>City</th>
+    <th>Country</th>
+    <th>Lead ID</th>
+    <th>Strategy</th>
+    <th>Creative</th>
+</tr>
+@foreach (var conv in Model.Convs)
+{
+<tr>
+    <td>@conv.Time</td>
+    <td>@(conv.ConvType == "c" ? "clickthru" : (conv.ConvType == "v" ? "viewthru" : conv.ConvType))</td>
+    <td>@(conv.City == null ? "" : conv.City.Name)</td>
+    <td>@(conv.City == null || conv.City.Country == null ? "" : conv.City.Country.Name)</td>
+    <td>@conv.ExtData</td>
+    <td>@((conv.Strategy != null) ? conv.Strategy.Name : "")</td>
+    <td>@((conv.TDad != null) ? conv.TDad.Name : "")</td>
+</tr>
+}
+</table>

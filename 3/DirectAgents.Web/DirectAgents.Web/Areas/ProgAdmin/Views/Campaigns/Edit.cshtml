@@ -1,0 +1,152 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.Campaign
+@{
+    string advId = (string)Session["advId"]; // for filtering when returning back to Index
+}
+
+<fieldset>
+    <legend>Edit Campaign</legend>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formCampaign" }))
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.AdvertiserId)
+        <div style="float:left">
+            Advertiser: @Model.Advertiser.Name
+            <br /><br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Id, "Campaign ID")</td>
+                    <td>@Html.DisplayFor(m => m.Id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name, "Campaign Name")</td>
+                    <td>@Html.EditorFor(m => m.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.BaseFee)</td>
+                    <td>@Html.EditorFor(m => m.BaseFee)</td>
+                </tr>
+            </table>
+            <br />
+            Defaults
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.DefaultBudgetInfo.MediaSpend, "Budget (ClientCost)")</td>
+                    <td>@Html.EditorFor(m => m.DefaultBudgetInfo.MediaSpend)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.DefaultBudgetInfo.MgmtFeePct)</td>
+                    <td>@Html.TextBoxFor(m => m.DefaultBudgetInfo.MgmtFeePct)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.DefaultBudgetInfo.MarginPct)</td>
+                    <td>@Html.TextBoxFor(m => m.DefaultBudgetInfo.MarginPct)</td>
+                </tr>
+            </table>
+            <br />
+            <div id="divSave">
+                <input id="btnSubmit" type="submit" value="Save" onclick="SaveCampaign()" />
+                &nbsp;@Html.ActionLink("Cancel", "Show", new { id = Model.Id })
+            </div>
+            <div id="divSaveMessage"></div>
+            <hr style="border-color: #bbb;" />
+        </div>
+    }
+    <br style="clear:both" />
+    <div style="float:left">
+        Budget+Percents
+        <table>
+            <tr>
+                <th></th>
+                <th>Month</th>
+                <th>Budget (ClientCost)</th>
+                <th>MgmtFeePct</th>
+                <th>MarginPct</th>
+                <th>Exceptions For</th>
+            </tr>
+        @foreach (var bi in Model.BudgetInfos.OrderByDescending(b => b.Date))
+        {
+            var pbis = Model.PlatformBudgetInfosFor(bi.Date).OrderBy(pbi => pbi.Platform.Name);
+            <tr>
+                <td>@Html.ActionLink("Edit", "Edit", "BudgetInfos", new { campId = bi.CampaignId, date = bi.Date.ToShortDateString() }, null)</td>
+                <td>@bi.Date.ToString("MMM yyyy")</td>
+                <td style="text-align:right">@bi.MediaSpend.ToString("C")</td>
+                <td style="text-align:center">@bi.MgmtFeePct.ToString("#0.##### \\%")</td>
+                <td style="text-align:center">@bi.MarginPct.ToString("#0.##### \\%")</td>
+                <td>@(String.Join(",", pbis.Select(i => i.Platform.Name)))</td>
+                @if (!pbis.Any())
+                {
+                    <td>@Html.ActionLink("Delete", "Delete", "BudgetInfos",
+                                         new { campId = bi.CampaignId, date = bi.Date.ToShortDateString() },
+                                         new { onclick = "if (!confirm('Are you sure?')) return false" })</td>
+                }
+            </tr>
+        }
+        </table>
+        @{
+            var months = Model.MonthsWithoutBudgetInfos(4);
+            if (months.Count() > 0)
+            {
+                <br />
+                <text>Create Budget+Percents For:</text>
+                <br />
+                foreach (var month in months)
+                {
+                    @Html.ActionLink(month.ToString("MMM yyyy"), "CreateNew", "BudgetInfos", new { campId = Model.Id, date = month.ToShortDateString() }, null)
+                    <text><br /></text>
+                }
+            }
+        }
+        <br />
+        External Accounts
+        <table>
+            <tr>
+                <th>Partner</th>
+                <th>Account</th>
+                <th></th>
+            </tr>
+        @foreach (var acct in Model.ExtAccounts.OrderBy(ea => ea.Platform.Name).ThenBy(ea => ea.Name))
+        {
+            <tr>
+                <td>@acct.Platform.Name</td>
+                <td>@acct.Name (@acct.ExternalId)</td>
+                <td>@Html.ActionLink("Remove from Campaign", "RemoveAccount", "Campaigns",
+                                     new { id = Model.Id, acctId = acct.Id },
+                                     new { onclick="if (!confirm('Are you sure?')) return false" })</td>
+            </tr>
+        }
+        </table>
+@{
+    var extAccts = (IEnumerable<DirectAgents.Domain.Entities.CPProg.ExtAccount>)ViewBag.ExtAccounts;
+    if (extAccts.Any())
+    {
+        <br />
+        using (Html.BeginForm("AddAccount", "Campaigns", new { id = Model.Id }))
+        {
+            var extAcctSelectList = new SelectList(extAccts, "Id", "DisplayName1");
+            <text>Add External Account:</text>
+            <table><tr><td>
+                @Html.DropDownList("acctId", extAcctSelectList)
+            </td></tr></table>
+            <input type="submit" value="Add" />
+        }
+    }
+}
+        <br />
+        @Html.ActionLink("Back to Campaign Details", "Show", new { id = Model.Id })
+    </div>
+</fieldset>
+<br />
+
+<script>
+    //$(function () {
+    //    $('#btnSubmit').prop('disabled', false);
+    //});
+
+    function SaveCampaign() {
+        $('#DefaultBudgetInfo_MediaSpend').val($('#DefaultBudgetInfo_MediaSpend').val().toString().replace(/\$/g, '').replace(/\,/g, ''));
+        $('#formCampaign').submit();
+        $('#divSave').hide();
+        $('#divSaveMessage').html("<i>Saving...</i>");
+    }
+</script>

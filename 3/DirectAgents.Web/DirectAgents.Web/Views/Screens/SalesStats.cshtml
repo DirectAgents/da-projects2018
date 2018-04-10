@@ -1,0 +1,43 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.Screen.SalespersonStat>
+@{
+    DateTime lastDate = new DateTime(2000, 1, 1);
+}
+
+<table class="editable">
+    <tr>
+        <th></th>
+        <th>Start Date</th>
+        <th>Salesperson</th>
+        <th>Tracked</th>
+        <th colspan="2">Opened</th>
+        <th colspan="2">With Replies</th>
+        <th></th>
+    </tr>
+@foreach (var stat in Model.OrderBy(s => s.Date).ThenBy(s => s.Salesperson.FullName))
+{
+    <tr>
+        <td>
+        @if (stat.Date != lastDate) {
+            @Html.ActionLink("edit", "EditSalesStats", new { date = stat.Date.ToShortDateString() })
+        }
+        </td>
+        <td style="text-align:center">@stat.Date.ToShortDateString()</td>
+        <td>@stat.Salesperson.FullName</td>
+        <td style="text-align:right">@stat.EmailTracked</td>
+        <td style="text-align:right">@stat.EmailOpened</td>
+        <td style="text-align:left">(@stat.EmailOpenRate.ToString("P0"))</td>
+        <td style="text-align:right">@stat.EmailReplied</td>
+        <td style="text-align:left">(@stat.EmailReplyRate.ToString("P0"))</td>
+        <td>
+        @if (stat.Date != lastDate) {
+            @Html.ActionLink("delete", "DeleteSalesStats", new { date = stat.Date.ToShortDateString() }, new { onclick = "return confirm('Delete stats for " + stat.Date.ToShortDateString() + "?')" })
+        }
+        </td>
+    </tr>
+    lastDate = stat.Date;
+}
+</table>
+
+<br />
+@Html.ActionLink("Enter the next week's stats", "EditSalesStats") |
+@Html.ActionLink("Show all", "SalesStats", new { numweeks = -1 })

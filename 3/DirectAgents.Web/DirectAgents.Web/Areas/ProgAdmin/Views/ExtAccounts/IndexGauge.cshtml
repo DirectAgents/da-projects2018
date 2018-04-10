@@ -1,0 +1,167 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.StatsGaugeVM
+@using DirectAgents.Domain.Entities.CPProg
+@{
+    string by = "Partner";
+    if (Model.StatsGauges.Any(s => s.Children != null && s.Children.Any())) {
+        by = "ExtAccount";
+    }
+    bool super = Request.QueryString["super"] == "1";
+}
+<h2>Stats Gauge - By @by</h2>
+
+<table>
+<tr>
+    <th colspan="4" style="text-align:right">X = disabled</th>
+    <th colspan="2">Daily</th>
+    <th colspan="2">Strategy</th>
+    <th colspan="2">AdSet</th>
+    <th colspan="2">Actions</th>
+    <th colspan="2">Creative</th>
+    <th colspan="2">Site</th>
+    <th colspan="2">Conv</th>
+</tr>
+<tr>
+    <th>Partner</th>
+    <th style="text-align:right">ID</th>
+    <th colspan="2">External&nbsp;Account&nbsp;&nbsp;&nbsp;</th>
+    <th>Earliest</th>
+    <th>Latest</th>
+    <th>Earliest</th>
+    <th>Latest</th>
+    <th>Earliest</th>
+    <th>Latest</th>
+    <th>Earliest</th>
+    <th>Latest</th>
+    <th>Earliest</th>
+    <th>Latest</th>
+    <th>Earliest</th>
+    <th>Latest</th>
+    <th>Earliest</th>
+    <th>Latest</th>
+</tr>
+@foreach (var pGauge in Model.StatsGauges)
+{
+if (!Model.CampaignId.HasValue) // don't show Partner summaries if filtering by campaign
+{
+    <tr style="font-weight:bold;background-color:aquamarine">
+        <td colspan="4">@pGauge.Platform.Name.Replace(' ', '_')&nbsp;-&nbsp;Summary:</td>
+        <td style="text-align:right">@pGauge.Daily.EarliestDisp</td>
+        <td style="text-align:right">@pGauge.Daily.LatestDisp</td>
+        <td style="text-align:right">@pGauge.Strategy.EarliestDisp</td>
+        <td style="text-align:right">@pGauge.Strategy.LatestDisp</td>
+        <td style="text-align:right">@pGauge.AdSet.EarliestDisp</td>
+        <td style="text-align:right">@pGauge.AdSet.LatestDisp</td>
+        <td style="text-align:right">@pGauge.Action.EarliestDisp</td>
+        <td style="text-align:right">@pGauge.Action.LatestDisp</td>
+        <td style="text-align:right">@pGauge.Creative.EarliestDisp</td>
+        <td style="text-align:right">@pGauge.Creative.LatestDisp</td>
+        <td style="text-align:right">@pGauge.Site.EarliestDisp</td>
+        <td style="text-align:right">@pGauge.Site.LatestDisp</td>
+        <td style="text-align:right">@pGauge.Conv.EarliestDisp</td>
+        <td style="text-align:right">@pGauge.Conv.LatestDisp</td>
+    </tr>
+}
+if (pGauge.Children != null)
+{
+    foreach (var gauge in pGauge.Children.OrderBy(s => s.ExtAccount.Name))
+    {
+    <tr>
+        <td>@gauge.ExtAccount.Platform.Name</td>
+        <td style="text-align:right">@gauge.ExtAccount.Id</td>
+        <td>@gauge.ExtAccount.Name</td>
+        <td style="text-align:center">@(gauge.ExtAccount.Disabled ? "X" : "")</td>
+        <td style="text-align:right">@gauge.Daily.EarliestDisp</td>
+        <td style="text-align:right">@gauge.Daily.LatestDisp</td>
+        <td style="text-align:right">@gauge.Strategy.EarliestDisp</td>
+        <td style="text-align:right">@gauge.Strategy.LatestDisp</td>
+        <td style="text-align:right">@gauge.AdSet.EarliestDisp</td>
+        <td style="text-align:right">@gauge.AdSet.LatestDisp</td>
+        <td style="text-align:right">@gauge.Action.EarliestDisp</td>
+        <td style="text-align:right">@gauge.Action.LatestDisp</td>
+        <td style="text-align:right">@gauge.Creative.EarliestDisp</td>
+        <td style="text-align:right">@gauge.Creative.LatestDisp</td>
+        <td style="text-align:right">@gauge.Site.EarliestDisp</td>
+        <td style="text-align:right">@gauge.Site.LatestDisp</td>
+        <td style="text-align:right">@gauge.Conv.EarliestDisp</td>
+        <td style="text-align:right">@gauge.Conv.LatestDisp</td>
+    </tr>
+    }
+}
+}
+</table>
+<br />
+@if (!Model.CampaignId.HasValue)
+{
+    <text>
+    Filter:
+    @Html.ActionLink("Adform", "IndexGauge", new { platform = Platform.Code_Adform }) |
+    @Html.ActionLink("AdRoll", "IndexGauge", new { platform = Platform.Code_AdRoll }) |
+    @Html.ActionLink("Amazon", "IndexGauge", new { platform = Platform.Code_Amazon }) |
+    @Html.ActionLink("Criteo", "IndexGauge", new { platform = Platform.Code_Criteo }) |
+    @Html.ActionLink("DBM", "IndexGauge", new { platform = Platform.Code_DBM }) |
+    @Html.ActionLink("Facebook", "IndexGauge", new { platform = Platform.Code_FB }) |
+    @Html.ActionLink("YAM", "IndexGauge", new { platform = Platform.Code_YAM }) |
+    @Html.ActionLink("(show all)", "IndexGauge")
+    </text>
+    <br /><br />
+}
+else if (super) //CampaignId specified
+{
+    var extAccts = Model.ExtAccounts(syncableOnly: true);
+    var extAcctSelectList = new SelectList(extAccts, "Id", "DisplayName1");
+    var statsTypeList = new[] { "Daily", "Strategy", "AdSet+Actions (Adform/FB only)" };
+    DateTime default_to = DateTime.Today.AddDays(-1);
+    DateTime default_from = (default_to.Day == 1 ? default_to.AddMonths(-1) : new DateTime(default_to.Year, default_to.Month, 1));
+
+    <h4>Re-Sync/Clear Stats</h4>
+    using (Html.BeginForm("StatsGaugeSyncClear", "ExtAccounts", FormMethod.Post, new { id = "formSync" }))
+    {
+        @Html.ValidationSummary()
+        <table>
+            <tr>
+                <td>@Html.Label("", "ExtAccount:")</td>
+                <td>@Html.DropDownList("id", extAcctSelectList)</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("", "Stats Level:")</td>
+                <td>@Html.DropDownList("level", new SelectList(statsTypeList))</td>
+            </tr>
+            <tr>
+                <td>@Html.Label("", "From:")</td>
+                <td><input type="text" id="sync_from" name="from" value="@default_from.ToShortDateString()" /></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("", "To:")</td>
+                <td><input type="text" id="sync_to" name="to" value="@default_to.ToShortDateString()" /></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("", "Clear Stats:")</td>
+                <td>@Html.CheckBox("clear") <i>(prior to syncing)</i></td>
+            </tr>
+            <tr>
+                <td>@Html.Label("", "Sync Stats:")</td>
+                <td>@Html.CheckBox("sync", true)</td>
+            </tr>
+        </table>
+        <br />
+        <div id="divSyncButton">
+            <input type="submit" value="Go..." onclick="DoSync()" />
+        </div>
+        <div id="divSyncMessage"></div>
+    }
+    <script>
+        $(function () {
+            $('#sync_from').kendoDatePicker({ footer: ' ' });
+            $('#sync_to').kendoDatePicker({ footer: ' ' });
+        });
+
+        function DoSync() {
+            var verb = "Sync";
+            if (document.getElementById('clear').checked && !document.getElementById('sync').checked)
+                verb = "Clear";
+            //$('#formSync').submit();
+            $('#divSyncButton').hide();
+            $('#divSyncMessage').html("<i>" + verb + "ing... Please wait.</i>");
+        }
+    </script>
+}

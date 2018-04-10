@@ -1,0 +1,43 @@
+﻿@model  IEnumerable<DirectAgents.Domain.Entities.CPProg.TDad>
+@{
+    bool showImages = ViewBag.ShowImages;
+}
+<h2>Creatives</h2>
+
+<table>
+    <tr>
+        <th></th>
+        <th>ID / ExtID</th>
+        <th>Name</th>
+        <th>Width</th>
+        <th>Height</th>
+    @if (showImages) {
+        <th></th>
+    }
+        <th>URL</th>
+    </tr>
+    @foreach (var ad in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink("Edit", "Edit", new { id = ad.Id })</td>
+            <td style="text-align:center">@ad.Id<br />@ad.ExternalId</td>
+            <td>@ad.Name</td>
+            <td>@ad.Width</td>
+            <td>@ad.Height</td>
+        @if (showImages) {
+            <td>
+                @if (!string.IsNullOrWhiteSpace(ad.Url))
+                {
+                    <img src="@ad.Url" width="100" />
+                }
+            </td>
+        }
+            <td>
+                @if (!string.IsNullOrWhiteSpace(ad.Url))
+                {
+                    <a href="@ad.Url">@ad.UrlShortened</a>
+                }
+            </td>
+        </tr>
+    }
+</table>

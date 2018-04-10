@@ -1,0 +1,6 @@
+﻿@model System.Int32?
+
+@if (Model.HasValue)
+{
+    <text>@Model.Value.ToString("N0")</text>
+}

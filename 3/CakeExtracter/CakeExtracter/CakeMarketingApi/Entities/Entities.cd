@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Click">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAgABQAgAAAAAAAAAAAAIAACggAAAAAAAEAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Click.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Affiliate" />
+      <Property Name="Advertiser" />
+      <Property Name="Offer" />
+      <Property Name="Country" />
+      <Property Name="Region" />
+      <Property Name="Browser" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Advertiser">
+    <Position X="0.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAEAAAAAAAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Advertiser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Affiliate">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Affiliate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Browser">
+    <Position X="6.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Browser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Country">
+    <Position X="6.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Country.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Offer">
+    <Position X="2.75" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAJBAAAEAAAAAAAACAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Offer.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Advertiser" />
+      <Property Name="Currency" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="OfferContracts" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Region">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Region.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.Currency">
+    <Position X="3" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\Currency.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.CakeMarketingApi.Entities.OfferContractInfo">
+    <Position X="6.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>CakeMarketingApi\Entities\OfferContractInfo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,38 @@
+﻿@model DirectAgents.Web.Areas.AB.Models.DashboardVM
+
+<h2>Breakdown By LineItem (MTD or Past Month)</h2>
+
+@Html.Partial("ChooseMonth", (SelectList)ViewBag.ChooseMonthSelectList)
+
+Client: @Model.ABClient.Name
+<br /><br />
+
+<table>
+<tr>
+    <th>Campaign</th>
+    <th>Quantity/Price</th>
+    <th>Revenue</th>
+    <th>Cost</th>
+@*    <th>Margin</th>*@
+</tr>
+@foreach (var li in Model.LineItems)
+{
+<tr>
+    <td>@li.Name</td>
+    <td>
+@if (li.Units.HasValue)
+{
+    string revCurrStr = (string.IsNullOrEmpty(li.RevCurr) ? "" : "(" + li.RevCurr + ")");
+    <text>@li.Units.Value.ToString("0.####") @@ @(li.RevPerUnit.HasValue ? li.RevPerUnit.Value.ToString("0.####") + " " + revCurrStr : "")</text>
+}
+    </td>
+    <td style="text-align:right">@li.Rev</td>
+    <td style="text-align:right">@li.Cost</td>
+@*    <td style="text-align:right">@li.Margin</td>*@
+</tr>
+}
+</table>
+
+<br />
+Breakdown By:
+@Html.ActionLink("Source", "BySource", new { clientId = Model.ABClient.Id })

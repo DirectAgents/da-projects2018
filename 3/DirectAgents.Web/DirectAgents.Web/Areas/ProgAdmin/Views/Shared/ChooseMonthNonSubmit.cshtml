@@ -1,0 +1,8 @@
+﻿@model SelectList
+
+<div style="margin-bottom:10px">
+<form>
+    @Html.DropDownList("month", Model, new { onchange = "ChangeMonth(this.value)" })
+</form>
+</div>
+

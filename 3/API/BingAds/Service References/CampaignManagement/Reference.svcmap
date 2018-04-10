@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0981345d-fd8e-49d0-8e3d-92ab2b65fb22" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://adcenterapi.microsoft.com/Api/Advertiser/V8/CampaignManagement/CampaignManagementService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="CampaignManagementService.xsd" MetadataType="Schema" ID="827fb155-4dd7-4ac0-9296-371e4860004b" SourceId="1" SourceUrl="https://adcenterapi.microsoft.com/Api/Advertiser/V8/CampaignManagement/CampaignManagementService.svc?xsd=xsd1" />
+    <MetadataFile FileName="CampaignManagementService.wsdl" MetadataType="Wsdl" ID="5b3ce3e1-8b96-4263-8ddc-a0fa8085ecf2" SourceId="1" SourceUrl="https://adcenterapi.microsoft.com/Api/Advertiser/V8/CampaignManagement/CampaignManagementService.svc?wsdl" />
+    <MetadataFile FileName="CampaignManagementService1.xsd" MetadataType="Schema" ID="857974cf-419e-4aec-a334-4903bed729d9" SourceId="1" SourceUrl="https://adcenterapi.microsoft.com/Api/Advertiser/V8/CampaignManagement/CampaignManagementService.svc?xsd=xsd4" />
+    <MetadataFile FileName="CampaignManagementService2.xsd" MetadataType="Schema" ID="eee126cc-c5d3-4794-83fe-523bd2d2533c" SourceId="1" SourceUrl="https://adcenterapi.microsoft.com/Api/Advertiser/V8/CampaignManagement/CampaignManagementService.svc?xsd=xsd2" />
+    <MetadataFile FileName="CampaignManagementService3.xsd" MetadataType="Schema" ID="bc62cc9e-6a58-4617-b301-6d8309b5710e" SourceId="1" SourceUrl="https://adcenterapi.microsoft.com/Api/Advertiser/V8/CampaignManagement/CampaignManagementService.svc?xsd=xsd3" />
+    <MetadataFile FileName="CampaignManagementService4.xsd" MetadataType="Schema" ID="20bea317-1a8e-46ce-91a9-b969f21731df" SourceId="1" SourceUrl="https://adcenterapi.microsoft.com/Api/Advertiser/V8/CampaignManagement/CampaignManagementService.svc?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

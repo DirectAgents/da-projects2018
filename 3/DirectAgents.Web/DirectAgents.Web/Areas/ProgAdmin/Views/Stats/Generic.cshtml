@@ -1,0 +1,65 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.TDStatsVM
+
+@section scripts {
+<script>
+    function ChangeMonth(month) {
+                   @* For now, hardcoded to "DBM" action *@
+        var url = '@Html.Raw(Url.Action("DBM", new { ioID = Model.ExternalId, month = "monthVal" }))';
+        location.href = url.replace('monthVal', month);
+    }
+</script>
+}
+<h2>Raw Stats By Creative</h2>
+@Html.Partial("ChooseMonthNonSubmit", (SelectList)ViewBag.ChooseMonthSelectList)
+
+@Model.Name
+
+<table>
+<tr>
+    <th>Name</th>
+    <th>Impressions</th>
+    <th>Clicks</th>
+    <th>CTR</th>
+    <th>CPM</th>
+    <th>CPC</th>
+    <th>CPA</th>
+    <th>PostClick Conv</th>
+    <th>PostView Conv</th>
+    <th>Total Conv</th>
+    <th>Cost</th>
+</tr>
+@foreach (var stat in Model.Stats)
+{
+<tr>
+    <td>@stat.Name</td>
+    <td style="text-align:right">@stat.Impressions</td>
+    <td style="text-align:right">@stat.Clicks</td>
+    <td style="text-align:center">@stat.CTR</td>
+    <td style="text-align:center">@stat.CPM</td>
+    <td style="text-align:center">@stat.CPC</td>
+    <td style="text-align:center">@stat.CPA</td>
+    <td style="text-align:right">@stat.PostClickConv</td>
+    <td style="text-align:right">@stat.PostViewConv</td>
+    <td style="text-align:right">@stat.TotalConv</td>
+    <td style="text-align:right">@stat.Cost</td>
+</tr>
+}
+@if (Model.StatsTotal != null)
+{
+    var tot = Model.StatsTotal;
+<tr>
+    <th>@tot.Name</th>
+    <th style="text-align:right">@tot.Impressions</th>
+    <th style="text-align:right">@tot.Clicks</th>
+    <th style="text-align:center">@tot.CTR</th>
+    <th style="text-align:center">@tot.CPM</th>
+    <th style="text-align:center">@tot.CPC</th>
+    <th style="text-align:center">@tot.CPA</th>
+    <th style="text-align:right">@tot.PostClickConv</th>
+    <th style="text-align:right">@tot.PostViewConv</th>
+    <th style="text-align:right">@tot.TotalConv</th>
+    <th style="text-align:right">@tot.Cost</th>
+</tr>
+}
+</table>
+<br />

@@ -1,0 +1,22 @@
+﻿
+<h3>@Html.ActionLink("Budgets", "Start") - Admin</h3>
+
+Show Advertisers:
+    @Html.ActionLink("all", "Advertisers", new { showAll = true }) |
+    @Html.ActionLink("those with budgeted offers", "Advertisers")
+<br />
+Show Offers:
+    @Html.ActionLink("all", "Offers", new { includeInactive = true }) |
+    @Html.ActionLink("active-only", "Offers") |
+    @Html.ActionLink("without-budgets", "Offers", new { withBudget = false }) |
+    @Html.ActionLink("with-budgets", "Offers", new { withBudget = true }) |
+    @Html.ActionLink(">=85% spent", "Offers", new { minPercent = 85 }) |
+    @Html.ActionLink(">=100% spent", "Offers", new { minPercent = 100 })
+
+<br /><br />
+
+@Html.ActionLink("Synch Advertisers", "SynchAdvertisers")
+<br />
+@Html.ActionLink("Synch Active Offers", "SynchOffers", new { advId = 0 })
+<br />
+@Html.ActionLink("Synch Stats for Budgets", "SynchBudgetStats")

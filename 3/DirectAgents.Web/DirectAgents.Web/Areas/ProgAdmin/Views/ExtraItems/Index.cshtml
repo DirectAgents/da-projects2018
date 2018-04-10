@@ -1,0 +1,64 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.ExtraItemsVM
+@{
+    string campId = (string)Session["campId"];
+}
+
+@section scripts {
+<script>
+    function ChangeMonth(month) {
+        var url = '@Html.Raw(Url.Action("Index", new { campId = Model.CampaignId, month = "monthVal" }))';
+        location.href = url.replace('monthVal', month);
+    }
+</script>
+}
+<h2>Extra Items</h2>
+
+@if (Model.Month.HasValue) {
+    <div style="margin-bottom:10px">
+    <form>
+        @Html.DropDownList("month", (SelectList)ViewBag.ChooseMonthSelectList, new { onchange = "ChangeMonth(this.value)" })
+        &nbsp;[@Html.ActionLink("show all months", "Index", new { campId = campId })]
+    </form>
+    </div>
+} else {
+    <text>Month: (all)</text>
+    <br />
+}
+
+@if (Model.Campaign != null)
+{
+    <text>Campaign: @Model.Campaign.Name</text>
+}
+<table>
+<tr>
+    <th></th>
+    <th>Date</th>
+    <th>Campaign</th>
+    <th>Platform</th>
+    <th>Description</th>
+    <th>Cost</th>
+    <th>Revenue</th>
+    <th></th>
+</tr>
+@foreach (var item in Model.Items)
+{
+<tr>
+    <td>@Html.ActionLink("Edit", "Edit", new { id = item.Id })</td>
+    <td>@item.Date.ToShortDateString()</td>
+    <td>@item.Campaign.Name</td>
+    <td>@item.Platform.Name</td>
+    <td>@item.Description</td>
+    <td>@item.Cost.ToString("C")</td>
+    <td>@item.Revenue.ToString("C")</td>
+    <td>@Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "if (!confirm('Are you sure?')) return false" })</td>
+</tr>
+}
+</table>
+<br />
+@if (!string.IsNullOrWhiteSpace(campId))
+{
+    @Html.ActionLink("New Extra Item", "CreateNew", new { campId = campId, date = (Model.Month.HasValue ? Model.Month.Value.ToShortDateString() : "") })
+    <text>&nbsp;|&nbsp;</text>
+    @Html.ActionLink("Back to Campaign", "Show", "Campaigns", new { id = campId }, null)
+    <br />
+}

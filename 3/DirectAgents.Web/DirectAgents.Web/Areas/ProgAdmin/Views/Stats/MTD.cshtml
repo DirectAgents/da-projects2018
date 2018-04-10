@@ -1,0 +1,96 @@
+﻿@model DirectAgents.Domain.DTO.TDCampStats
+@{
+    var m = Model; // stats
+    var lastMonth = m.Month.AddMonths(-1);
+}
+
+<h2>Month/MTD View</h2>
+
+Month: @m.Month.ToString("MMM yyyy")
+<br /><br />
+
+<table>
+<tr>
+    <th>Advertiser</th>
+    <td>@m.Campaign.Advertiser.Name</td>
+</tr>
+<tr>
+    <th>Campaign</th>
+    <td>@m.Campaign.Name</td>
+</tr>
+<tr>
+    <th>Partners</th>
+    <td>@String.Join(",", m.LineItems.Select(li => li.Platform.Name))</td>@* compute differently? need distinct platform names *@
+</tr>
+<tr>
+    <th>Computed Margin</th>
+    <td>@(m.MarginPct.HasValue ? m.MarginPct.Value.ToString("#0.## \\%") : "N/A")</td>
+</tr>
+</table>
+
+<br />
+<table>
+<tr>
+    <th></th>
+    <th>MTD</th>
+    <th>Budget</th>
+    <th>% reached</th>
+</tr>
+<tr>
+    <td>DA Cost</td>
+    <td>@m.DACost.ToString("C")</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td>Client Cost</td>
+    <td>@m.ClientCost.ToString("C")</td>
+    <td>@m.Budget.ClientCost.ToString("C")</td>
+    <td>@m.FractionReached().ToString("#0.##%")</td>
+</tr>
+<tr>
+    <td>Mgmt Fee</td>
+    <td>@m.MgmtFee.ToString("C")</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td>Total Revenue</td>
+    <td>@m.TotalRevenue.ToString("C")</td>
+    <td></td>
+    <td></td>
+</tr>
+<tr>
+    <td>Margin</td>
+    <td>@m.Margin.ToString("C")</td>
+    <td></td>
+    <td></td>
+</tr>
+</table>
+
+<br />MTD Stats
+<table>
+<tr>
+    <td>Impressions</td>
+    <td>@m.Impressions.ToString("N0")</td>
+</tr>
+<tr>
+    <td>Clicks</td>
+    <td>@m.Clicks.ToString("N0")</td>
+</tr>
+<tr>
+    <td>Post-Click Conv</td>
+    <td>@m.PostClickConv.ToString("N0")</td>
+</tr>
+<tr>
+    <td>Post-View Conv</td>
+    <td>@m.PostViewConv.ToString("N0")</td>
+</tr>
+<tr>
+    <td>Total Conv</td>
+    <td>@m.TotalConv.ToString("N0")</td>
+</tr>
+</table>
+
+<br />
+@Html.ActionLink("Previous Month", "MTD", "Stats", new { campId = Model.Campaign.Id, date = lastMonth.ToShortDateString() }, null)

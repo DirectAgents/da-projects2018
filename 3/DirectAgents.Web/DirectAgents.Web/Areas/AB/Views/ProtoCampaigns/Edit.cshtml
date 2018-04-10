@@ -1,0 +1,30 @@
+﻿@model DirectAgents.Domain.Entities.AB.ProtoCampaign
+
+<fieldset>
+    <legend>Edit ProtoCampaign</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.ClientAccountId)
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.ClientAccount.Client.Name, "Client")</td>
+                    <td>@Html.DisplayFor(m => m.ClientAccount.Client.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.ClientAccount.Name, "Account")</td>
+                    <td>@Html.DisplayFor(m => m.ClientAccount.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name)</td>
+                    <td>@Html.EditorFor(m => m.Name)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index", new { accountId = Model.ClientAccountId })
+        </div>
+    }
+</fieldset>

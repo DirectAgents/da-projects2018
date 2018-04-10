@@ -1,0 +1,30 @@
+﻿@model DirectAgents.Domain.Entities.AB.ABClient
+
+<h2>View/Edit Client</h2>
+
+Id: @Model.Id<br />
+Name: @Model.Name<br />
+ExtCredit: @Model.ExtCredit<br />
+IntCredit: @Model.IntCredit<br />
+[@Html.ActionLink("edit", "Edit", new { id = Model.Id })]
+<br /><br />
+
+<b>Accounts:</b>
+@Html.ActionLink("list", "Index", "ClientAccounts", new { clientId = Model.Id }, null)
+<table>
+@foreach (var acct in Model.ClientAccounts.OrderBy(j => j.Id))
+{
+    <tr>
+        <td>@Html.ActionLink(acct.NameNotBlank(), "Show", "ClientAccounts", new { id = acct.Id }, null)</td>
+    </tr>
+}
+</table>
+<br />
+
+@Html.ActionLink("List Campaigns", "Index", "Campaigns", new { clientId = Model.Id }, null)
+
+<br /><br />
+
+Links:<br />
+@Html.ActionLink("Single Client Detail", "Client", "Dashboard", new { id = Model.Id }, null)<br />
+@Html.ActionLink("List All Clients", "Index")

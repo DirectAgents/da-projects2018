@@ -1,0 +1,75 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.DailySummariesVM
+@{
+    bool super = Request.QueryString["super"] == "1";
+}
+
+@section scripts {
+<script>
+    function ChangeMonth(month) {
+        var url = '@Html.Raw(Url.Action("Index", new { acctId = Model.ExtAccount.Id, month = "monthVal" }))';
+        location.href = url.replace('monthVal', month);
+    }
+</script>
+}
+<h2>Daily Summaries (Raw)</h2>
+
+@if (Model.Month.HasValue) {
+    <div style="margin-bottom:10px">
+    <form>
+        @Html.DropDownList("month", (SelectList)ViewBag.ChooseMonthSelectList, new { onchange = "ChangeMonth(this.value)" })
+    </form>
+    </div>
+} else {
+    <text>Month: (all)</text>
+    <br />
+}
+
+@if (Model.ExtAccount != null)
+{
+    <text>ExtAccount: </text>@Model.ExtAccount.Name<br />
+    if (Model.ExtAccount.Platform != null)
+    {
+        <text>Partner: </text>@Model.ExtAccount.Platform.Name<br />
+    }
+}
+<table>
+<tr>
+    <th></th>
+    <th>Date</th>
+    <th>Impressions</th>
+    <th>AllClicks</th>
+    <th>Clicks</th>
+    <th>PostClick Conv</th>
+    <th>PostClick Rev</th>
+    <th>PostView Conv</th>
+    <th>PostView Rev</th>
+    <th>Cost</th>
+</tr>
+@foreach (var ds in Model.DailySummaries)
+{
+<tr>
+    <td>
+    @if (super) {
+        @Html.ActionLink("Edit", "Edit", new { acctid = ds.AccountId, date = ds.Date.ToShortDateString() })
+    }
+    </td>
+    <td>@ds.Date.ToShortDateString()</td>
+    <td style="text-align:right">@ds.Impressions</td>
+    <td style="text-align:right">@ds.AllClicks</td>
+    <td style="text-align:right">@ds.Clicks</td>
+    <td style="text-align:right">@ds.PostClickConv</td>
+    <td style="text-align:right">@ds.PostClickRev</td>
+    <td style="text-align:right">@ds.PostViewConv</td>
+    <td style="text-align:right">@ds.PostViewRev</td>
+    <td style="text-align:right">@ds.Cost</td>
+</tr>
+}
+</table>
+<br />
+@if (!Model.DailySummaries.Any() && super)
+{
+    DateTime yesterday = DateTime.Today.AddDays(-1);
+    DateTime date = Model.Month.HasValue ? Model.Month.Value : new DateTime(yesterday.Year, yesterday.Month, 1);
+    @Html.ActionLink("New", "Edit", new { date = date.ToShortDateString(), acctId = Model.ExtAccount.Id, create = true })
+    <br />
+}

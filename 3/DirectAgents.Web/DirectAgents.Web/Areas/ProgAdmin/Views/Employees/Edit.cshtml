@@ -1,0 +1,29 @@
+﻿@model DirectAgents.Domain.Entities.Employee
+
+<fieldset>
+    <legend>Edit Employee</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Id, "Employee ID")</td>
+                    <td>@Html.DisplayFor(m => m.Id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.FirstName)</td>
+                    <td>@Html.EditorFor(m => m.FirstName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.LastName)</td>
+                    <td>@Html.EditorFor(m => m.LastName)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index")
+        </div>
+    }
+</fieldset>

@@ -1,0 +1,26 @@
+﻿@model DirectAgents.Domain.Entities.AB.ClientAccount
+
+<fieldset>
+    <legend>Edit ClientAccount Details</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.ClientId)
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Client.Name, "Client")</td>
+                    <td>@Html.DisplayFor(m => m.Client.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name)</td>
+                    <td>@Html.EditorFor(m => m.Name)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Show", new { id = Model.ClientId })
+        </div>
+    }
+</fieldset>

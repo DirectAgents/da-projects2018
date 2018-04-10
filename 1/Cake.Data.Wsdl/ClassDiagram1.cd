@@ -1,0 +1,653 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Cake.Data.Wsdl.ExportService.affiliate_export_response" Collapsed="true">
+    <Position X="0.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.affiliate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hCQkAFQzHgCYoAAACtgijVAA6RKQCRgELQVVBQoApIA=</HashCode>
+      <FileName>affiliate.partial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.affiliate_tier" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAACAAAAAAAAAACAAAQAgAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.@operator" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAADAAIAAAAAAAAAAAAAgAACACAAQAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.data_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAKAAAAAAAAAgCAAAAAgAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.filter_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACAAAAAAACAAAAAAAAgAAAgCEACAAAAIAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.filter" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAEADAAAAIAEAAAAAAAAAgABIAAAAAAAAAAAAYAE=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.campaign_submission_options" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAhAAAACAAAADAAAAAAAAAAAgBAAAAAAAAABgAAAgAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.upsell_info" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAgAAQAABAAAAAAAgAAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.pixel_info" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABgACEBAAABAAAACAAAAAgAAAAAAAAAEAAIAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.deal_flow" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAgAECAAAAAAAAAABAAAAAgAABABAAIAAAAgCAgAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.campaign_step" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQwQBgACkAAAABAAAICAAAAAiAICAAAAECEAAACAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.price_format" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAQAAAAAAgBAAAABAAAAAAAAIAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.payment" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAEEAAAgAAAiAAAAAAAAAMAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.media_type1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAEAAAAAEAAAAACgCAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.exceptions" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAECAAACAAAAAAAAAAAAAAAAgAAEABIAAgAIAQAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.sub_affiliate" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAASAACAAAAAAAAAAAAAAAAgAAAAAACAAAAAAAAAAQ=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.creative1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQACBAgBgAQCRAADEAEBwGAAIAAAAEAAAIAAoAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.creative_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAQAAAAAAAAAAAggAAAAABAAAAAAAAIAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.creative_status" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAFAwAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.creative_file" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACgAAAAAAAAAgAAAAAwABQBAEAAAAAAACAoAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.non_original" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAACAAAAAAAAAAAAAAAAwAAAAAAAAAAAIAAgAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.campaign" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iAAABmCKAREAABAAOIgKANQB2gQAYBDWEAgE4AAAoII=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.affiliate1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAQIAAAAAAAAAAAgAAAABAAAAAAAAAABAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.offer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAQggAAAAAAAAAAACgAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.offer_contract1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQAAACAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAQgAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.account_status" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIACAAAAAAACAAgAAAAAgAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.currency" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAIEAAQAAQAgEAIgAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.cap" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAIAAAAAAAAAAAAIgAEAAQBAAAAAACQAAAQ=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.cap_interval" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAiAAAAAAAAAAAAAIAAgBAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.host_post" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAACAAAAAAAAAAgAAACAgAAEAAAAAAAAAAgAAAQ=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.submission_options" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAOAAAAABCAAAAIAQAAgAAQEAAAABAAAAQAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.creative" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQACAAABAAAABAAAAAAAgCAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.upsell" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgADAgQgAgAAAAAIQAAAgAABAAIAAAAAACAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.session_regeneration_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAEAABACAAAAAAAAAAAAAAACgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.tier" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAYAgACgAAAAAAAAAAIAAAAgAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.step" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABwQAAECgAAABQAABYAADIAAqAACAAAEEAAQAAAgEAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.geo_target" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAgAAAAAAAAAAAgAAAAAADAAAAAAAgAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.country" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABACgAAAAACAAAAAAAAAgAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.geo_targeting" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAgAAAAAAABgAAEAAgAAAAAAAAgAAAAAAACA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.host_post_payment" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAgAAAAAAAAgAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.submission_payment_options" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAACAAAAAAAAAAAIAAAAgAAAAAAAABAQAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.offer_contract" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAQAAACgQAAAQAABYAAAIAAgAAAQAACEEQAAAQggAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.offer_status" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAACCAAAAAAAABAAAAAAgAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.offer_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAjAAAAAAEAAgAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.vertical" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAEAAAQgAAAAECAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.offer1" BaseTypeListCollapsed="true">
+    <Position X="4.5" Y="6.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+      <Compartment Name="Events" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>jAJMIFCrCwICsFIAIAiKaNQRywUOYKAyAA5EBChh4QA=</HashCode>
+      <FileName>offer1.partial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.advertiser1" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAAAAAaAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.tag" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="22.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAQAAABAAggAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.media_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACAAAEAAAAAEAAAAACgCAAEAAAYAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.suppression_list" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACCSAQACBAAAIgEAAAgAAAAAxAAAAAAAAAQBAAAAwAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.suppression_list_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="21" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAABAAAAAAAAgAgAAAAIAAAgAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.static_link_info" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAACAAAAAAAAAAAAACAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.unsub_central_info" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAAAAAACAAAAAAAAAAAAAAAAgAAAAAIAAAAAAAAAAQA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.optizmo_info" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAgCAAAAAAAAAAAAACAAgAAAAABAAAAAAAIABAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.blacklist_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAgKAAAAAACAAAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.blacklist_reason" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="14" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAgAAAACAAAAAAAAAAAAAAAAgAAAAAAAAgAABAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.blacklist" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEACAAUEABoAEAAAAAAAyAQAAAAIAQAAAAAAgAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.advertiser" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kAAAAEQ6CEAAgAAAA4giBAAA6QIQABgECIFRCQAAoAA=</HashCode>
+      <FileName>advertiser.partial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.contact" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAABACAAAAAAAAAAAAAAAAgAAAAAIAQAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.address" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAQAAACAAAAAAAAEAABCAAAgAAgBAAHAAAAAAAAQAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.billing_cycle" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgACBAAAIAAAAAAAAAAAgAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.payment_setting" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="17.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAIgAAAAQAAAAAAgAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.currency_settings" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="24.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAASAAAAAAAAAAAIAIAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.vertical_category" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAECAAAAAAAAAAACAAAAgAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.traffic_types" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="26.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACABCAAAAAAAAAAAAAgAEAIAAAgAAAAggAAAQ=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.payment_type" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="19.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAQAAAAhAABAAAAAAQIQAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.inactive_reason" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAgAAAAAAAIAAIAAAgAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.base_response" Collapsed="true">
+    <Position X="5.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAACAAAAAAAAAAAAAAAAgAAAAAYAAAAAAAAAACA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.get_response" Collapsed="true">
+    <Position X="5.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.campaign_export_response" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAIAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.creative_export_response" Collapsed="true">
+    <Position X="5.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAABAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.offer_export_response" Collapsed="true">
+    <Position X="7.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.advertiser_export_response" Collapsed="true">
+    <Position X="9.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cake.Data.Wsdl.ExportService.exportSoapClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="15.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAQAAAAAAAAAAAAAgEAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Interface Name="Cake.Data.Wsdl.ExportService.exportSoap" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAQAAAAAAAAAAAAAgEAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Cake.Data.Wsdl.ExportService.exportSoapChannel" Collapsed="true">
+    <Position X="0.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Cake.Data.Wsdl.ExportService.AffiliatesSortFields" Collapsed="true">
+    <Position X="14" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAhAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Cake.Data.Wsdl.ExportService.AdvertisersSortFields" Collapsed="true">
+    <Position X="12.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Cake.Data.Wsdl.ExportService.OffersSortFields" Collapsed="true">
+    <Position X="19.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAgAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Cake.Data.Wsdl.ExportService.CreativesSortFields" Collapsed="true">
+    <Position X="17.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAACAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Cake.Data.Wsdl.ExportService.CampaignsSortFields" Collapsed="true">
+    <Position X="15.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Service References\ExportService\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

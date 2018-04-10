@@ -1,0 +1,40 @@
+﻿@model DirectAgents.Web.Models.SalespeopleStatsVM
+
+<h2>Sales Stats</h2>
+
+@using (Html.BeginForm())
+{
+    <table class="editable">
+    <tr>
+        <td colspan="4">Week Start Date: @Html.TextBoxFor(s => s.Date, "{0:MM/dd/yy}")</td>
+    </tr>
+    <tr>
+        <th></th>
+        <th>Tracked</th>
+        <th>Opened</th>
+        <th>With Replies</th>
+    </tr>
+@for (int i = 0; i < Model.Stats.Count; i++)
+{
+    var stat = Model.Stats[i];
+    <tr>
+        <td>@Html.Hidden("stats[" + i + "].SalespersonId", stat.SalespersonId)
+            @stat.Salesperson.FullName</td>
+        <td>@Html.TextBox("stats[" + i + "].EmailTracked", stat.EmailTracked > 0 ? stat.EmailTracked.ToString() : "")</td>
+        <td>@Html.TextBox("stats[" + i + "].EmailOpened", stat.EmailOpened > 0 ? stat.EmailOpened.ToString() : "")</td>
+        <td>@Html.TextBox("stats[" + i + "].EmailReplied", stat.EmailReplied > 0 ? stat.EmailReplied.ToString() : "")</td>
+    </tr>
+}
+    <tr>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td colspan="2">
+            <input type="submit" value="   Save   " />
+            &nbsp;&nbsp;
+            @Html.ActionLink("Cancel", "SalesStats")
+        </td>
+    </tr>
+    </table>
+}

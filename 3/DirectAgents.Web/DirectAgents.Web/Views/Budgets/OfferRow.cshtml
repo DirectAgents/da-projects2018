@@ -1,0 +1,78 @@
+﻿@model DirectAgents.Domain.Entities.Cake.Offer
+@{
+    var offer = Model;
+    bool? wantEditMode = ViewBag.EditMode;
+    if ((wantEditMode == null || wantEditMode.Value == true) && (!offer.HasBudget))
+    {
+        var budget = offer.OfferBudget; // create a budget
+        budget.Start = new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1); // first day of current month
+        var nextMonth = DateTime.Today.AddMonths(1);
+        budget.End = (new DateTime(nextMonth.Year, nextMonth.Month, 1)).AddDays(-1); // last day of current month
+    }
+    bool editMode = wantEditMode ?? false;
+    if (wantEditMode == null)
+    {
+        editMode = (offer.Budget.Value == 0);
+    }
+}
+
+<td>@offer.Advertiser.AdvertiserNameTrimmed(12)</td>
+<td style="text-align:right">@offer.OfferId</td>
+<td>@Html.ActionLink(offer.OfferName, "Show", new { offerId = offer.OfferId })</td>
+<td style="text-align:right">
+    @if (editMode)
+    {
+        @Html.TextBoxFor(m => m.Budget, new { id = (string)null })
+    }
+    else
+    {
+        @offer.Budget.Value.ToString("N2")
+    }
+</td>
+<td>
+    @if (editMode)
+    {
+        @Html.EditorFor(m => m.BudgetStart, "Date", new { id = (string)null })
+    }
+    else
+    {
+        @Html.DisplayFor(m => m.BudgetStart, "Date")
+    }
+</td>
+<td>
+    @if (editMode)
+    {
+        @Html.EditorFor(m => m.BudgetEnd, "Date", new { id = (string)null })
+    }
+    else
+    {
+        @Html.DisplayFor(m => m.BudgetEnd, "Date")
+    }
+</td>
+<td>
+    @if (editMode)
+    {
+        <input type="button" value="Save" onclick="SaveBudgetRow(@offer.OfferId)" data-offer-id="@offer.OfferId" />
+    }
+    else
+    {
+        <input type="button" value="Edit" onclick="LoadBudgetRow(@offer.OfferId, false, true)" data-offer-id="@offer.OfferId" />
+    }
+</td>
+<td style="text-align:right">
+    @if (offer.BudgetUsed.HasValue)
+    {
+        @offer.BudgetUsed.Value.ToString("N2")
+    }
+</td>
+<td style="text-align:center">
+    @if (offer.BudgetUsedPercent.HasValue)
+    {
+        @offer.BudgetUsedPercent.Value.ToString("P1")
+    }
+</td>
+@*<td>
+    <input type="button" value="Sync" onclick="SynchOfferStats(@offer.OfferId)" />
+</td>*@
+<td>@offer.OfferStatus.OfferStatusName</td>
+<td>@offer.Hidden</td>

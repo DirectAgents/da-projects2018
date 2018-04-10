@@ -1,0 +1,9 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.Cake.Contact>
+
+<h3>Account Managers</h3>
+
+@foreach (var contact in Model)
+{
+    @Html.ActionLink(contact.FullName, "Advertisers", new { am = contact.ContactId })
+    <br />
+}

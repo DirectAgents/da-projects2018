@@ -1,0 +1,12 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.Campaign
+@{
+    var start = DateTime.Today.FirstDayOfMonth(-1);
+}
+<h2>Report Components</h2>
+
+Advertiser: @Model.Advertiser.Name<br />
+Campaign: @Model.Name
+<br /><br />
+
+@Html.ActionLink("Daily Stats", "Daily", "CampStats", new { campId = Model.Id, start = start.ToRouteString() }, null) |
+@Html.ActionLink("Daily Chart", "DailyChart", "CampStats", new { campId = Model.Id }, null)

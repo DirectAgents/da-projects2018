@@ -1,0 +1,41 @@
+﻿@model DirectAgents.Domain.Entities.CPSearch.SearchCampaign
+
+<fieldset>
+    <legend>Edit SearchCampaign</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.SearchCampaignId)
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.SearchCampaignId, "ID")</td>
+                    <td>@Html.DisplayFor(m => m.SearchCampaignId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.SearchCampaignName, "Name")</td>
+                    <td>@Html.DisplayFor(m => m.SearchCampaignName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.ExternalId)</td>
+                    <td>@Html.DisplayFor(m => m.ExternalId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.SearchAccountId)</td>
+                    <td>@Html.DisplayFor(m => m.SearchAccountId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AltSearchAccountId)</td>
+                    <td>@Html.DisplayFor(m => m.AltSearchAccountId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.LCcmpid, "LC CampaignId")</td>
+                    <td>@Html.EditorFor(m => m.LCcmpid)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "IndexGauge", new { spId = Model.SearchAccount.SearchProfileId })
+        </div>
+        }
+</fieldset>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="CakeExtracter.Etl.Extracter&lt;T&gt;">
+    <Position X="1.25" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>IAJAAAAAACAAYAAAQAgAAEQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Etl\Extracter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="CakeExtracter.Etl.Loader&lt;T&gt;">
+    <Position X="6.25" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAACAgAAAIAAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Etl\Loader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.Etl.CakeMarketing.Extracters.DailySummariesExtracter">
+    <Position X="0.5" Y="4.75" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAQAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Etl\CakeMarketing\Extracters\DailySummariesExtracter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CakeExtracter.Etl.CakeMarketing.Loaders.DailySummariesLoader">
+    <Position X="6" Y="4.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Etl\CakeMarketing\Loaders\DailySummariesLoader.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

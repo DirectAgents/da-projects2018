@@ -1,0 +1,106 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.BudgetInfo
+@{
+    var month = Model.Date;
+    var platformBudgetInfos = Model.Campaign.PlatformBudgetInfosFor(month).OrderBy(i => i.Platform.Name);
+}
+
+@* Note: duplicated in PlatformBudgetInfos.Edit *@
+@section scripts {
+<script>
+    function SetForNoMarkup() {
+        var mgmtFeePct = parseFloat($('#MgmtFeePct').val());
+        var margin = (100 * mgmtFeePct / (100 + mgmtFeePct)).toFixed(5);
+        $('#MarginPct').val(margin);
+    }
+</script>
+}
+<fieldset>
+    <legend>Edit Campaign -> Budget+Percents</legend>
+    @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "formBudgetInfo" }))
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.CampaignId)
+        @Html.HiddenFor(m => m.Date)
+        <div style="float:left">
+            Campaign: @Model.Campaign.Name<br />
+            Month: @Model.Date.ToString("MMM yyyy")
+            <br /><br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.MediaSpend, "Budget (ClientCost)")</td>
+                    <td>@Html.EditorFor(m => m.MediaSpend)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.MgmtFeePct)</td>
+                    <td>@Html.TextBoxFor(m => m.MgmtFeePct)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.MarginPct)</td>
+                    <td>@Html.TextBoxFor(m => m.MarginPct)</td>
+                    <td><input type="button" value="Set for no markup" onclick="SetForNoMarkup()" /></td>
+                </tr>
+            </table>
+            <br />
+            <div id="divSave">
+                <input type="submit" value="Save" onclick="SaveBudgetInfo()" />
+                &nbsp;@Html.ActionLink("cancel(back to campaign)", "Edit", "Campaigns", new { id = Model.CampaignId }, null)
+            </div>
+            <div id="divSaveMessage"></div>
+        </div>
+    }
+    <br style="clear:both" />
+    <div style="float:left">
+        <br />
+        Partner Exceptions
+        <table>
+            <tr>
+                <th></th>
+                <th>Partner</th>
+                <th>Budget (ClientCost)</th>
+                <th>MgmtFeePct</th>
+                <th>MarginPct</th>
+                <th></th>
+            </tr>
+        @foreach (var pbi in platformBudgetInfos)
+        {
+            <tr>
+                <td>@Html.ActionLink("Edit", "Edit", "PlatformBudgetInfos", new { campId = pbi.CampaignId, platId = pbi.PlatformId, date = pbi.Date.ToShortDateString() }, null)</td>
+                <td>@pbi.Platform.Name</td>
+                <td style="text-align:right">@pbi.MediaSpend.ToString("C")</td>
+                <td style="text-align:center">@pbi.MgmtFeePct.ToString("#0.##### \\%")</td>
+                <td style="text-align:center">@pbi.MarginPct.ToString("#0.##### \\%")</td>
+                <td>@Html.ActionLink("Delete", "Delete", "PlatformBudgetInfos",
+                                     new { campId = pbi.CampaignId, platId = pbi.PlatformId, date = pbi.Date.ToShortDateString() },
+                                     new { onclick = "if (!confirm('Are you sure?')) return false" })</td>
+            </tr>
+        }
+        </table>
+@{
+    var platforms = (IEnumerable<DirectAgents.Domain.Entities.CPProg.Platform>)ViewBag.Platforms;
+    if (platforms.Any())
+    {
+        <br />
+        using (Html.BeginForm("CreateNew", "PlatformBudgetInfos", new { campId = Model.CampaignId, date = Model.Date.ToShortDateString() }))
+        {
+            var platformSelectList = new SelectList(platforms, "Id", "Name");
+            <text>Add Partner Exception:</text>
+            <table><tr><td>
+                @Html.DropDownList("platId", platformSelectList)
+            </td></tr></table>
+            <input type="submit" value="Add" />
+        }
+    }
+}
+    </div>
+</fieldset>
+<br />
+
+<script>
+    function SaveBudgetInfo() {
+        $('#MediaSpend').val($('#MediaSpend').val().toString().replace(/\$/g, '').replace(/\,/g, ''));
+        $('#formBudgetInfo').submit();
+        $('#divSave').hide();
+        $('#divSaveMessage').html("<i>Saving...</i>");
+    }
+</script>
+

@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPProg.Platform>
+@{
+    var lastMonth = DateTime.Today.AddMonths(-1);
+    lastMonth = new DateTime(lastMonth.Year, lastMonth.Month, 1);
+    bool super = Request.QueryString["super"] == "1";
+}
+<h2>Partners</h2>
+
+<table>
+<tr>
+    <th></th>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Show/Create...</th>
+    <th></th>
+    <td></td>
+</tr>
+@foreach (var plat in Model)
+{
+<tr>
+    <td>@Html.ActionLink("Edit", "Edit", new { id = plat.Id })</td>
+    <td>@plat.Code</td>
+    <td>@plat.Name</td>
+    <td>@Html.ActionLink("ExtAccounts(" + plat.ExtAccounts.Count + ")", "Index", "ExtAccounts", new { platform = plat.Code }, null)</td>
+    <td>@Html.ActionLink("Raw Stats", "ExtAccount", "Stats", new { platform = plat.Code }, null)</td>
+    <td>@Html.ActionLink("Maintenance", "Maintenance", new { id = plat.Id })
+    </td>
+</tr>
+}
+</table>
+@if (super)
+{
+    <br />
+    @Html.ActionLink("New Partner", "CreateNew")
+}

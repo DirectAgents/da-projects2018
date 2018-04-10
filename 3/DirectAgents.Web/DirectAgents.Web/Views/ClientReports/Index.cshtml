@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPSearch.ClientReport>
+
+<h3>ClientReports</h3>
+
+<table style="border: 1px solid gray">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>StartDayOfWeek</th>
+        <th>SearchProfile</th>
+        <th>ProgAdvertiser-Campaign</th>
+    </tr>
+@foreach (var rep in Model)
+{
+    <tr>
+        <td style="text-align:right">@rep.Id</td>
+        <td>@rep.Name</td>
+        <td style="text-align:center">@((DayOfWeek)rep.StartDayOfWeek)</td>
+        <td>@rep.SearchProfileId</td>
+        <td>@rep.ProgCampaignId</td>
+    </tr>
+}
+</table>

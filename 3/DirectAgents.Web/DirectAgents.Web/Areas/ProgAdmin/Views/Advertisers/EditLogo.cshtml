@@ -1,0 +1,49 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.Advertiser
+
+<fieldset>
+    <legend>Advertiser Logo</legend>
+    <div style="float:left">
+
+@if (Model.Logo != null)
+{
+    <text>Current Logo:</text>
+    <table><tr><td>
+        <img src="@Url.Action("Logo", new { id = Model.Id })" />
+    </td></tr></table>
+    <br />
+}
+@using (Html.BeginForm())
+{
+    <input id="logoUpload" name="logo" type="file" />
+}
+        <br />
+        @Html.ActionLink("Back", "Edit", new { id = Model.Id })
+
+    </div>
+</fieldset>
+
+@section scripts {
+<script>
+    $(function () {
+        $("#logoUpload").kendoUpload({
+            async: {
+                saveUrl: "@Url.Action("UploadLogo")",
+                autoUpload: false
+            },
+            upload: function(e) {
+                e.data = { id: @Model.Id };
+            },
+            localization: {
+                select: "Select file...",
+                uploadSelectedFiles: "Upload"
+            },
+            multiple: false,
+            complete: onUploadComplete
+        });
+    });
+
+    function onUploadComplete() {
+        location.href = '@Url.Action("EditLogo", new { id = Model.Id })';
+    }
+</script>
+}

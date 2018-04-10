@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WikiModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="WikiModelStoreContainer">
+          <EntitySet Name="CampaignAccountManagers" EntityType="WikiModel.Store.CampaignAccountManagers" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="CampaignAdManagers" EntityType="WikiModel.Store.CampaignAdManagers" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="CampaignCountries" EntityType="WikiModel.Store.CampaignCountries" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="Campaigns" EntityType="WikiModel.Store.Campaigns" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="CampaignTrafficTypes" EntityType="WikiModel.Store.CampaignTrafficTypes" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="Conversions" EntityType="WikiModel.Store.Conversions" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="Countries" EntityType="WikiModel.Store.Countries" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="DailySummaries" EntityType="WikiModel.Store.DailySummaries" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="People" EntityType="WikiModel.Store.People" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="Status" EntityType="WikiModel.Store.Status" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="TrafficTypes" EntityType="WikiModel.Store.TrafficTypes" store:Type="Tables" Schema="wiki" />
+          <EntitySet Name="Verticals" EntityType="WikiModel.Store.Verticals" store:Type="Tables" Schema="wiki" />
+          <AssociationSet Name="FK_dbo_CampaignAccountManagers_dbo_Campaigns_Pid" Association="WikiModel.Store.FK_dbo_CampaignAccountManagers_dbo_Campaigns_Pid">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="CampaignAccountManagers" EntitySet="CampaignAccountManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CampaignAccountManagers_dbo_People_PersonId" Association="WikiModel.Store.FK_dbo_CampaignAccountManagers_dbo_People_PersonId">
+            <End Role="People" EntitySet="People" />
+            <End Role="CampaignAccountManagers" EntitySet="CampaignAccountManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CampaignAdManagers_dbo_Campaigns_Pid" Association="WikiModel.Store.FK_dbo_CampaignAdManagers_dbo_Campaigns_Pid">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="CampaignAdManagers" EntitySet="CampaignAdManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CampaignAdManagers_dbo_People_PersonId" Association="WikiModel.Store.FK_dbo_CampaignAdManagers_dbo_People_PersonId">
+            <End Role="People" EntitySet="People" />
+            <End Role="CampaignAdManagers" EntitySet="CampaignAdManagers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CampaignCountries_dbo_Campaigns_Pid" Association="WikiModel.Store.FK_dbo_CampaignCountries_dbo_Campaigns_Pid">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="CampaignCountries" EntitySet="CampaignCountries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CampaignCountries_dbo_Countries_CountryCode" Association="WikiModel.Store.FK_dbo_CampaignCountries_dbo_Countries_CountryCode">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="CampaignCountries" EntitySet="CampaignCountries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Status_StatusId" Association="WikiModel.Store.FK_dbo_Campaigns_dbo_Status_StatusId">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Verticals_Vertical_VerticalId" Association="WikiModel.Store.FK_dbo_Campaigns_dbo_Verticals_Vertical_VerticalId">
+            <End Role="Verticals" EntitySet="Verticals" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CampaignTrafficTypes_dbo_Campaigns_Pid" Association="WikiModel.Store.FK_dbo_CampaignTrafficTypes_dbo_Campaigns_Pid">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="CampaignTrafficTypes" EntitySet="CampaignTrafficTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_CampaignTrafficTypes_dbo_TrafficTypes_TrafficTypeId" Association="WikiModel.Store.FK_dbo_CampaignTrafficTypes_dbo_TrafficTypes_TrafficTypeId">
+            <End Role="TrafficTypes" EntitySet="TrafficTypes" />
+            <End Role="CampaignTrafficTypes" EntitySet="CampaignTrafficTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DailySummaries_dbo_Campaigns_Pid" Association="WikiModel.Store.FK_dbo_DailySummaries_dbo_Campaigns_Pid">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="DailySummaries" EntitySet="DailySummaries" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CampaignAccountManagers">
+          <Key>
+            <PropertyRef Name="Pid" />
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampaignAdManagers">
+          <Key>
+            <PropertyRef Name="Pid" />
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="PersonId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CampaignCountries">
+          <Key>
+            <PropertyRef Name="Pid" />
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Campaigns">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="PayableAction" Type="nvarchar(max)" />
+          <Property Name="Link" Type="nvarchar(max)" />
+          <Property Name="CostCurrency" Type="nvarchar(max)" />
+          <Property Name="Cost" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="RevenueCurrency" Type="nvarchar(max)" />
+          <Property Name="Revenue" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="ImportantDetails" Type="nvarchar(max)" />
+          <Property Name="CampaignCap" Type="nvarchar(max)" />
+          <Property Name="ScrubPolicy" Type="nvarchar(max)" />
+          <Property Name="EomNotes" Type="nvarchar(max)" />
+          <Property Name="ImageUrl" Type="nvarchar(max)" />
+          <Property Name="Vertical_VerticalId" Type="int" />
+          <Property Name="Restrictions" Type="nvarchar(max)" />
+          <Property Name="Budget" Type="nvarchar(max)" />
+          <Property Name="PassedInfo" Type="nvarchar(max)" />
+          <Property Name="StatusId" Type="int" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+          <Property Name="DefaultPriceFormat" Type="nvarchar(max)" />
+          <Property Name="RevenueIsPercentage" Type="bit" Nullable="false" />
+          <Property Name="MobileLP" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="CampaignTrafficTypes">
+          <Key>
+            <PropertyRef Name="Pid" />
+            <PropertyRef Name="TrafficTypeId" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="TrafficTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Conversions">
+          <Key>
+            <PropertyRef Name="conversion_id" />
+          </Key>
+          <Property Name="conversion_id" Type="int" Nullable="false" />
+          <Property Name="visitor_id" Type="int" Nullable="false" />
+          <Property Name="request_session_id" Type="int" Nullable="false" />
+          <Property Name="click_id" Type="int" Nullable="false" />
+          <Property Name="conversion_date" Type="datetime" Nullable="false" />
+          <Property Name="affiliate_affiliate_id" Type="int" Nullable="false" />
+          <Property Name="affiliate_affiliate_name" Type="nvarchar(max)" />
+          <Property Name="advertiser_advertiser_id" Type="int" Nullable="false" />
+          <Property Name="advertiser_advertiser_name" Type="nvarchar(max)" />
+          <Property Name="offer_offer_id" Type="int" Nullable="false" />
+          <Property Name="offer_offer_name" Type="nvarchar(max)" />
+          <Property Name="creative_creative_id" Type="int" Nullable="false" />
+          <Property Name="creative_creative_name" Type="nvarchar(max)" />
+          <Property Name="sub_id_1" Type="nvarchar(max)" />
+          <Property Name="sub_id_2" Type="nvarchar(max)" />
+          <Property Name="sub_id_3" Type="nvarchar(max)" />
+          <Property Name="conversion_type" Type="nvarchar(max)" />
+          <Property Name="paid_currency_id" Type="int" Nullable="false" />
+          <Property Name="paid_amount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="paid_formatted_amount" Type="nvarchar(max)" />
+          <Property Name="received_currency_id" Type="int" Nullable="false" />
+          <Property Name="received_amount" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="received_formatted_amount" Type="nvarchar(max)" />
+          <Property Name="pixel_dropped" Type="bit" Nullable="false" />
+          <Property Name="suppressed" Type="bit" Nullable="false" />
+          <Property Name="returned" Type="bit" Nullable="false" />
+          <Property Name="test" Type="bit" Nullable="false" />
+          <Property Name="transaction_id" Type="nvarchar(max)" />
+          <Property Name="ip_address" Type="nvarchar(max)" />
+          <Property Name="referrer_url" Type="nvarchar(max)" />
+          <Property Name="note" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="CountryCode" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DailySummaries">
+          <Key>
+            <PropertyRef Name="Pid" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Pid" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="Clicks" Type="int" Nullable="false" />
+          <Property Name="Conversions" Type="int" Nullable="false" />
+          <Property Name="Paid" Type="int" Nullable="false" />
+          <Property Name="Sellable" Type="int" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Nullable="false" Scale="2" />
+          <Property Name="Revenue" Type="decimal" Nullable="false" Scale="2" />
+        </EntityType>
+        <EntityType Name="People">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TrafficTypes">
+          <Key>
+            <PropertyRef Name="TrafficTypeId" />
+          </Key>
+          <Property Name="TrafficTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Verticals">
+          <Key>
+            <PropertyRef Name="VerticalId" />
+          </Key>
+          <Property Name="VerticalId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_dbo_CampaignAccountManagers_dbo_Campaigns_Pid">
+          <End Role="Campaigns" Type="WikiModel.Store.Campaigns" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignAccountManagers" Type="WikiModel.Store.CampaignAccountManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="CampaignAccountManagers">
+              <PropertyRef Name="Pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CampaignAccountManagers_dbo_People_PersonId">
+          <End Role="People" Type="WikiModel.Store.People" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignAccountManagers" Type="WikiModel.Store.CampaignAccountManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="CampaignAccountManagers">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CampaignAdManagers_dbo_Campaigns_Pid">
+          <End Role="Campaigns" Type="WikiModel.Store.Campaigns" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignAdManagers" Type="WikiModel.Store.CampaignAdManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="CampaignAdManagers">
+              <PropertyRef Name="Pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CampaignAdManagers_dbo_People_PersonId">
+          <End Role="People" Type="WikiModel.Store.People" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignAdManagers" Type="WikiModel.Store.CampaignAdManagers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="People">
+              <PropertyRef Name="PersonId" />
+            </Principal>
+            <Dependent Role="CampaignAdManagers">
+              <PropertyRef Name="PersonId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CampaignCountries_dbo_Campaigns_Pid">
+          <End Role="Campaigns" Type="WikiModel.Store.Campaigns" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignCountries" Type="WikiModel.Store.CampaignCountries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="CampaignCountries">
+              <PropertyRef Name="Pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CampaignCountries_dbo_Countries_CountryCode">
+          <End Role="Countries" Type="WikiModel.Store.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CampaignCountries" Type="WikiModel.Store.CampaignCountries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="CountryCode" />
+            </Principal>
+            <Dependent Role="CampaignCountries">
+              <PropertyRef Name="CountryCode" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Campaigns_dbo_Status_StatusId">
+          <End Role="Status" Type="WikiModel.Store.Status" Multiplicity="0..1" />
+          <End Role="Campaigns" Type="WikiModel.Store.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Campaigns_dbo_Verticals_Vertical_VerticalId">
+          <End Role="Verticals" Type="WikiModel.Store.Verticals" Multiplicity="0..1" />
+          <End Role="Campaigns" Type="WikiModel.Store.Campaigns" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verticals">
+              <PropertyRef Name="VerticalId" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="Vertical_VerticalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CampaignTrafficTypes_dbo_Campaigns_Pid">
+          <End Role="Campaigns" Type="WikiModel.Store.Campaigns" Multiplicity="1" />
+          <End Role="CampaignTrafficTypes" Type="WikiModel.Store.CampaignTrafficTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="CampaignTrafficTypes">
+              <PropertyRef Name="Pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_CampaignTrafficTypes_dbo_TrafficTypes_TrafficTypeId">
+          <End Role="TrafficTypes" Type="WikiModel.Store.TrafficTypes" Multiplicity="1" />
+          <End Role="CampaignTrafficTypes" Type="WikiModel.Store.CampaignTrafficTypes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TrafficTypes">
+              <PropertyRef Name="TrafficTypeId" />
+            </Principal>
+            <Dependent Role="CampaignTrafficTypes">
+              <PropertyRef Name="TrafficTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DailySummaries_dbo_Campaigns_Pid">
+          <End Role="Campaigns" Type="WikiModel.Store.Campaigns" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DailySummaries" Type="WikiModel.Store.DailySummaries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="DailySummaries">
+              <PropertyRef Name="Pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WikiModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="WikiContext" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Campaigns" EntityType="WikiModel.Campaign" />
+          <EntitySet Name="Conversions" EntityType="WikiModel.Conversion" />
+          <EntitySet Name="Countries" EntityType="WikiModel.Country" />
+          <EntitySet Name="DailySummaries" EntityType="WikiModel.DailySummary" />
+          <EntitySet Name="People" EntityType="WikiModel.Person" />
+          <EntitySet Name="Statuses" EntityType="WikiModel.Status" />
+          <EntitySet Name="TrafficTypes" EntityType="WikiModel.TrafficType" />
+          <EntitySet Name="Verticals" EntityType="WikiModel.Vertical" />
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Status_StatusId" Association="WikiModel.FK_dbo_Campaigns_dbo_Status_StatusId">
+            <End Role="Status" EntitySet="Statuses" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Campaigns_dbo_Verticals_Vertical_VerticalId" Association="WikiModel.FK_dbo_Campaigns_dbo_Verticals_Vertical_VerticalId">
+            <End Role="Verticals" EntitySet="Verticals" />
+            <End Role="Campaigns" EntitySet="Campaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_DailySummaries_dbo_Campaigns_Pid" Association="WikiModel.FK_dbo_DailySummaries_dbo_Campaigns_Pid">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="DailySummaries" EntitySet="DailySummaries" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignAccountManagers" Association="WikiModel.CampaignAccountManagers">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="People" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignAdManagers" Association="WikiModel.CampaignAdManagers">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="People" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignCountries" Association="WikiModel.CampaignCountries">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="Countries" EntitySet="Countries" />
+          </AssociationSet>
+          <AssociationSet Name="CampaignTrafficTypes" Association="WikiModel.CampaignTrafficTypes">
+            <End Role="Campaigns" EntitySet="Campaigns" />
+            <End Role="TrafficTypes" EntitySet="TrafficTypes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Campaign">
+          <Key>
+            <PropertyRef Name="Pid" />
+          </Key>
+          <Property Name="Pid" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PayableAction" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CostCurrency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="RevenueCurrency" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Revenue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="ImportantDetails" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CampaignCap" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ScrubPolicy" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="EomNotes" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Vertical_VerticalId" Type="Int32" />
+          <Property Name="Restrictions" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Budget" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PassedInfo" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="StatusId" Type="Int32" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <Property Name="DefaultPriceFormat" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RevenueIsPercentage" Type="Boolean" Nullable="false" />
+          <Property Name="MobileLP" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Status" Relationship="WikiModel.FK_dbo_Campaigns_dbo_Status_StatusId" FromRole="Campaigns" ToRole="Status" />
+          <NavigationProperty Name="Vertical" Relationship="WikiModel.FK_dbo_Campaigns_dbo_Verticals_Vertical_VerticalId" FromRole="Campaigns" ToRole="Verticals" />
+          <NavigationProperty Name="AccountManagers" Relationship="WikiModel.CampaignAccountManagers" FromRole="Campaigns" ToRole="People" />
+          <NavigationProperty Name="AdManagers" Relationship="WikiModel.CampaignAdManagers" FromRole="Campaigns" ToRole="People" />
+          <NavigationProperty Name="Countries" Relationship="WikiModel.CampaignCountries" FromRole="Campaigns" ToRole="Countries" />
+          <NavigationProperty Name="TrafficTypes" Relationship="WikiModel.CampaignTrafficTypes" FromRole="Campaigns" ToRole="TrafficTypes" />
+        </EntityType>
+        <EntityType Name="Conversion">
+          <Key>
+            <PropertyRef Name="conversion_id" />
+          </Key>
+          <Property Name="conversion_id" Type="Int32" Nullable="false" />
+          <Property Name="visitor_id" Type="Int32" Nullable="false" />
+          <Property Name="request_session_id" Type="Int32" Nullable="false" />
+          <Property Name="click_id" Type="Int32" Nullable="false" />
+          <Property Name="conversion_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="affiliate_affiliate_id" Type="Int32" Nullable="false" />
+          <Property Name="affiliate_affiliate_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="advertiser_advertiser_id" Type="Int32" Nullable="false" />
+          <Property Name="advertiser_advertiser_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="offer_offer_id" Type="Int32" Nullable="false" />
+          <Property Name="offer_offer_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="creative_creative_id" Type="Int32" Nullable="false" />
+          <Property Name="creative_creative_name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="sub_id_1" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="sub_id_2" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="sub_id_3" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="conversion_type" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="paid_currency_id" Type="Int32" Nullable="false" />
+          <Property Name="paid_amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="paid_formatted_amount" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="received_currency_id" Type="Int32" Nullable="false" />
+          <Property Name="received_amount" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="received_formatted_amount" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="pixel_dropped" Type="Boolean" Nullable="false" />
+          <Property Name="suppressed" Type="Boolean" Nullable="false" />
+          <Property Name="returned" Type="Boolean" Nullable="false" />
+          <Property Name="test" Type="Boolean" Nullable="false" />
+          <Property Name="transaction_id" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ip_address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="referrer_url" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="note" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryCode" />
+          </Key>
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Campaigns" Relationship="WikiModel.CampaignCountries" FromRole="Countries" ToRole="Campaigns" />
+        </EntityType>
+        <EntityType Name="DailySummary">
+          <Key>
+            <PropertyRef Name="Pid" />
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Pid" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Clicks" Type="Int32" Nullable="false" />
+          <Property Name="Conversions" Type="Int32" Nullable="false" />
+          <Property Name="Paid" Type="Int32" Nullable="false" />
+          <Property Name="Sellable" Type="Int32" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Revenue" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonId" />
+          </Key>
+          <Property Name="PersonId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="AccountManagerCampaigns" Relationship="WikiModel.CampaignAccountManagers" FromRole="People" ToRole="Campaigns" />
+          <NavigationProperty Name="AdManagerCampaigns" Relationship="WikiModel.CampaignAdManagers" FromRole="People" ToRole="Campaigns" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TrafficType">
+          <Key>
+            <PropertyRef Name="TrafficTypeId" />
+          </Key>
+          <Property Name="TrafficTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Campaigns" Relationship="WikiModel.CampaignTrafficTypes" FromRole="TrafficTypes" ToRole="Campaigns" />
+        </EntityType>
+        <EntityType Name="Vertical">
+          <Key>
+            <PropertyRef Name="VerticalId" />
+          </Key>
+          <Property Name="VerticalId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_dbo_Campaigns_dbo_Status_StatusId">
+          <End Role="Status" Type="WikiModel.Status" Multiplicity="0..1" />
+          <End Role="Campaigns" Type="WikiModel.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Campaigns_dbo_Verticals_Vertical_VerticalId">
+          <End Role="Verticals" Type="WikiModel.Vertical" Multiplicity="0..1" />
+          <End Role="Campaigns" Type="WikiModel.Campaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Verticals">
+              <PropertyRef Name="VerticalId" />
+            </Principal>
+            <Dependent Role="Campaigns">
+              <PropertyRef Name="Vertical_VerticalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_DailySummaries_dbo_Campaigns_Pid">
+          <End Role="Campaigns" Type="WikiModel.Campaign" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DailySummaries" Type="WikiModel.DailySummary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Campaigns">
+              <PropertyRef Name="Pid" />
+            </Principal>
+            <Dependent Role="DailySummaries">
+              <PropertyRef Name="Pid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CampaignAccountManagers">
+          <End Role="Campaigns" Type="WikiModel.Campaign" Multiplicity="*" />
+          <End Role="People" Type="WikiModel.Person" Multiplicity="*" />
+        </Association>
+        <Association Name="CampaignAdManagers">
+          <End Role="Campaigns" Type="WikiModel.Campaign" Multiplicity="*" />
+          <End Role="People" Type="WikiModel.Person" Multiplicity="*" />
+        </Association>
+        <Association Name="CampaignCountries">
+          <End Role="Campaigns" Type="WikiModel.Campaign" Multiplicity="*" />
+          <End Role="Countries" Type="WikiModel.Country" Multiplicity="*" />
+        </Association>
+        <Association Name="CampaignTrafficTypes">
+          <End Role="Campaigns" Type="WikiModel.Campaign" Multiplicity="*" />
+          <End Role="TrafficTypes" Type="WikiModel.TrafficType" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WikiModelStoreContainer" CdmEntityContainer="WikiContext">
+          <EntitySetMapping Name="Campaigns">
+            <EntityTypeMapping TypeName="WikiModel.Campaign">
+              <MappingFragment StoreEntitySet="Campaigns">
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="PayableAction" ColumnName="PayableAction" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="CostCurrency" ColumnName="CostCurrency" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="RevenueCurrency" ColumnName="RevenueCurrency" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+                <ScalarProperty Name="ImportantDetails" ColumnName="ImportantDetails" />
+                <ScalarProperty Name="CampaignCap" ColumnName="CampaignCap" />
+                <ScalarProperty Name="ScrubPolicy" ColumnName="ScrubPolicy" />
+                <ScalarProperty Name="EomNotes" ColumnName="EomNotes" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="Vertical_VerticalId" ColumnName="Vertical_VerticalId" />
+                <ScalarProperty Name="Restrictions" ColumnName="Restrictions" />
+                <ScalarProperty Name="Budget" ColumnName="Budget" />
+                <ScalarProperty Name="PassedInfo" ColumnName="PassedInfo" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="DefaultPriceFormat" ColumnName="DefaultPriceFormat" />
+                <ScalarProperty Name="RevenueIsPercentage" ColumnName="RevenueIsPercentage" />
+                <ScalarProperty Name="MobileLP" ColumnName="MobileLP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Conversions">
+            <EntityTypeMapping TypeName="WikiModel.Conversion">
+              <MappingFragment StoreEntitySet="Conversions">
+                <ScalarProperty Name="conversion_id" ColumnName="conversion_id" />
+                <ScalarProperty Name="visitor_id" ColumnName="visitor_id" />
+                <ScalarProperty Name="request_session_id" ColumnName="request_session_id" />
+                <ScalarProperty Name="click_id" ColumnName="click_id" />
+                <ScalarProperty Name="conversion_date" ColumnName="conversion_date" />
+                <ScalarProperty Name="affiliate_affiliate_id" ColumnName="affiliate_affiliate_id" />
+                <ScalarProperty Name="affiliate_affiliate_name" ColumnName="affiliate_affiliate_name" />
+                <ScalarProperty Name="advertiser_advertiser_id" ColumnName="advertiser_advertiser_id" />
+                <ScalarProperty Name="advertiser_advertiser_name" ColumnName="advertiser_advertiser_name" />
+                <ScalarProperty Name="offer_offer_id" ColumnName="offer_offer_id" />
+                <ScalarProperty Name="offer_offer_name" ColumnName="offer_offer_name" />
+                <ScalarProperty Name="creative_creative_id" ColumnName="creative_creative_id" />
+                <ScalarProperty Name="creative_creative_name" ColumnName="creative_creative_name" />
+                <ScalarProperty Name="sub_id_1" ColumnName="sub_id_1" />
+                <ScalarProperty Name="sub_id_2" ColumnName="sub_id_2" />
+                <ScalarProperty Name="sub_id_3" ColumnName="sub_id_3" />
+                <ScalarProperty Name="conversion_type" ColumnName="conversion_type" />
+                <ScalarProperty Name="paid_currency_id" ColumnName="paid_currency_id" />
+                <ScalarProperty Name="paid_amount" ColumnName="paid_amount" />
+                <ScalarProperty Name="paid_formatted_amount" ColumnName="paid_formatted_amount" />
+                <ScalarProperty Name="received_currency_id" ColumnName="received_currency_id" />
+                <ScalarProperty Name="received_amount" ColumnName="received_amount" />
+                <ScalarProperty Name="received_formatted_amount" ColumnName="received_formatted_amount" />
+                <ScalarProperty Name="pixel_dropped" ColumnName="pixel_dropped" />
+                <ScalarProperty Name="suppressed" ColumnName="suppressed" />
+                <ScalarProperty Name="returned" ColumnName="returned" />
+                <ScalarProperty Name="test" ColumnName="test" />
+                <ScalarProperty Name="transaction_id" ColumnName="transaction_id" />
+                <ScalarProperty Name="ip_address" ColumnName="ip_address" />
+                <ScalarProperty Name="referrer_url" ColumnName="referrer_url" />
+                <ScalarProperty Name="note" ColumnName="note" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="WikiModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DailySummaries">
+            <EntityTypeMapping TypeName="WikiModel.DailySummary">
+              <MappingFragment StoreEntitySet="DailySummaries">
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Clicks" ColumnName="Clicks" />
+                <ScalarProperty Name="Conversions" ColumnName="Conversions" />
+                <ScalarProperty Name="Paid" ColumnName="Paid" />
+                <ScalarProperty Name="Sellable" ColumnName="Sellable" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Revenue" ColumnName="Revenue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="WikiModel.Person">
+              <MappingFragment StoreEntitySet="People">
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuses">
+            <EntityTypeMapping TypeName="WikiModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TrafficTypes">
+            <EntityTypeMapping TypeName="WikiModel.TrafficType">
+              <MappingFragment StoreEntitySet="TrafficTypes">
+                <ScalarProperty Name="TrafficTypeId" ColumnName="TrafficTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Verticals">
+            <EntityTypeMapping TypeName="WikiModel.Vertical">
+              <MappingFragment StoreEntitySet="Verticals">
+                <ScalarProperty Name="VerticalId" ColumnName="VerticalId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="CampaignAccountManagers" TypeName="WikiModel.CampaignAccountManagers" StoreEntitySet="CampaignAccountManagers">
+            <EndProperty Name="Campaigns">
+              <ScalarProperty Name="Pid" ColumnName="Pid" />
+            </EndProperty>
+            <EndProperty Name="People">
+              <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CampaignAdManagers" TypeName="WikiModel.CampaignAdManagers" StoreEntitySet="CampaignAdManagers">
+            <EndProperty Name="Campaigns">
+              <ScalarProperty Name="Pid" ColumnName="Pid" />
+            </EndProperty>
+            <EndProperty Name="People">
+              <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CampaignCountries" TypeName="WikiModel.CampaignCountries" StoreEntitySet="CampaignCountries">
+            <EndProperty Name="Campaigns">
+              <ScalarProperty Name="Pid" ColumnName="Pid" />
+            </EndProperty>
+            <EndProperty Name="Countries">
+              <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="CampaignTrafficTypes" TypeName="WikiModel.CampaignTrafficTypes" StoreEntitySet="CampaignTrafficTypes">
+            <EndProperty Name="Campaigns">
+              <ScalarProperty Name="Pid" ColumnName="Pid" />
+            </EndProperty>
+            <EndProperty Name="TrafficTypes">
+              <ScalarProperty Name="TrafficTypeId" ColumnName="TrafficTypeId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

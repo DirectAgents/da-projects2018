@@ -1,0 +1,1401 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cakemarketing.com/api/3/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s1="API:id_name_store" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://cakemarketing.com/api/3/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cakemarketing.com/api/3/">
+      <s:import namespace="API:id_name_store" />
+      <s:element name="Affiliates">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="affiliate_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="affiliate_name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="account_manager_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tag_id" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="start_at_row" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="row_limit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_field" type="tns:AffiliatesSortFields" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_descending" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="AffiliatesSortFields">
+        <s:restriction base="s:string">
+          <s:enumeration value="affiliate_id" />
+          <s:enumeration value="affiliate_name" />
+          <s:enumeration value="date_created" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AffiliatesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AffiliatesResult" type="tns:affiliate_export_response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="affiliate_export_response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:get_response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="affiliates" type="tns:ArrayOfAffiliate" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="get_response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:base_response">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="row_count" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="base_response">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfAffiliate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="affiliate" nillable="true" type="tns:affiliate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="affiliate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="affiliate_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="affiliate_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tier" type="s1:affiliate_tier" />
+          <s:element minOccurs="0" maxOccurs="1" name="account_managers" type="tns:ArrayOfContact" />
+          <s:element minOccurs="0" maxOccurs="1" name="account_status" type="s1:account_status" />
+          <s:element minOccurs="0" maxOccurs="1" name="inactive_reason" type="s1:inactive_reason" />
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="tns:address" />
+          <s:element minOccurs="0" maxOccurs="1" name="website" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="payment_type" type="tns:payment_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="contacts" type="tns:ArrayOfContact" />
+          <s:element minOccurs="0" maxOccurs="1" name="tags" type="tns:ArrayOfTag" />
+          <s:element minOccurs="0" maxOccurs="1" name="traffic_types" type="tns:traffic_types" />
+          <s:element minOccurs="1" maxOccurs="1" name="minimum_payment_threshold" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="auto_payment_fee" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="payment_to" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="tax_class" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ssn_tax_id" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pay_vat" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="swift_iban" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="referrals_enabled" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="referred_by_affiliate" type="s1:affiliate" />
+          <s:element minOccurs="0" maxOccurs="1" name="referral_info" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="billing_cycle" type="s1:billing_cycle" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency_settings" type="tns:currency_settings" />
+          <s:element minOccurs="1" maxOccurs="1" name="quickbooks_id" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="online_signup" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="signup_ip_address" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="pay_for_conversions" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="review" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="review_new_subaffiliates" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="suppression" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="suppression_cap" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="1" maxOccurs="1" name="auto_approve_campaigns" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="auto_approve_pixels" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="hide_offers" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfContact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="contact" nillable="true" type="s1:contact" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="address">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="street_1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="street_2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="city" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="state" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="zip_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="payment_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="payment_type_id" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="payment_type_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="payment_type_info" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTag">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tag" nillable="true" type="s1:tag" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="traffic_types">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="price_formats" type="tns:ArrayOfPrice_format" />
+          <s:element minOccurs="0" maxOccurs="1" name="media_types" type="tns:ArrayOfMedia_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="vertical_categories" type="tns:ArrayOfVertical_category" />
+          <s:element minOccurs="0" maxOccurs="1" name="countries" type="tns:ArrayOfCountry" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPrice_format">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="price_format" nillable="true" type="s1:price_format" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMedia_type">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="media_type" nillable="true" type="tns:media_type" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="media_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="media_type_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="media_type_name" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="media_type_category_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="media_type_category_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVertical_category">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="vertical_category" nillable="true" type="s1:vertical_category" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCountry">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="country" nillable="true" type="s1:country" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="currency_settings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="currency" type="s1:currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="payment_setting" type="s1:payment_setting" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Advertisers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="advertiser_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="advertiser_name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="account_manager_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="tag_id" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="start_at_row" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="row_limit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_field" type="tns:AdvertisersSortFields" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_descending" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="AdvertisersSortFields">
+        <s:restriction base="s:string">
+          <s:enumeration value="advertiser_id" />
+          <s:enumeration value="advertiser_name" />
+          <s:enumeration value="date_created" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AdvertisersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdvertisersResult" type="tns:advertiser_export_response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="advertiser_export_response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:get_response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="advertisers" type="tns:ArrayOfAdvertiser" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfAdvertiser">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="advertiser" nillable="true" type="tns:advertiser" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="advertiser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="advertiser_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="advertiser_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="account_managers" type="tns:ArrayOfContact" />
+          <s:element minOccurs="0" maxOccurs="1" name="account_status" type="s1:account_status" />
+          <s:element minOccurs="0" maxOccurs="1" name="address" type="tns:address" />
+          <s:element minOccurs="0" maxOccurs="1" name="website" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="contacts" type="tns:ArrayOfContact" />
+          <s:element minOccurs="0" maxOccurs="1" name="tags" type="tns:ArrayOfTag" />
+          <s:element minOccurs="0" maxOccurs="1" name="suppression_lists" type="tns:ArrayOfSuppression_list" />
+          <s:element minOccurs="0" maxOccurs="1" name="blacklists" type="tns:ArrayOfBlacklist" />
+          <s:element minOccurs="0" maxOccurs="1" name="billing_cycle" type="s1:billing_cycle" />
+          <s:element minOccurs="1" maxOccurs="1" name="quickbooks_id" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="online_signup" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="signup_ip_address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSuppression_list">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="suppression_list" nillable="true" type="tns:suppression_list" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="suppression_list">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="suppression_list_id" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="suppression_list_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="suppression_list_type" type="s1:suppression_list_type" />
+          <s:element minOccurs="1" maxOccurs="1" name="md5_only" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="static_link_info" type="tns:static_link_info" />
+          <s:element minOccurs="0" maxOccurs="1" name="unsub_central_info" type="tns:unsub_central_info" />
+          <s:element minOccurs="0" maxOccurs="1" name="optizmo_info" type="tns:optizmo_info" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="static_link_info">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="list_location" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="unsub_central_info">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="unsub_central_api_url" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="unsub_central_parent_hash" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="optizmo_info">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="list_location" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="list_size" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_updated" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfBlacklist">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="blacklist" nillable="true" type="tns:blacklist" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="blacklist">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="advertiser" type="s1:advertiser" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer" type="s1:offer" />
+          <s:element minOccurs="0" maxOccurs="1" name="affiliate" type="s1:affiliate" />
+          <s:element minOccurs="0" maxOccurs="1" name="sub_affiliate" type="s1:sub_affiliate" />
+          <s:element minOccurs="0" maxOccurs="1" name="blacklist_reason" type="s1:blacklist_reason" />
+          <s:element minOccurs="0" maxOccurs="1" name="blacklist_type" type="s1:blacklist_type" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Offers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offer_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="offer_name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="advertiser_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="vertical_id" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="offer_type_id" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="media_type_id" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="offer_status_id" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="tag_id" type="s:short" />
+            <s:element minOccurs="1" maxOccurs="1" name="start_at_row" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="row_limit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_field" type="tns:OffersSortFields" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_descending" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="OffersSortFields">
+        <s:restriction base="s:string">
+          <s:enumeration value="offer_id" />
+          <s:enumeration value="offer_name" />
+          <s:enumeration value="date_created" />
+          <s:enumeration value="expiration_date" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="OffersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OffersResult" type="tns:offer_export_response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="offer_export_response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:get_response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="offers" type="tns:ArrayOfOffer" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfOffer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="offer" nillable="true" type="tns:offer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="offer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="offer_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="advertiser" type="s1:advertiser" />
+          <s:element minOccurs="0" maxOccurs="1" name="vertical" type="s1:vertical" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_type" type="s1:offer_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_status" type="s1:offer_status" />
+          <s:element minOccurs="1" maxOccurs="1" name="hidden" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_image_link" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="default_offer_contract_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_contracts" type="tns:ArrayOfOffer_contract" />
+          <s:element minOccurs="0" maxOccurs="1" name="tiers" type="tns:ArrayOfTier" />
+          <s:element minOccurs="0" maxOccurs="1" name="tags" type="tns:ArrayOfTag" />
+          <s:element minOccurs="0" maxOccurs="1" name="allowed_media_types" type="tns:ArrayOfMedia_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency" type="s1:currency" />
+          <s:element minOccurs="1" maxOccurs="1" name="ssl" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="cookie_domain_override" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="suppression_amount" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="click_cap" type="tns:cap" />
+          <s:element minOccurs="0" maxOccurs="1" name="conversion_cap" type="tns:cap" />
+          <s:element minOccurs="1" maxOccurs="1" name="click_cookie_days" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="impression_cookie_days" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="enable_view_thru_conversions" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="click_trumps_impression" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="disable_prepop_appending" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="redirect_offer" type="s1:offer_contract" />
+          <s:element minOccurs="1" maxOccurs="1" name="redirect_404" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="session_regeneration_seconds" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="session_regeneration_type" type="s1:session_regeneration_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="suppression_list" type="tns:suppression_list" />
+          <s:element minOccurs="0" maxOccurs="1" name="unsubscribe_link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="preview_link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_description" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="restrictions" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="advertiser_extended_terms" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="testing_instructions" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="from_lines" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="subject_lines" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="upsells" type="tns:ArrayOfUpsell" />
+          <s:element minOccurs="0" maxOccurs="1" name="thankyou_html" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="submission_options" type="tns:submission_options" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="expiration_date" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfOffer_contract">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="offer_contract" nillable="true" type="tns:offer_contract" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="offer_contract">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="offer_contract_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_contract_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="price_format" type="s1:price_format" />
+          <s:element minOccurs="0" maxOccurs="1" name="payout" type="tns:payment" />
+          <s:element minOccurs="0" maxOccurs="1" name="received" type="tns:payment" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_link" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="thankyou_link" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="hidden" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="submission_payment_options" type="tns:submission_payment_options" />
+          <s:element minOccurs="0" maxOccurs="1" name="geo_targeting" type="tns:geo_targeting" />
+          <s:element minOccurs="0" maxOccurs="1" name="steps" type="tns:ArrayOfStep" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="payment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="is_percentage" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="formatted_amount" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="submission_payment_options">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="pay_on_available_buyers_only" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="host_post" type="tns:host_post_payment" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="host_post_payment">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="pay_on_post" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="geo_targeting">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="use_default_offer_contract" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="allowed_countries" type="tns:ArrayOfGeo_target" />
+          <s:element minOccurs="0" maxOccurs="1" name="disallowed_countries" type="tns:ArrayOfGeo_target" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfGeo_target">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="geo_target" nillable="true" type="tns:geo_target" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="geo_target">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="country" type="s1:country" />
+          <s:element minOccurs="0" maxOccurs="1" name="redirect_offer" type="s1:offer_contract" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfStep">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="step" nillable="true" type="tns:step" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="step">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="step_number" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="step_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="price_format" type="s1:price_format" />
+          <s:element minOccurs="0" maxOccurs="1" name="payout" type="tns:payment" />
+          <s:element minOccurs="1" maxOccurs="1" name="add_to_payout" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="received" type="tns:payment" />
+          <s:element minOccurs="1" maxOccurs="1" name="add_to_received" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="record_conversion" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="show_in_portal" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="fire_pixel" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_link" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfTier">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="tier" nillable="true" type="tns:tier" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tier">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="price_format" type="s1:price_format" />
+          <s:element minOccurs="0" maxOccurs="1" name="affiliate_tier" type="s1:affiliate_tier" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_contract" type="s1:offer_contract" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="cap">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="limit" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="cap_interval" type="s1:cap_interval" />
+          <s:element minOccurs="1" maxOccurs="1" name="start_date" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="review_no_redirect" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfUpsell">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="upsell" nillable="true" type="tns:upsell" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="upsell">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="offer_contract" type="s1:offer_contract" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative" type="s1:creative" />
+          <s:element minOccurs="1" maxOccurs="1" name="order" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="top_html" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="bottom_html" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="prepop_link" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="submission_options">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="sell_only_to_listed_buyers" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="ping_first" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="asynchronous_ping" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="sell_exclusive_only" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="host_post" type="tns:host_post" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="host_post">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="send_failures_to_queue" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="relay_buyer_error" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="total_timeout" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Creatives">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="creative_id" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="creative_name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="offer_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="creative_type_id" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="creative_status_id" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="start_at_row" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="row_limit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_field" type="tns:CreativesSortFields" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_descending" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CreativesSortFields">
+        <s:restriction base="s:string">
+          <s:enumeration value="creative_id" />
+          <s:enumeration value="creative_name" />
+          <s:enumeration value="date_created" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CreativesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreativesResult" type="tns:creative_export_response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="creative_export_response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:get_response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="creatives" type="tns:ArrayOfCreative" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCreative">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="creative" nillable="true" type="tns:creative" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="creative">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="creative_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_type" type="s1:creative_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_status" type="s1:creative_status" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_link_override" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="width" nillable="true" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="height" nillable="true" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_files" type="tns:ArrayOfCreative_file" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="expiration_date" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCreative_file">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="creative_file" nillable="true" type="tns:creative_file" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="creative_file">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="creative_file_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_file_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_file_link" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="preview" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Campaigns">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="campaign_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="offer_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="affiliate_id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="account_status_id" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="media_type_id" type="s:unsignedByte" />
+            <s:element minOccurs="1" maxOccurs="1" name="start_at_row" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="row_limit" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_field" type="tns:CampaignsSortFields" />
+            <s:element minOccurs="1" maxOccurs="1" name="sort_descending" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:simpleType name="CampaignsSortFields">
+        <s:restriction base="s:string">
+          <s:enumeration value="campaign_id" />
+          <s:enumeration value="date_created" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="CampaignsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CampaignsResult" type="tns:campaign_export_response" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="campaign_export_response">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:get_response">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="campaigns" type="tns:ArrayOfCampaign" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCampaign">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="campaign" nillable="true" type="tns:campaign" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="campaign">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="campaign_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="third_party_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="affiliate" type="s1:affiliate" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer" type="s1:offer" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_contract" type="s1:offer_contract" />
+          <s:element minOccurs="1" maxOccurs="1" name="original" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="non_original" type="tns:non_original" />
+          <s:element minOccurs="0" maxOccurs="1" name="exceptions" type="tns:exceptions" />
+          <s:element minOccurs="0" maxOccurs="1" name="account_status" type="s1:account_status" />
+          <s:element minOccurs="0" maxOccurs="1" name="payout" type="tns:payment" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency" type="s1:currency" />
+          <s:element minOccurs="0" maxOccurs="1" name="media_type" type="s1:media_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="steps" type="tns:ArrayOfCampaign_step" />
+          <s:element minOccurs="0" maxOccurs="1" name="deal_flow" type="tns:deal_flow" />
+          <s:element minOccurs="1" maxOccurs="1" name="paid" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="paid_redirects" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="disable_prepop_appending" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="suppression_amount" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="click_cap" type="tns:cap" />
+          <s:element minOccurs="0" maxOccurs="1" name="conversion_cap" type="tns:cap" />
+          <s:element minOccurs="0" maxOccurs="1" name="pixel_info" type="tns:pixel_info" />
+          <s:element minOccurs="0" maxOccurs="1" name="upsell_info" type="tns:upsell_info" />
+          <s:element minOccurs="0" maxOccurs="1" name="submission_options" type="tns:campaign_submission_options" />
+          <s:element minOccurs="0" maxOccurs="1" name="test_link" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_created" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="expiration_date" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="non_original">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="original_campaign_id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="use_original_campaign_pixel" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="exceptions">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="allowed_sub_affiliates" type="tns:ArrayOfSub_affiliate" />
+          <s:element minOccurs="0" maxOccurs="1" name="allowed_creatives" type="tns:ArrayOfCreative" />
+          <s:element minOccurs="0" maxOccurs="1" name="blocked_sub_affiliates" type="tns:ArrayOfSub_affiliate" />
+          <s:element minOccurs="0" maxOccurs="1" name="blocked_creatives" type="tns:ArrayOfCreative" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfSub_affiliate">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="sub_affiliate" nillable="true" type="s1:sub_affiliate" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfCampaign_step">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="campaign_step" nillable="true" type="tns:campaign_step" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="campaign_step">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="step_number" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="step_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="price_format" type="s1:price_format" />
+          <s:element minOccurs="1" maxOccurs="1" name="is_default_payout" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="payout" type="tns:payment" />
+          <s:element minOccurs="1" maxOccurs="1" name="use_parent_pixel" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="pixel_html" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="postback_url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="postback_delay_ms" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="deal_flow">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="date_contacted" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_io_sent" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_io_signed" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_creative_sent" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="date_pixel_placed" nillable="true" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="pixel_info">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="pixel_status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="pixel_html" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="postback_url" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="postback_delay_ms" nillable="true" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="upsell_info">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="disable_upsells" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="clear_session_on_conversion" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="campaign_submission_options">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="review" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="minimum_margin_percentage" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="minimum_margin_amount" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="paid_filters" type="tns:ArrayOfFilter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfFilter">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="filter" nillable="true" type="tns:filter" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="filter">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="filter_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="filter_type" type="tns:filter_type" />
+          <s:element minOccurs="1" maxOccurs="1" name="param_number" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="param_string" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="param_date" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="param_bool" nillable="true" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="filter_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="filter_type_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="filter_type_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="data_type" type="s1:data_type" />
+          <s:element minOccurs="0" maxOccurs="1" name="operator" type="s1:operator" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="affiliate_export_response" nillable="true" type="tns:affiliate_export_response" />
+      <s:element name="advertiser_export_response" nillable="true" type="tns:advertiser_export_response" />
+      <s:element name="offer_export_response" nillable="true" type="tns:offer_export_response" />
+      <s:element name="creative_export_response" nillable="true" type="tns:creative_export_response" />
+      <s:element name="campaign_export_response" nillable="true" type="tns:campaign_export_response" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="API:id_name_store">
+      <s:complexType name="affiliate_tier">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="affiliate_tier_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="affiliate_tier_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="contact">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="contact_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="contact_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="account_status">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="account_status_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="account_status_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="inactive_reason">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="inactive_reason_id" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="inactive_reason_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="tag">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="tag_id" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="tag_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="price_format">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="price_format_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="price_format_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="vertical_category">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="vertical_category_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="vertical_category_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="country">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="country_code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="country_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="affiliate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="affiliate_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="affiliate_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="billing_cycle">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="billing_cycle_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="billing_cycle_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="currency">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="currency_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency_symbol" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="currency_abbr" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="payment_setting">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="payment_setting_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="payment_setting_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="suppression_list_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="suppression_list_type_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="suppression_list_type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="advertiser">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="advertiser_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="advertiser_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="offer">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="offer_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="sub_affiliate">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="sub_affiliate_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="sub_affiliate_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="blacklist_reason">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="blacklist_reason_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="blacklist_reason_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="blacklist_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="blacklist_type_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="blacklist_type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="vertical">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="vertical_id" type="s:short" />
+          <s:element minOccurs="0" maxOccurs="1" name="vertical_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="offer_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="offer_type_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="offer_status">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="offer_status_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_status_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="offer_contract">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="offer_contract_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="offer_contract_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="cap_interval">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="cap_interval_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="cap_interval_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="session_regeneration_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="session_regeneration_type_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="session_regeneration_type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="creative">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="creative_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="creative_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="creative_type_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="creative_status">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="creative_status_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="creative_status_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="media_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="media_type_id" nillable="true" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="media_type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="data_type">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="data_type_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="data_type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="operator">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="operator_id" type="s:unsignedByte" />
+          <s:element minOccurs="0" maxOccurs="1" name="operator_name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="operator_label" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AffiliatesSoapIn">
+    <wsdl:part name="parameters" element="tns:Affiliates" />
+  </wsdl:message>
+  <wsdl:message name="AffiliatesSoapOut">
+    <wsdl:part name="parameters" element="tns:AffiliatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdvertisersSoapIn">
+    <wsdl:part name="parameters" element="tns:Advertisers" />
+  </wsdl:message>
+  <wsdl:message name="AdvertisersSoapOut">
+    <wsdl:part name="parameters" element="tns:AdvertisersResponse" />
+  </wsdl:message>
+  <wsdl:message name="OffersSoapIn">
+    <wsdl:part name="parameters" element="tns:Offers" />
+  </wsdl:message>
+  <wsdl:message name="OffersSoapOut">
+    <wsdl:part name="parameters" element="tns:OffersResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreativesSoapIn">
+    <wsdl:part name="parameters" element="tns:Creatives" />
+  </wsdl:message>
+  <wsdl:message name="CreativesSoapOut">
+    <wsdl:part name="parameters" element="tns:CreativesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsSoapIn">
+    <wsdl:part name="parameters" element="tns:Campaigns" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsSoapOut">
+    <wsdl:part name="parameters" element="tns:CampaignsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AffiliatesHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="affiliate_id" type="s:string" />
+    <wsdl:part name="affiliate_name" type="s:string" />
+    <wsdl:part name="account_manager_id" type="s:string" />
+    <wsdl:part name="tag_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AffiliatesHttpGetOut">
+    <wsdl:part name="Body" element="tns:affiliate_export_response" />
+  </wsdl:message>
+  <wsdl:message name="AdvertisersHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="advertiser_id" type="s:string" />
+    <wsdl:part name="advertiser_name" type="s:string" />
+    <wsdl:part name="account_manager_id" type="s:string" />
+    <wsdl:part name="tag_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdvertisersHttpGetOut">
+    <wsdl:part name="Body" element="tns:advertiser_export_response" />
+  </wsdl:message>
+  <wsdl:message name="OffersHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="offer_id" type="s:string" />
+    <wsdl:part name="offer_name" type="s:string" />
+    <wsdl:part name="advertiser_id" type="s:string" />
+    <wsdl:part name="vertical_id" type="s:string" />
+    <wsdl:part name="offer_type_id" type="s:string" />
+    <wsdl:part name="media_type_id" type="s:string" />
+    <wsdl:part name="offer_status_id" type="s:string" />
+    <wsdl:part name="tag_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OffersHttpGetOut">
+    <wsdl:part name="Body" element="tns:offer_export_response" />
+  </wsdl:message>
+  <wsdl:message name="CreativesHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="creative_id" type="s:string" />
+    <wsdl:part name="creative_name" type="s:string" />
+    <wsdl:part name="offer_id" type="s:string" />
+    <wsdl:part name="creative_type_id" type="s:string" />
+    <wsdl:part name="creative_status_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreativesHttpGetOut">
+    <wsdl:part name="Body" element="tns:creative_export_response" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="campaign_id" type="s:string" />
+    <wsdl:part name="offer_id" type="s:string" />
+    <wsdl:part name="affiliate_id" type="s:string" />
+    <wsdl:part name="account_status_id" type="s:string" />
+    <wsdl:part name="media_type_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsHttpGetOut">
+    <wsdl:part name="Body" element="tns:campaign_export_response" />
+  </wsdl:message>
+  <wsdl:message name="AffiliatesHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="affiliate_id" type="s:string" />
+    <wsdl:part name="affiliate_name" type="s:string" />
+    <wsdl:part name="account_manager_id" type="s:string" />
+    <wsdl:part name="tag_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AffiliatesHttpPostOut">
+    <wsdl:part name="Body" element="tns:affiliate_export_response" />
+  </wsdl:message>
+  <wsdl:message name="AdvertisersHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="advertiser_id" type="s:string" />
+    <wsdl:part name="advertiser_name" type="s:string" />
+    <wsdl:part name="account_manager_id" type="s:string" />
+    <wsdl:part name="tag_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdvertisersHttpPostOut">
+    <wsdl:part name="Body" element="tns:advertiser_export_response" />
+  </wsdl:message>
+  <wsdl:message name="OffersHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="offer_id" type="s:string" />
+    <wsdl:part name="offer_name" type="s:string" />
+    <wsdl:part name="advertiser_id" type="s:string" />
+    <wsdl:part name="vertical_id" type="s:string" />
+    <wsdl:part name="offer_type_id" type="s:string" />
+    <wsdl:part name="media_type_id" type="s:string" />
+    <wsdl:part name="offer_status_id" type="s:string" />
+    <wsdl:part name="tag_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="OffersHttpPostOut">
+    <wsdl:part name="Body" element="tns:offer_export_response" />
+  </wsdl:message>
+  <wsdl:message name="CreativesHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="creative_id" type="s:string" />
+    <wsdl:part name="creative_name" type="s:string" />
+    <wsdl:part name="offer_id" type="s:string" />
+    <wsdl:part name="creative_type_id" type="s:string" />
+    <wsdl:part name="creative_status_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CreativesHttpPostOut">
+    <wsdl:part name="Body" element="tns:creative_export_response" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="campaign_id" type="s:string" />
+    <wsdl:part name="offer_id" type="s:string" />
+    <wsdl:part name="affiliate_id" type="s:string" />
+    <wsdl:part name="account_status_id" type="s:string" />
+    <wsdl:part name="media_type_id" type="s:string" />
+    <wsdl:part name="start_at_row" type="s:string" />
+    <wsdl:part name="row_limit" type="s:string" />
+    <wsdl:part name="sort_field" type="s:string" />
+    <wsdl:part name="sort_descending" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="CampaignsHttpPostOut">
+    <wsdl:part name="Body" element="tns:campaign_export_response" />
+  </wsdl:message>
+  <wsdl:portType name="exportSoap">
+    <wsdl:operation name="Affiliates">
+      <wsdl:input message="tns:AffiliatesSoapIn" />
+      <wsdl:output message="tns:AffiliatesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Advertisers">
+      <wsdl:input message="tns:AdvertisersSoapIn" />
+      <wsdl:output message="tns:AdvertisersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Offers">
+      <wsdl:input message="tns:OffersSoapIn" />
+      <wsdl:output message="tns:OffersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Creatives">
+      <wsdl:input message="tns:CreativesSoapIn" />
+      <wsdl:output message="tns:CreativesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <wsdl:input message="tns:CampaignsSoapIn" />
+      <wsdl:output message="tns:CampaignsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="exportHttpGet">
+    <wsdl:operation name="Affiliates">
+      <wsdl:input message="tns:AffiliatesHttpGetIn" />
+      <wsdl:output message="tns:AffiliatesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Advertisers">
+      <wsdl:input message="tns:AdvertisersHttpGetIn" />
+      <wsdl:output message="tns:AdvertisersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Offers">
+      <wsdl:input message="tns:OffersHttpGetIn" />
+      <wsdl:output message="tns:OffersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Creatives">
+      <wsdl:input message="tns:CreativesHttpGetIn" />
+      <wsdl:output message="tns:CreativesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <wsdl:input message="tns:CampaignsHttpGetIn" />
+      <wsdl:output message="tns:CampaignsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="exportHttpPost">
+    <wsdl:operation name="Affiliates">
+      <wsdl:input message="tns:AffiliatesHttpPostIn" />
+      <wsdl:output message="tns:AffiliatesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Advertisers">
+      <wsdl:input message="tns:AdvertisersHttpPostIn" />
+      <wsdl:output message="tns:AdvertisersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Offers">
+      <wsdl:input message="tns:OffersHttpPostIn" />
+      <wsdl:output message="tns:OffersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Creatives">
+      <wsdl:input message="tns:CreativesHttpPostIn" />
+      <wsdl:output message="tns:CreativesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <wsdl:input message="tns:CampaignsHttpPostIn" />
+      <wsdl:output message="tns:CampaignsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="exportSoap" type="tns:exportSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Affiliates">
+      <soap:operation soapAction="http://cakemarketing.com/api/3/Affiliates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertisers">
+      <soap:operation soapAction="http://cakemarketing.com/api/3/Advertisers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Offers">
+      <soap:operation soapAction="http://cakemarketing.com/api/3/Offers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Creatives">
+      <soap:operation soapAction="http://cakemarketing.com/api/3/Creatives" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <soap:operation soapAction="http://cakemarketing.com/api/3/Campaigns" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="exportSoap12" type="tns:exportSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Affiliates">
+      <soap12:operation soapAction="http://cakemarketing.com/api/3/Affiliates" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertisers">
+      <soap12:operation soapAction="http://cakemarketing.com/api/3/Advertisers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Offers">
+      <soap12:operation soapAction="http://cakemarketing.com/api/3/Offers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Creatives">
+      <soap12:operation soapAction="http://cakemarketing.com/api/3/Creatives" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <soap12:operation soapAction="http://cakemarketing.com/api/3/Campaigns" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="exportHttpGet" type="tns:exportHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Affiliates">
+      <http:operation location="/Affiliates" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertisers">
+      <http:operation location="/Advertisers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Offers">
+      <http:operation location="/Offers" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Creatives">
+      <http:operation location="/Creatives" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <http:operation location="/Campaigns" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="exportHttpPost" type="tns:exportHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Affiliates">
+      <http:operation location="/Affiliates" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertisers">
+      <http:operation location="/Advertisers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Offers">
+      <http:operation location="/Offers" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Creatives">
+      <http:operation location="/Creatives" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Campaigns">
+      <http:operation location="/Campaigns" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="export">
+    <wsdl:port name="exportSoap" binding="tns:exportSoap">
+      <soap:address location="https://login.directagents.com/api/3/export.asmx" />
+    </wsdl:port>
+    <wsdl:port name="exportSoap12" binding="tns:exportSoap12">
+      <soap12:address location="https://login.directagents.com/api/3/export.asmx" />
+    </wsdl:port>
+    <wsdl:port name="exportHttpGet" binding="tns:exportHttpGet">
+      <http:address location="https://login.directagents.com/api/3/export.asmx" />
+    </wsdl:port>
+    <wsdl:port name="exportHttpPost" binding="tns:exportHttpPost">
+      <http:address location="https://login.directagents.com/api/3/export.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

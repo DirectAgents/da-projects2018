@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.Variable>
+
+<h2>Variables</h2>
+
+<table border="1">
+<tr>
+    <th></th>
+    <th>Name</th>
+    <th>StringVal</th>
+    <th>IntVal</th>
+    <th>DecVal</th>
+</tr>
+@foreach (var variable in Model)
+{
+<tr>
+    <td>@Html.ActionLink("edit", "Variable", new { name = variable.Name })</td>
+    <td>@variable.Name</td>
+    <td>@variable.StringVal</td>
+    <td>@variable.IntVal</td>
+    <td>@variable.DecVal</td>
+</tr>
+}
+</table>

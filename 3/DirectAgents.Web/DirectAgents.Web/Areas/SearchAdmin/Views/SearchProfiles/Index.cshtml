@@ -1,0 +1,54 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPSearch.SearchProfile>
+@{
+    string orderBy = ViewBag.OrderBy;
+    bool showAll = ViewBag.ShowAll;
+    string activeSinceMonths = Request["activeSinceMonths"]; //used for links
+    bool super = Request.QueryString["super"] == "1";
+}
+
+<h2>SearchProfiles</h2>
+
+<table>
+    <tr>
+        <th style="text-align:right">@Html.ActionLink("ID", "Index", new { orderBy = "id", activeSinceMonths = activeSinceMonths })</th>
+        <th></th>
+        <th>@Html.ActionLink("Name", "Index", new { orderBy = "name", activeSinceMonths = activeSinceMonths })</th>
+        <th>SearchAccounts</th>
+        <th>Spreadsheet</th>
+        <th>StartDayOfWeek</th>
+    </tr>
+@foreach (var sp in Model)
+{
+    int numAccts = sp.SearchAccounts.Count;
+<tr>
+    <td style="text-align:right">@sp.SearchProfileId</td>
+    <td>
+        @(sp.ShowRevenue ? "$" : "")
+        @(sp.ShowCalls ? "+" : "")
+    </td>
+    <td>@sp.SearchProfileName</td>
+    <td>
+        @Html.ActionLink("List(" + numAccts + ")", "Index", "SearchAccounts", new { spId = sp.SearchProfileId }, null) |
+        @Html.ActionLink("StatsGauge", "IndexGauge", "SearchAccounts", new { spId = sp.SearchProfileId }, null)
+    </td>
+    <td style="text-align:center">@Html.ActionLink("Generate", "GenerateSpreadsheet", "Old", new { spId = sp.SearchProfileId }, null)</td>
+    <td style="text-align:center">@((DayOfWeek)sp.StartDayOfWeek)</td>
+</tr>
+}
+</table>
+$ = include revenue &nbsp;&nbsp;&nbsp; + = include calls
+
+<br /><br />
+@if (showAll)
+{
+    @Html.ActionLink("Show active", "Index", new { orderBy = orderBy })
+}
+else
+{
+    @Html.ActionLink("Show all", "Index", new { orderBy = orderBy, activeSinceMonths = -1 })
+}
+@if (super)
+{
+    <br /><br />
+    @Html.ActionLink("New SearchProfile", "CreateNew")
+}

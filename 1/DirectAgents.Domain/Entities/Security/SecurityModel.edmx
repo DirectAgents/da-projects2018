@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SecurityModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="SecurityModelStoreContainer">
+          <EntitySet Name="Groups" EntityType="SecurityModel.Store.Groups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permissions" EntityType="SecurityModel.Store.Permissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RoleGroup" EntityType="SecurityModel.Store.RoleGroup" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="RolePermission" EntityType="SecurityModel.Store.RolePermission" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Roles" EntityType="SecurityModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_RoleGroup_Group" Association="SecurityModel.Store.FK_RoleGroup_Group">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="RoleGroup" EntitySet="RoleGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RoleGroup_Role" Association="SecurityModel.Store.FK_RoleGroup_Role">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RoleGroup" EntitySet="RoleGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermission_Permission" Association="SecurityModel.Store.FK_RolePermission_Permission">
+            <End Role="Permissions" EntitySet="Permissions" />
+            <End Role="RolePermission" EntitySet="RolePermission" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RolePermission_Role" Association="SecurityModel.Store.FK_RolePermission_Role">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="RolePermission" EntitySet="RolePermission" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Groups">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="WindowsIdentity" Type="varchar" Nullable="false" MaxLength="500" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="255" />
+          <Property Name="IpAddress" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Tag" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="RoleGroup">
+          <Key>
+            <PropertyRef Name="Roles_Id" />
+            <PropertyRef Name="Groups_Id" />
+          </Key>
+          <Property Name="Roles_Id" Type="int" Nullable="false" />
+          <Property Name="Groups_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RolePermission">
+          <Key>
+            <PropertyRef Name="Roles_Id" />
+            <PropertyRef Name="Permissions_Id" />
+          </Key>
+          <Property Name="Roles_Id" Type="int" Nullable="false" />
+          <Property Name="Permissions_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK_RoleGroup_Group">
+          <End Role="Groups" Type="SecurityModel.Store.Groups" Multiplicity="1" />
+          <End Role="RoleGroup" Type="SecurityModel.Store.RoleGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Groups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleGroup">
+              <PropertyRef Name="Groups_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RoleGroup_Role">
+          <End Role="Roles" Type="SecurityModel.Store.Roles" Multiplicity="1" />
+          <End Role="RoleGroup" Type="SecurityModel.Store.RoleGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RoleGroup">
+              <PropertyRef Name="Roles_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermission_Permission">
+          <End Role="Permissions" Type="SecurityModel.Store.Permissions" Multiplicity="1" />
+          <End Role="RolePermission" Type="SecurityModel.Store.RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permissions">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolePermission">
+              <PropertyRef Name="Permissions_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RolePermission_Role">
+          <End Role="Roles" Type="SecurityModel.Store.Roles" Multiplicity="1" />
+          <End Role="RolePermission" Type="SecurityModel.Store.RolePermission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RolePermission">
+              <PropertyRef Name="Roles_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SecurityModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="SecurityEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Groups" EntityType="SecurityModel.Group" />
+          <EntitySet Name="Permissions" EntityType="SecurityModel.Permission" />
+          <EntitySet Name="Roles" EntityType="SecurityModel.Role" />
+          <AssociationSet Name="RoleGroup" Association="SecurityModel.RoleGroup">
+            <End Role="Groups" EntitySet="Groups" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+          <AssociationSet Name="RolePermission" Association="SecurityModel.RolePermission">
+            <End Role="Permissions" EntitySet="Permissions" />
+            <End Role="Roles" EntitySet="Roles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="WindowsIdentity" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="IpAddress" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Roles" Relationship="SecurityModel.RoleGroup" FromRole="Groups" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Tag" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Roles" Relationship="SecurityModel.RolePermission" FromRole="Permissions" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Groups" Relationship="SecurityModel.RoleGroup" FromRole="Roles" ToRole="Groups" />
+          <NavigationProperty Name="Permissions" Relationship="SecurityModel.RolePermission" FromRole="Roles" ToRole="Permissions" />
+        </EntityType>
+        <Association Name="RoleGroup">
+          <End Role="Groups" Type="SecurityModel.Group" Multiplicity="*" />
+          <End Role="Roles" Type="SecurityModel.Role" Multiplicity="*" />
+        </Association>
+        <Association Name="RolePermission">
+          <End Role="Permissions" Type="SecurityModel.Permission" Multiplicity="*" />
+          <End Role="Roles" Type="SecurityModel.Role" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SecurityModelStoreContainer" CdmEntityContainer="SecurityEntities">
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="SecurityModel.Group">
+              <MappingFragment StoreEntitySet="Groups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WindowsIdentity" ColumnName="WindowsIdentity" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="SecurityModel.Permission">
+              <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Tag" ColumnName="Tag" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="SecurityModel.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="RoleGroup" TypeName="SecurityModel.RoleGroup" StoreEntitySet="RoleGroup">
+            <EndProperty Name="Groups">
+              <ScalarProperty Name="Id" ColumnName="Groups_Id" />
+            </EndProperty>
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="Id" ColumnName="Roles_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RolePermission" TypeName="SecurityModel.RolePermission" StoreEntitySet="RolePermission">
+            <EndProperty Name="Permissions">
+              <ScalarProperty Name="Id" ColumnName="Permissions_Id" />
+            </EndProperty>
+            <EndProperty Name="Roles">
+              <ScalarProperty Name="Id" ColumnName="Roles_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

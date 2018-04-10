@@ -1,0 +1,134 @@
+﻿@using DirectAgents.Domain.Entities.CPProg;
+@model Platform
+@{
+    bool super = Request.QueryString["super"] == "1";
+    DateTime yesterday = DateTime.Today.AddDays(-1);
+    DateTime oneWeekAgo = yesterday.AddDays(-6);
+    DateTime firstOfMonth = (yesterday.Day == 1 ? yesterday.AddMonths(-1) : new DateTime(yesterday.Year, yesterday.Month, 1));
+    //If it's the 1st or 2nd, firstOfMonth is last month. Otherwise, it's this month.
+    string onclickJS = "$('#divPlatformUpdate').html('Syncing... please wait')";
+}
+
+<h2>@Model.Name - Maintenance</h2>
+
+<div id="divPlatformUpdate">
+@if (Model.Code == Platform.Code_AdRoll)
+{
+    @Html.ActionLink("Update Accounts", "SyncAccounts", new { id = Model.Id }, new { onclick = "$('#divPlatformUpdate').html('Updating... please wait')" })
+    <text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
+}
+@if (Model.Code == Platform.Code_AdRoll || Model.Code == Platform.Code_FB || Model.Code == Platform.Code_YAM)
+{
+    if (super)
+    {
+        <text>Sync Stats back to:</text>
+        @Html.ActionLink(firstOfMonth.ToShortDateString(), "SyncStats", new { id = Model.Id, start = firstOfMonth.ToShortDateString() }, new { onclick = onclickJS })
+        <text>&nbsp;</text>
+        if (oneWeekAgo != firstOfMonth)
+        {
+            @Html.ActionLink(oneWeekAgo.ToShortDateString(), "SyncStats", new { id = Model.Id, start = oneWeekAgo.ToShortDateString() }, new { onclick = onclickJS })
+            <text>&nbsp;</text>
+        }
+        @Html.ActionLink(yesterday.ToShortDateString(), "SyncStats", new { id = Model.Id, start = yesterday.ToShortDateString() }, new { onclick = onclickJS })
+    }
+}
+else if (Model.Code == Platform.Code_DBM)
+{
+    if (super)
+    {
+        @Html.ActionLink("Sync Stats For All Accounts", "SyncStats", new { id = Model.Id }, new { onclick = onclickJS })
+    }
+}
+</div>
+<br />
+
+External Accounts:
+<div id="grid"></div>
+
+@if ((Model.Code == Platform.Code_Adform || Model.Code == Platform.Code_AdRoll || Model.Code == Platform.Code_FB || Model.Code == Platform.Code_YAM)
+     && Model.ExtAccounts.Any())
+{
+    var extAcctSelectList = new SelectList(Model.ExtAccounts.OrderBy(x => x.Name), "Id", "DisplayName2");
+    var statsLevels = new[] { "Daily", "Strategy", "Creative", "AdSet (FB only)" };
+    var statsLevelSelectList = new SelectList(statsLevels);
+    <br />
+    using (Html.BeginForm("CustomSync", "ExtAccounts", FormMethod.Post, new { onsubmit = "$('#divCustomSyncButton').hide(); $('#divCustomSyncMessage').html('Syncing... please wait')" }))
+    {
+        <text>Custom Sync:</text>
+        <table>
+        <tr>
+            <td>ExtAccount:</td>
+            <td>@Html.DropDownList("id", extAcctSelectList)</td>
+        </tr>
+        <tr>
+            <td>Stats Level:</td>
+            <td>@Html.DropDownList("level", statsLevelSelectList)</td>
+        </tr>
+        <tr>
+            <td>Go back to:</td>
+            <td>@Html.TextBox("start", firstOfMonth.ToShortDateString())</td>
+        </tr>
+        </table>
+        <div id="divCustomSyncButton">
+            <input type="submit" value="Sync" />
+        </div>
+        <div id="divCustomSyncMessage"></div>
+    }
+}
+
+@section scripts {
+<script>
+    $(document).ready(function () {
+        SetupGrid();
+    });
+
+    function SetupGrid() {
+        var datasource = new kendo.data.DataSource({
+            pageSize: 100,
+            transport: {
+                read: {
+                    url: '@Url.Action("IndexData", "ExtAccounts", new { platform = Model.Code })',
+                    type: 'POST', dataType: 'json'
+                }
+            },
+            schema: {
+                data: 'data',
+                total: 'total'
+            },
+            sort: { field: 'Name', dir: 'asc' }
+        });
+
+        $('#grid').kendoGrid({
+            dataSource: datasource,
+            height: 400,
+            filterable: true,
+            pageable: true,
+            sortable: true,
+            detailInit: detailInit,
+            columns: [
+                { field: 'Id', width: 50 },
+                { field: 'Name' },
+                { field: 'Platform', width: 100 },
+                { field: 'ExternalId', width: 300 },
+            ]
+        });
+    }
+
+    function detailInit(e) {
+        var divId = 'divAcctMaint' + e.data.Id;
+        $('<div id="' + divId + '" />').appendTo(e.detailCell);
+        LoadMaintenanceDetail(e.data.Id);
+    }
+
+    function SyncAccount(acctId, syncUrl) {
+        $('#divAcctMaint' + acctId).html('Syncing... please wait');
+        $.post(syncUrl, function (data) {
+            LoadMaintenanceDetail(acctId);
+        });
+    }
+
+    function LoadMaintenanceDetail(acctId) {
+        $('#divAcctMaint' + acctId).load('@Url.Action("MaintenanceDetail", "ExtAccounts", new { id = 0 })'.replace('0', acctId));
+    }
+</script>
+}

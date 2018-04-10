@@ -1,0 +1,83 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.PlatColMapping
+
+<fieldset>
+    <legend>Edit CSV Column Mappings</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        <div style="float:left">
+            Partner: @Model.Platform.Name
+            <br /><br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Date)</td>
+                    <td>@Html.EditorFor(m => m.Date)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Cost)</td>
+                    <td>@Html.EditorFor(m => m.Cost)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Impressions)</td>
+                    <td>@Html.EditorFor(m => m.Impressions)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Clicks)</td>
+                    <td>@Html.EditorFor(m => m.Clicks)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostClickConv)</td>
+                    <td>@Html.EditorFor(m => m.PostClickConv)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostViewConv)</td>
+                    <td>@Html.EditorFor(m => m.PostViewConv)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostClickRev)</td>
+                    <td>@Html.EditorFor(m => m.PostClickRev)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostViewRev)</td>
+                    <td>@Html.EditorFor(m => m.PostViewRev)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.StrategyName)</td>
+                    <td>@Html.EditorFor(m => m.StrategyName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.StrategyEid)</td>
+                    <td>@Html.EditorFor(m => m.StrategyEid)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.TDadName, "CreativeName")</td>
+                    <td>@Html.EditorFor(m => m.TDadName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.TDadEid, "CreativeEid")</td>
+                    <td>@Html.EditorFor(m => m.TDadEid)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.SiteName)</td>
+                    <td>@Html.EditorFor(m => m.SiteName)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Month, "Month (date for site stats)")</td>
+                    <td>@Html.EditorFor(m => m.Month)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Edit", "Platforms", new { id = Model.Id }, null)
+            <br /><br />
+            Fill in the names of the columns that a CSV file will have for the above fields.
+            Leave blank to skip that field when uploading.
+            <br /><br />
+            Notes:<br />
+            - Column names are case-sensitive.<br />
+            - Usually leave StrategyEid and CreativeEid blank, to group by StrategyName / CreativeName.<br />
+            - (e.g. In YAM, two ads could have the same name but different ids; want to group by name)
+        </div>
+    }
+</fieldset>

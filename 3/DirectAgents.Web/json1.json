@@ -1,0 +1,600 @@
+{
+  [
+    {
+      "campaignId": 273170807991772,
+      "name": "2-in-1 Sponsored Product",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 10.0,
+      "startDate": "20160907",
+      "endDate": "20160917",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 102131844019723,
+      "name": "DA Mustela Top Featured Products",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 150.0,
+      "startDate": "20161122",
+      "state": "paused"
+    },
+    {
+      "campaignId": 184219646458778,
+      "name": "DA - Competitor - Sponsored Products",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 65.0,
+      "startDate": "20161123",
+      "state": "paused"
+    },
+    {
+      "campaignId": 63191340229614,
+      "name": "DA - Sponsored Products - Non Brand - Maternity",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 10.0,
+      "startDate": "20161201",
+      "state": "archived"
+    },
+    {
+      "campaignId": 72241349547231,
+      "name": "DA - Sponsored Products - Non Brand - Baby Wash",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 150.0,
+      "startDate": "20161202",
+      "endDate": "20161213",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 98983645291960,
+      "name": "DA - Sponsored Products - Non Brand - Skincare/Rash",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 50.0,
+      "startDate": "20161204",
+      "state": "paused"
+    },
+    {
+      "campaignId": 46455920081465,
+      "name": "DA - Sponsored Products - Non Brand - Stelatopia",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 150.0,
+      "startDate": "20161204",
+      "state": "paused"
+    },
+    {
+      "campaignId": 81535157166662,
+      "name": "DA - SPA - NB - Top Featured Baby Washes",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 100.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 164664928958377,
+      "name": "DA - SPA - NB - Top Featured Shampoos",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 65.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 46321710345377,
+      "name": "DA - SPA - NB - Top Featured Lotions/Creams",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 35.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 150263803535857,
+      "name": "DA - SPA - NB - Top Featured Rash Creams",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 80.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 228174998439045,
+      "name": "DA - SPA - NB - Top Featured Stretchmark Creams/Serum",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 50.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 30114415032450,
+      "name": "DA - SPA - NB - Top Featured Stretch Prevention",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 30.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 74693436962964,
+      "name": "DA - SPA - NB - Top Featured Pregnancy Kits",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 120.0,
+      "startDate": "20161212",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 26886760371917,
+      "name": "DA - SPA - NB - Top Featured Bubble Bath",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 50.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 5130311938617,
+      "name": "DA - SPA - NB - Top Featured Facial Cloths",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 100.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 222846626411986,
+      "name": "DA - SPA - NB - Top Featured Baby Cologne",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 120.0,
+      "startDate": "20161212",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 208746300811782,
+      "name": "DA - SPA - NB - Top Featured Eczema",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 20.0,
+      "startDate": "20161212",
+      "state": "paused"
+    },
+    {
+      "campaignId": 205294365686467,
+      "name": "DA - SPA - Brand - Diaper Rash",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 300.0,
+      "startDate": "20161215",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 219357353946607,
+      "name": "DA - SPA - Brand - Baby Lotion/Cream",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 300.0,
+      "startDate": "20161215",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 140559615422980,
+      "name": "DA - SPA - Brand - Stretchmarks",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 300.0,
+      "startDate": "20161216",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 262142564055239,
+      "name": "DA - SPA - Brand - Baby Shampoo",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 300.0,
+      "startDate": "20161216",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 264222380180963,
+      "name": "DA - SPA - Brand - Eczema/Stelatopia",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 300.0,
+      "startDate": "20161216",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 238918768793562,
+      "name": "DA - SPA - Brand - Baby Wash",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 300.0,
+      "startDate": "20161216",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 34980467836789,
+      "name": "DA - SPA - NB - Top Featured Eczema Cream Cleanser",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 135.0,
+      "startDate": "20161216",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 149885806204058,
+      "name": "DA - Sponsored Products - Brand - Stelatopia",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 150.0,
+      "startDate": "20161223",
+      "state": "paused"
+    },
+    {
+      "campaignId": 69313886460260,
+      "name": "DA - Sponsored Products - Non Brand - Baby Wash (2)",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 35.0,
+      "startDate": "20161223",
+      "state": "paused"
+    },
+    {
+      "campaignId": 245251709069631,
+      "name": "DA - Sponsored Products - Brand - Baby Wash/Shampoo",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 300.0,
+      "startDate": "20161223",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 16348376785766,
+      "name": "DA - SPA - Auto - Eczema",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 225.0,
+      "startDate": "20170104",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 77916182296567,
+      "name": "DA - SPA - Auto - Baby Wash/Shampoo",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 200.0,
+      "startDate": "20170104",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 232071707315438,
+      "name": "DA - SPA - Auto - Baby Lotion/Cream",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 250.0,
+      "startDate": "20170104",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 138621410193099,
+      "name": "DA - SPA - Auto - Maternity",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 175.0,
+      "startDate": "20170104",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 206468399871710,
+      "name": "DA - SPA - Brand - Dry Skin",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 100.0,
+      "startDate": "20170120",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 165689502617770,
+      "name": "DA - SPA - NB - Dry Skin",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 75.0,
+      "startDate": "20170120",
+      "state": "paused"
+    },
+    {
+      "campaignId": 234790574693450,
+      "name": "DA - Sponsored Products - Non Brand - Maternity - 02/2017",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 80.0,
+      "startDate": "20170203",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 186287553085252,
+      "name": "DA - SPA - Non Brand - Shampoo/Baby Wash - 02/2017",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 75.0,
+      "startDate": "20170203",
+      "state": "paused"
+    },
+    {
+      "campaignId": 174207058174823,
+      "name": "DA - SPA - Auto - Dry Skin",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 50.0,
+      "startDate": "20170320",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 269699005434572,
+      "name": "DA - SPA - Auto - Diaper",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 200.0,
+      "startDate": "20170320",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 229527064818915,
+      "name": "DA - SPA - Non Brand - Sunscreen",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 5.0,
+      "startDate": "20170426",
+      "state": "paused"
+    },
+    {
+      "campaignId": 81622329712370,
+      "name": "DA - SPA - Brand - Bathtime Essentials",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 30.0,
+      "startDate": "20170605",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 72793006476984,
+      "name": "DA - SPA - Non Brand - Bathtime Essentials",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 35.0,
+      "startDate": "20170608",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 82212480353081,
+      "name": "DA | Sponsored Products | Non-Brand | Sunscreen SPF",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 15.0,
+      "startDate": "20170714",
+      "state": "paused"
+    },
+    {
+      "campaignId": 255931257803750,
+      "name": "DA - Sponsored Products - Non Brand - Baby Wash and Shampoo",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 50.0,
+      "startDate": "20170725",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 118904521579404,
+      "name": "DA | Cyber Monday | B071J8BJPB | Brand",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 250.0,
+      "startDate": "20171126",
+      "endDate": "20171128",
+      "state": "paused"
+    },
+    {
+      "campaignId": 56736813536994,
+      "name": "DA | Black Friday | B01N0VYPC4 | NB",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 150.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "paused"
+    },
+    {
+      "campaignId": 144199965665356,
+      "name": "DA - SPA - Auto - Baby Wash/Shampoo - BF",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 250.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 190813699519334,
+      "name": "DA - SPA - Auto - Baby Lotion/Cream - BF",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 350.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 79952079652357,
+      "name": "DA | Black Friday | B01N0VYPC4 | Brand",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 300.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "paused"
+    },
+    {
+      "campaignId": 36576840876923,
+      "name": "DA | Cyber Monday | B071J8BJPB | NB",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "manual",
+      "premiumBidAdjustment": true,
+      "dailyBudget": 350.0,
+      "startDate": "20171126",
+      "endDate": "20171128",
+      "state": "paused"
+    },
+    {
+      "campaignId": 71822635664311,
+      "name": "DA | Cyber Monday DOTD | Auto",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 250.0,
+      "startDate": "20171127",
+      "endDate": "20171128",
+      "state": "paused"
+    },
+    {
+      "campaignId": 202349134975371,
+      "name": "DA | Cyber Monday | B071J8BJPB | Auto",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 300.0,
+      "startDate": "20171126",
+      "endDate": "20171128",
+      "state": "paused"
+    },
+    {
+      "campaignId": 178027224365946,
+      "name": "DA - SPA - Auto - Eczema - CM",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 300.0,
+      "startDate": "20171127",
+      "endDate": "20171128",
+      "state": "paused"
+    },
+    {
+      "campaignId": 34078568476365,
+      "name": "DA | Black Friday | B01N0VYPC4 | Auto",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 100.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "paused"
+    },
+    {
+      "campaignId": 130492135967506,
+      "name": "DA - SPA - Auto - Diaper  - BF",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 75.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 192663546524242,
+      "name": "DA - SPA - Auto - Maternity - CM",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 138.0,
+      "startDate": "20171127",
+      "endDate": "20171128",
+      "state": "paused"
+    },
+    {
+      "campaignId": 34146856566679,
+      "name": "DA - SPA - Auto - Maternity - BF",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 100.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 249215098530230,
+      "name": "DA - SPA - Auto - Eczema - BF",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 100.0,
+      "startDate": "20171123",
+      "endDate": "20171125",
+      "state": "enabled"
+    },
+    {
+      "campaignId": 264091305770887,
+      "name": "DA - SPA - Auto - Baby Wash/Shampoo - CM",
+      "campaignType": "sponsoredProducts",
+      "targetingType": "auto",
+      "premiumBidAdjustment": false,
+      "dailyBudget": 225.0,
+      "startDate": "20171127",
+      "endDate": "20171128",
+      "state": "paused"
+    }
+  ]

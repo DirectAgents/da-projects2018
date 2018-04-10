@@ -1,0 +1,43 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.Platform
+@{
+    bool super = Request.QueryString["super"] == "1";
+}
+
+<fieldset>
+    <legend>Edit Partner</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        if (!super) {
+            @Html.HiddenFor(m => m.Code)
+        }
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Id, "Partner ID")</td>
+                    <td>@Html.DisplayFor(m => m.Id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Code)</td>
+                    <td>
+                    @if (super) {
+                        @Html.EditorFor(m => m.Code)
+                    } else {
+                        @Html.DisplayFor(m => m.Code)
+                    }
+                    </td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name)</td>
+                    <td>@Html.EditorFor(m => m.Name)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index")
+            <br /><br />
+            @Html.ActionLink("Edit CSV Column Mappings", "Edit", "PlatColMappings", new { id = Model.Id }, null)
+        </div>
+    }
+</fieldset>

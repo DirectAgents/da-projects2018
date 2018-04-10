@@ -1,0 +1,74 @@
+﻿@model DirectAgents.Web.Areas.AB.Models.DetailVM
+
+<h2>Single Client Detail</h2>
+
+Client:
+@Html.ActionLink(Model.ABClient.Name, "Show", "Clients", new { id = Model.ABClient.Id }, null)
+<br /><br />
+
+<table>
+@foreach (var monthGroup in Model.MonthGroups)
+{
+    int numJobs = monthGroup.JobGroups.Count();
+    <tr>
+        <th>@monthGroup.Month.ToString("MMM yyyy")</th>
+        <th>Quantity/Price</th>
+        <th>General Spend</th>
+        @foreach (var jg in monthGroup.JobGroups)
+        {
+            <th>@jg.Job.Name</th>
+        }
+    </tr>
+    foreach (var li in monthGroup.LineItems)
+    {
+        <tr>
+            <td>@li.Name</td>
+            <td>
+@if (li.Units.HasValue)
+{
+    string revCurrStr = (string.IsNullOrEmpty(li.RevCurr) ? "" : "(" + li.RevCurr + ")");
+    <text>@li.Units.Value.ToString("0.####") @@ @(li.RevPerUnit.HasValue ? li.RevPerUnit.Value.ToString("0.####") + " " + revCurrStr : "")</text>
+}
+            </td>
+            <td style="text-align:right">@li.Rev</td>
+            @foreach (var jg in monthGroup.JobGroups)
+            {
+                <td></td>
+            }
+        </tr>
+    }
+    int skipCols = 2;
+    foreach (var jg in monthGroup.JobGroups)
+    {
+        foreach (var li in jg.LineItems)
+        {
+            <tr>
+                <td>@li.Name</td>
+                <td colspan="@skipCols"></td>
+                <td style="text-align:right">@li.Rev</td>
+            </tr>
+        }
+        skipCols++;
+    }
+}
+</table>
+<br />
+
+@Html.ActionLink("Payments Received", "Index", "ClientPayments", new { clientId = Model.ABClient.Id }, null)
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Total Received</th>
+        <th>General Spend</th>
+        <th>other accounts</th>
+    </tr>
+@foreach (var payment in Model.ABClient.ClientPayments.OrderBy(x => x.Date))
+{
+    <tr>
+        <td>@payment.Date.ToShortDateString()</td>
+        <td style="text-align:right">@payment.TotalValue()</td>
+        <td style="text-align:right">@payment.NonJobValue()</td>
+        <td style="text-align:right">@payment.JobValue()</td>
+    </tr>
+}
+</table>

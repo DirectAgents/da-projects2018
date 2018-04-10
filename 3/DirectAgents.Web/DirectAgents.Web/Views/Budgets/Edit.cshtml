@@ -1,0 +1,44 @@
+﻿@model DirectAgents.Domain.Entities.Cake.Offer
+
+<h3>Edit Offer Budget</h3>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+
+    <fieldset>
+        <legend>Offer Budget</legend>
+        @Html.HiddenFor(m => m.OfferId)
+        <table>
+            <tr>
+                <td>@Html.LabelFor(m => m.OfferName)</td>
+                <td>@Html.DisplayFor(m => m.OfferName)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.OfferId)</td>
+                <td>@Html.DisplayFor(m => m.OfferId)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.DateCreated)</td>
+                <td>@Html.DisplayFor(m => m.DateCreated)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.Budget)</td>
+                <td>@Html.EditorFor(m => m.Budget)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.BudgetStart)</td>
+                <td>@Html.EditorFor(m => m.BudgetStart, "Date")</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.BudgetEnd)</td>
+                <td>@Html.EditorFor(m => m.BudgetEnd, "Date")</td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" value="Save" />
+    </fieldset>
+}
+
+<br />
+@Html.ActionLink("Cancel", "Show", new { offerId = Model.OfferId })

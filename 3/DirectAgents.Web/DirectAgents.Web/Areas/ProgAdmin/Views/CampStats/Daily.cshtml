@@ -1,0 +1,103 @@
+﻿@model DirectAgents.Web.Areas.ProgAdmin.Models.ReportingVM
+@{
+    var camp = Model.Campaign;
+    //var cols = new string[] { "Date", "Impressions", "Clicks", "TotalConv", "PostClickConv", "PostViewConv", "Spend", "CTR", "CPA" };
+    int numCols = Model.ColumnConfigs.Count();
+}
+
+<h2>Daily Stats</h2>
+
+Campaign: @camp.Name
+
+<div>
+    <div id="spreadsheet" style="width:950px"></div>
+</div>
+<br />
+@Html.ActionLink("Back", "Home", "Reports", new { campId = camp.Id }, null)
+
+@section scripts {
+<script>
+    $(document).ready(function () {
+        var datasource = CreateDataSource();
+        SetupSpreadsheet(datasource);
+    });
+
+    function CreateDataSource() {
+        var datasource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("DailyData")',
+                    data: {
+                        campId: @camp.Id,
+                        start: '@Model.Start.ToRouteString()',
+                        end: '@Model.End.ToRouteString()'
+                    },
+                    type: 'post',
+                    dataType: 'json'
+                }
+            },
+            schema: {
+                model: {
+                    id: 'Id',
+                    fields: {
+                        @foreach (var config in Model.ColumnConfigs)
+                        {
+                            <text>@config.PropName: { type: '@config.KendoType' },</text>
+                        }
+                    }
+                }
+            }
+        });
+        return datasource;
+    }
+
+    function SetupSpreadsheet(datasource) {
+        DoSpreadsheetConfig();
+
+        var spreadsheet = $('#spreadsheet').data('kendoSpreadsheet');
+        var sheet = spreadsheet.activeSheet();
+
+        // Setup Columns
+        sheet.setDataSource(datasource, [@Html.Raw(string.Join(",", Model.ColumnConfigs.Select(c => "'" + c.PropName + "'")))]);
+        @foreach (var config in Model.ColumnConfigs)
+        {
+            if (config.Format != null)
+            {
+                <text>sheet.range('@config.Letter:@config.Letter').format('@config.Format');</text>
+            }
+        }
+    }
+
+    function DoSpreadsheetConfig() {
+        $('#spreadsheet').kendoSpreadsheet({
+            columns: @numCols,
+            rows: 100,
+            //toolbar: false,
+            //sheetsbar: false,
+            sheets: [{
+                name: 'Daily',
+                //dataSource: datasource,
+                frozenRows: 1,
+                columns: [
+                    @for (int i = 0; i < numCols; i++)
+                    {<text>{ width: 100 },</text>}
+                ],
+                rows: [{ // define header row
+                    cells: [
+                    @for (int i = 0; i < numCols; i++)
+                    {<text>
+                        {
+                            bold: "true",
+                            background: "#9c27b0",
+                            textAlign: "center",
+                            color: "white"
+                        },
+                    </text>}
+                    ]
+                }],
+            }]
+        });
+    }
+</script>
+}
+

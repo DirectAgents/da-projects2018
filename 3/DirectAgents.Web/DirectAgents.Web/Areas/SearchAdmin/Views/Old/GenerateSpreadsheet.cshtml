@@ -1,0 +1,75 @@
+﻿@model ClientPortal.Data.Contexts.SearchProfile
+@{
+    var endDate = Model.GetLast_WeekEndDate();
+    string filename = Model.SearchProfileName.Replace(" ", "") + "_" + DateTime.Today.ToString("yyyyMMdd") + ".xlsx";
+    bool groupBySearchAccount = Model.HasChannelWithMultipleSearchAccounts();
+}
+
+<h3>Generate Spreadsheet</h3>
+
+SearchProfile: @Model.SearchProfileName<br />
+Start Day of Week: @((DayOfWeek)Model.StartDayOfWeek)<br />
+<br />
+
+<fieldset>
+    <legend>Report Parameters</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.SearchProfileId)
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.Label("", "Stats End-Date:")</td>
+                    <td><input id="spreadsheet_enddate" type="text" name="enddate" value="@endDate.ToShortDateString()" onfocus="EnableSubmitGenSpreadsheet()" /></td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("", "Weeks to include:")</td>
+                    <td><input type="text" name="numweeks" value="16" onfocus="EnableSubmitGenSpreadsheet()" /></td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("", "Months to include:")</td>
+                    <td><input type="text" name="nummonths" value="16" onfocus="EnableSubmitGenSpreadsheet()" /></td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("", "Filename:")</td>
+                    <td><input type="text" name="filename" value="@filename" style="min-width:300px" onfocus="EnableSubmitGenSpreadsheet()" /></td>
+                </tr>
+                <tr>
+                    <td>@Html.Label("", "Group By SearchAccount:")</td>
+                    <td>@Html.CheckBox("groupBySearchAccount", groupBySearchAccount, new { onfocus = "EnableSubmitGenSpreadsheet()"})
+                        <i>(leave unchecked to group by channel)</i></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">@Html.Label("", "Campaign Filter...")</td>
+                    <td><i>(Doesn't apply to "Display vs. Search" tab)</i></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">@Html.Label("Include:")</td>
+                    <td><input type="text" name="campaigninclude" onfocus="EnableSubmitGenSpreadsheet()" /></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">@Html.Label("Exclude:")</td>
+                    <td><input type="text" name="campaignexclude" onfocus="EnableSubmitGenSpreadsheet()" /></td>
+                </tr>
+            </table>
+            <br />
+            <input id="submitGenSpreadsheet" type="submit" value="Generate" onclick="this.form.submit(); this.disabled=true" />
+            <br /><br />
+            Go to:
+            @Html.ActionLink("StatsGauge", "IndexGauge", "SearchAccounts", new { spId = @Model.SearchProfileId }, null)
+            <br /><br />
+            @Html.ActionLink("Back to SearchProfiles", "Index", "SearchProfiles")
+        </div>
+        }
+</fieldset>
+
+<script>
+    $(function () {
+        $('#spreadsheet_enddate').kendoDatePicker({ footer: ' ' });
+    });
+
+    function EnableSubmitGenSpreadsheet() {
+        $('#submitGenSpreadsheet').prop('disabled', false); //.prop('value', 'Generate');
+    }
+</script>

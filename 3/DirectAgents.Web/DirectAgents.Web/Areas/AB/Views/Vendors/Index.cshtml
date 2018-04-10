@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.AB.ABVendor>
+
+<h2>Vendors</h2>
+
+<table>
+@foreach (var vendor in Model.OrderBy(x => x.Name))
+{
+    <tr>
+        <td>@vendor.Id</td>
+        <td>@vendor.Name</td>
+    </tr>
+}
+</table>

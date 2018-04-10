@@ -1,0 +1,54 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.Advertiser
+@{
+    var people = (IEnumerable<DirectAgents.Domain.Entities.Employee>)ViewBag.Employees;
+    var salesRepSelectList = new SelectList(people, "Id", "FullName", Model.SalesRepId);
+    var amSelectList = new SelectList(people, "Id", "FullName", Model.AMId);
+}
+
+<fieldset>
+    <legend>Edit Advertiser</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        <div style="float:left">
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Id, "Advertiser ID")</td>
+                    <td>@Html.DisplayFor(m => m.Id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name, "Advertiser Name")</td>
+                    <td>@Html.EditorFor(m => m.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.SalesRep)</td>
+                    <td>@Html.DropDownListFor(m => m.SalesRepId, salesRepSelectList)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AM)</td>
+                    <td>@Html.DropDownListFor(m => m.AMId, amSelectList)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.StartDate)</td>
+                    <td>@Html.EditorFor(m => m.StartDate, "Date")</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.EndDate)</td>
+                    <td>@Html.EditorFor(m => m.EndDate, "Date")</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index")
+            <br /><br />
+            @Html.ActionLink("Edit Logo", "EditLogo", new { id = Model.Id })
+@if (Model.Logo != null)
+{
+    <table><tr><td>
+        <img src="@Url.Action("Logo", new { id = Model.Id })" />
+    </td></tr></table>
+}
+        </div>
+    }
+</fieldset>

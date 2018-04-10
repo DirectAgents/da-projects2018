@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.Cake.Advertiser>
+
+<h2>Cake Advertisers</h2>
+
+<table>
+<tr>
+    <th>ABId</th>
+    <th>CakeId</th>
+    <th>Name</th>
+</tr>
+@foreach (var adv in Model.OrderBy(a => a.AdvertiserName))
+{
+    <tr>
+        <td>@adv.ABClientId</td>
+        <td>@adv.AdvertiserId</td>
+        <td>@adv.AdvertiserName</td>
+    </tr>
+}
+</table>

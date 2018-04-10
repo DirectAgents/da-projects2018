@@ -1,0 +1,31 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.AB.ProtoCampaign>
+@{
+    int accountId = -1; // get from ViewBag?
+}
+
+<h2>ProtoCampaigns</h2>
+
+<table>
+<tr>
+    <th></th>
+    <th>Client</th>
+    <th>Account</th>
+    <th>ID</th>
+    <th>Campaign</th>
+</tr>
+@foreach (var camp in Model)
+{
+    <tr>
+        <td>@Html.ActionLink("edit", "Edit", new { id = camp.Id })</td>
+        <td>@camp.ClientAccount.Client.Name</td>
+        <td>@camp.ClientAccount.Name</td>
+        <td>@camp.Id</td>
+        <td>@camp.Name</td>
+    </tr>
+    accountId = camp.ClientAccountId;
+}
+</table>
+@if (Model.Any())
+{
+    <text>[@Html.ActionLink("new campaign", "New", new { accountId = accountId })]</text>
+}

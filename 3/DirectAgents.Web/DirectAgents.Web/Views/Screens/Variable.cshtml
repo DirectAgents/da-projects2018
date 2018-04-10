@@ -1,0 +1,22 @@
+﻿@model DirectAgents.Domain.Entities.Variable
+
+<h2>Edit Variable</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.Hidden("successAction", "Variables")
+<div>
+    Name: @Html.DisplayFor(m => m.Name)
+    <br />
+    StringVal: @Html.EditorFor(m => m.StringVal)
+    <br />
+    IntVal: @Html.EditorFor(m => m.IntVal)
+    <br />
+    DecVal: @Html.EditorFor(m => m.DecVal)
+    <br />
+    <input type="submit" value="Save" />
+</div>
+}
+
+<br />
+@Html.ActionLink("Cancel", "Variables")

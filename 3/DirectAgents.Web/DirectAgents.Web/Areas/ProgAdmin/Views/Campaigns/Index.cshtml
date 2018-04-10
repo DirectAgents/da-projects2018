@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPProg.Campaign>
+@{
+    var today = DateTime.Today;
+    var startOfMonth = new DateTime(today.Year, today.Month, 1);
+    var lastMonth = startOfMonth.AddMonths(-1);
+    string advId = (string)Session["advId"];
+}
+
+<h2>Campaigns</h2>
+
+<table>
+<tr>
+    <th rowspan="2"></th>
+    <th rowspan="2">Advertiser /<br />Campaign</th>
+    <th rowspan="2">Partners /<br />Ext Accts</th>
+    <th colspan="2">Budgets/Percents</th>
+</tr>
+<tr>
+    <!-- Combined with above cell -->
+    <!-- Combined with above cell -->
+    <!-- Combined with above cell -->
+    <th>Earliest</th>
+    <th>Latest</th>
+</tr>
+@foreach (var camp in Model)
+{
+    var earliestBudgetInfo = camp.EarliestBudgetInfo();
+    var latestBudgetInfo = camp.LatestBudgetInfo();
+<tr>
+    <td>@Html.ActionLink("Details", "Show", new { id = camp.Id })</td>
+    <td>
+        @if (camp.Advertiser.Name != camp.Name)
+        {
+            @camp.Advertiser.Name
+            <br />
+        }
+        @camp.Name
+    </td>
+    <td style="text-align:center">
+        @if (camp.ExtAccounts.Any()) {
+            @(string.Join(", ", camp.ExtAccounts.Select(a => a.Platform).Distinct().Select(p => p.Name).OrderBy(n => n)))
+            <br />
+            @Html.ActionLink("show(" + camp.ExtAccounts.Count + ")", "Index", "ExtAccounts", new { campId = camp.Id }, null)
+        } else if (!camp.BudgetInfos.Any() && !camp.PlatformBudgetInfos.Any()) {
+            @Html.ActionLink("[Delete Campaign]", "Delete", new { id = camp.Id }, new { onclick = "if (!confirm('Are you sure?')) return false" })
+        }
+    </td>
+    <td>@(earliestBudgetInfo != null ? earliestBudgetInfo.Date.ToShortDateString() : "")</td>
+    <td>@(latestBudgetInfo != null ? latestBudgetInfo.Date.ToShortDateString() : "")</td>
+</tr>
+}
+</table>
+<br />
+@if (!string.IsNullOrWhiteSpace(advId))
+{
+    @Html.ActionLink("New Campaign", "CreateNew", new { advId = advId })
+} else {
+    <i>To create a campaign, go to
+    @Html.ActionLink("Advertisers", "Index", "Advertisers")
+    and click "show" under "Campaigns" for the desired Advertiser.</i>
+}
+<br /><br />
+<i>To edit a campaign, click "Details".</i>
+<br />

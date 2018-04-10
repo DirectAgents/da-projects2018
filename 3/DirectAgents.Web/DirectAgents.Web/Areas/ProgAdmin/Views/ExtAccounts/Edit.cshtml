@@ -1,0 +1,59 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.ExtAccount
+@{
+    var networks = (IEnumerable<DirectAgents.Domain.Entities.CPProg.Network>)ViewBag.Networks;
+    var networkSelectList = new SelectList(networks, "Id", "Name", Model.NetworkId);
+    string platform = (string)Session["platformCode"]; // for filtering when returning back to Index
+    string campId = (string)Session["campId"];
+}
+
+<fieldset>
+    <legend>Edit ExtAccount</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.PlatformId)
+        @Html.HiddenFor(m => m.CampaignId)
+        <div style="float:left">
+            Partner: @Model.Platform.Name
+            <br /><br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Id)</td>
+                    <td>@Html.DisplayFor(m => m.Id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name)</td>
+                    <td>@Html.EditorFor(m => m.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.ExternalId)</td>
+                    <td>@Html.EditorFor(m => m.ExternalId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Filter)</td>
+                    <td>@Html.EditorFor(m => m.Filter)</td>
+                </tr>
+                @*<tr>
+                    <td>@Html.LabelFor(m => m.FilterOut)</td>
+                    <td>@Html.EditorFor(m => m.FilterOut)</td>
+                </tr>*@
+                <tr>
+                    <td>@Html.LabelFor(m => m.Network)</td>
+                    <td>@Html.DropDownListFor(m => m.NetworkId, networkSelectList, "(all)")</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.CreativeURLFormat)</td>
+                    <td>@Html.EditorFor(m => m.CreativeURLFormat)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Disabled)</td>
+                    <td>@Html.EditorFor(m => m.Disabled)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index", new { platform = platform, campId = campId })
+        </div>
+    }
+</fieldset>

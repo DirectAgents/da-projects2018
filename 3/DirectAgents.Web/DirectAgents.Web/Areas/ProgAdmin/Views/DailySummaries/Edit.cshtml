@@ -1,0 +1,59 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.DailySummary
+@{
+    string month = (string)Session["month"]; // for filtering when returning back to Index
+}
+
+<fieldset>
+    <legend>Edit DailySummary</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Date)
+        @Html.HiddenFor(m => m.AccountId)
+        <div style="float:left">
+            ExtAccount: @Model.ExtAccount.Name (@Model.ExtAccount.Platform.Name)
+            <br /><br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Date)</td>
+                    <td>@Model.Date.ToShortDateString()</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Cost)</td>
+                    <td>@Html.EditorFor(m => m.Cost)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Impressions)</td>
+                    <td>@Html.EditorFor(m => m.Impressions)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.AllClicks)</td>
+                    <td>@Html.EditorFor(m => m.AllClicks)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Clicks)</td>
+                    <td>@Html.EditorFor(m => m.Clicks)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostClickConv)</td>
+                    <td>@Html.EditorFor(m => m.PostClickConv)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostClickRev)</td>
+                    <td>@Html.EditorFor(m => m.PostClickRev)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostViewConv)</td>
+                    <td>@Html.EditorFor(m => m.PostViewConv)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.PostViewRev)</td>
+                    <td>@Html.EditorFor(m => m.PostViewRev)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index", new { acctId = Model.AccountId, month = month })
+        </div>
+    }
+</fieldset>

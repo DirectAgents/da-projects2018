@@ -1,0 +1,163 @@
+﻿@model DirectAgents.Web.Models.BudgetsVM
+@{
+    string italicStyle = "style=font-style:italic";
+}
+<h3>@Html.ActionLink("Budgets", "Start") - Offers</h3>
+
+@if (Model.WithBudget == true) {
+    <input type="button" value="Edit all" onclick="EditAll()" /><text>&nbsp;</text>
+    <input type="button" value="Update last month to this month" onclick="UpdateCurrMonth()" /><text> (click "Save All" when done)</text>
+    <br /><br />
+}
+
+<div class="validation-summary-errors" style="display:none">
+    <ul>
+        <li>Row(s) could not be saved.</li>
+    </ul>
+</div>
+
+<table class="editable" style="border: 1px solid gray; border-spacing: 10px 0">
+    <tr>
+        <th>Advertiser</th>
+        <th>OfferId</th>
+        <th @(Model.Sort == "name" ? italicStyle : "")>OfferName</th>
+        <th>Budget</th>
+        <th>StartDate</th>
+        <th>EndDate</th>
+        <th></th>
+        <th>Spent</th>
+        <th @(Model.Sort == "spentpct" ? italicStyle : "")><a href="#" onclick="ChangeSort('spentpct','@(Model.Sort != "spentpct" || !Model.SortDesc ? "true" : "false")'); return false">Spent%</a></th>
+@*        <th></th>*@
+        <th>Status</th>
+        <th>Hidden</th>
+    </tr>
+
+@foreach (var offer in Model.Offers)
+{
+    <tr id="offrow@(offer.OfferId)">
+        @Html.Partial("OfferRow", offer)
+    </tr>
+}
+
+    <tr>
+        <td colspan="6"></td>
+        <td colspan="5">
+            <input type="button" value="Save All" onclick="SaveAllBudgetRows()" />
+        </td>
+    </tr>
+</table>
+@Model.Offers.Count() offers
+
+@section scripts {
+    <script type="text/javascript">
+@*
+        function InitOffer(offerId) {
+            var url = '@Url.Action("Initialize")?offerId=' + offerId;
+            $.get(url, function (data) {
+                LoadBudgetRow(offerId, true);
+            });
+        }
+*@
+        $(document).ready(function () {
+            SetupMonths();
+        });
+        function SetupMonths() {
+            var nowDate = new Date();
+            var yearOfCurrMonth = nowDate.getFullYear()
+            var yearOfLastMonth = yearOfCurrMonth;
+            var lastMonth = nowDate.getMonth();
+            var currMonth = lastMonth + 1;
+            if (lastMonth == 0) {
+                lastMonth = 12;
+                yearOfLastMonth--;
+            }
+            lastMonthStr = lastMonth + "/1/" + yearOfLastMonth;
+            currMonthStr = currMonth + "/1/" + yearOfCurrMonth;
+            var lastMonthLastDay = new Date(yearOfCurrMonth, currMonth - 1, 0).getDate();
+            var currMonthLastDay = new Date(yearOfCurrMonth, currMonth, 0).getDate();
+            lastMonthEndStr = lastMonth + "/" + lastMonthLastDay + "/" + yearOfLastMonth;
+            currMonthEndStr = currMonth + "/" + currMonthLastDay + "/" + yearOfCurrMonth;
+        }
+
+        function EditAll() {
+            $('tr input[value="Edit"]').each(function () {
+                var offerId = $(this).data('offerId');
+                LoadBudgetRow(offerId, false, true);
+            });
+        }
+        function UpdateCurrMonth() {
+            var txtStarts = $('input[name="BudgetStart"][value="' + lastMonthStr + '"]');
+            txtStarts.val(currMonthStr);
+            var txtEnds = $('input[name="BudgetEnd"][value="' + lastMonthEndStr + '"]');
+            txtEnds.val(currMonthEndStr);
+        }
+
+        function SaveBudgetRow(offerId, suppressAlerts) {
+            var url = '@Url.Action("SaveOfferRow")?offerId=' + offerId;
+            var data = {
+                OfferId: offerId,
+                Budget: $('#offrow' + offerId + ' input[name="Budget"]').val(),
+                BudgetStart: $('#offrow' + offerId + ' input[name="BudgetStart"]').val(),
+                BudgetEnd: $('#offrow' + offerId + ' input[name="BudgetEnd"]').val()
+            };
+            $.post(url, data, function (data) {
+                if (data)
+                    LoadBudgetRow(offerId, false);
+                else if (!suppressAlerts)
+                    alert("Row could not be saved");
+                else
+                    $('.validation-summary-errors').show();
+            });
+        }
+
+        function SaveAllBudgetRows() {
+            $('.validation-summary-errors').hide();
+            $('tr input[value="Save"]').each(function() {
+                var offerId = $(this).data('offerId');
+                SaveBudgetRow(offerId, true);
+            });
+        }
+
+        function LoadBudgetRow(offerId, showDoneAlert, editMode) {
+            var url = '@Url.Action("OfferRow")';
+            var data = {
+                offerId: offerId,
+                editMode: editMode
+            };
+            $.get(url, data, function (data) {
+                $('#offrow' + offerId).html(data);
+                if (showDoneAlert) alert('Updated');
+            });
+        }
+
+        function SynchOfferStats(offerId) {
+            var url = '@Url.Action("SynchStats")';
+            var data = {
+                offerId: offerId
+            };
+            $.get(url, data, function (data) {
+                LoadBudgetRow(offerId, true);
+            });
+        }
+
+        function ChangeSort(sort, desc) {
+            var url = '@Url.Action("Offers")?sort=' + sort + '&desc=' + desc;
+            @if (Model.AcctMgrId.HasValue) {
+                <text>url = url + '&am=@Model.AcctMgrId.Value';</text>
+            }
+            @if (Model.AdvId.HasValue) {
+                <text>url = url + '&advId=@Model.AdvId.Value';</text>
+            }
+            @if (Model.WithBudget.HasValue) {
+                <text>url = url + '&withBudget=@Model.WithBudget.Value';</text>
+            }
+            @if (Model.MinPercent.HasValue) {
+                <text>url = url + '&minPercent=@Model.MinPercent.Value';</text>
+            }
+            @if (Model.IncludeInactive) {
+                <text>url = url + '&includeInactive=true';</text>
+            }
+            document.location.href = url;
+        }
+    </script>
+}

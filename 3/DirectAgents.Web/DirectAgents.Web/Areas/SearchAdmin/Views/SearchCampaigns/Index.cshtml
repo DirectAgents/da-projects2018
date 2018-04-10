@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPSearch.SearchCampaign>
+
+<h2>SearchCampaigns</h2>
+
+<table>
+    <tr>
+        <th style="text-align:right">spId</th>
+        <th style="text-align:right">saId</th>
+        <th style="text-align:right">Id</th>
+        <th></th>
+        <th>Name</th>
+    </tr>
+    @foreach (var sc in Model)
+    {
+        <tr>
+            <td style="text-align:right">@(sc.SearchAccount != null ? sc.SearchAccount.SearchProfileId.ToString() : "")</td>
+            <td style="text-align:right">@sc.SearchAccountId</td>
+            <td style="text-align:right">@sc.SearchCampaignId</td>
+            <td></td>
+            <td>@sc.SearchCampaignName</td>
+            <td>@sc.LCcmpid</td>
+        </tr>
+    }
+</table>
+<br />
+
+Back to...

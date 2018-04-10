@@ -1,0 +1,673 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <ProjectGuid>{3B6C5433-5392-4165-A7E4-4AA431A75BB3}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CakeExtracter</RootNamespace>
+    <AssemblyName>CakeExtracter</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <NuGetPackageImportStamp>914f3a7f</NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>True</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <Optimize>False</Optimize>
+    <CheckForOverflowUnderflow>True</CheckForOverflowUnderflow>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <Optimize>True</Optimize>
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <DefineConstants>TRACE</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <Optimize>false</Optimize>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=3.3.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DirectAgents.Web\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\..\DirectAgents.Web\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
+    <Reference Include="Common.Logging">
+      <HintPath>..\..\DirectAgents.Web\packages\Common.Logging.2.1.2\lib\net40\Common.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DirectAgents.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Extended, Version=6.0.0.0, Culture=neutral, PublicKeyToken=05b7e29bdd433584, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DirectAgents.Web\packages\EntityFramework.Extended.6.1.0.133\lib\net45\EntityFramework.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\..\DirectAgents.Web\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\EPPlus.4.0.4\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Ads.Common, Version=8.1.1.0, Culture=neutral, PublicKeyToken=52807268f2b614dc, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Ads.Common.8.1.1\lib\net452\Google.Ads.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.AdWords, Version=22.4.0.0, Culture=neutral, PublicKeyToken=52807268f2b614dc, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.AdWords.22.4.0\lib\net452\Google.AdWords.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.32.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.1.32.2\lib\net45\Google.Apis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Analytics.v3, Version=1.32.2.1163, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.Analytics.v3.1.32.2.1163\lib\net45\Google.Apis.Analytics.v3.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.32.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.Auth.1.32.2\lib\net45\Google.Apis.Auth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.32.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.Auth.1.32.2\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.32.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.Core.1.32.2\lib\net45\Google.Apis.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.DoubleClickBidManager.v1, Version=1.32.2.1141, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.DoubleClickBidManager.v1.1.32.2.1141\lib\net45\Google.Apis.DoubleClickBidManager.v1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.32.2.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.1.32.2\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Storage.v1, Version=1.32.2.1159, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Google.Apis.Storage.v1.1.32.2.1159\lib\net45\Google.Apis.Storage.v1.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Interop.SHDocVw, Version=1.1.0.0, Culture=neutral, PublicKeyToken=db7cfd3acb5ad44e, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\WatiN.2.1.0\lib\net40\Interop.SHDocVw.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ManyConsole">
+      <HintPath>..\..\DirectAgents.Web\packages\ManyConsole.0.4.2.16\lib\ManyConsole.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.mshtml, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\DirectAgents.Web\packages\WatiN.2.1.0\lib\net40\Microsoft.mshtml.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DirectAgents.Web\packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DirectAgents.Web\packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="MoreLinq, Version=1.0.16006.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\DirectAgents.Web\packages\morelinq.1.0.16006\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="NDesk.Options">
+      <HintPath>..\..\DirectAgents.Web\packages\NDesk.Options.0.2.1\lib\NDesk.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz">
+      <HintPath>..\..\DirectAgents.Web\packages\Quartz.2.1.2\lib\net40\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\RestSharp.105.2.3\lib\net452\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="WatiN.Core, Version=2.1.0.1196, Culture=neutral, PublicKeyToken=db7cfd3acb5ad44e, processorArchitecture=MSIL">
+      <HintPath>..\..\DirectAgents.Web\packages\WatiN.2.1.0\lib\net40\WatiN.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrappers\AutoMapperBootstrapper.cs" />
+    <Compile Include="Bootstrappers\EntityFrameworkBootstrapper.cs" />
+    <Compile Include="Bootstrappers\IBootstrapper.cs" />
+    <Compile Include="Bootstrappers\LoggingBootstrapper.cs" />
+    <Compile Include="Bootstrappers\ServicePointBootstrapper.cs" />
+    <Compile Include="CakeMarketingApi\Clients\AdvertisersRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\AffiliatesClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\AffiliatesRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\CampaignsClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\CampaignsRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\CampaignSummariesClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\CampaignSummariesRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\CreativesClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\CreativesRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\EventConversionsClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\EventConversionsRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\OfferSummariesClient.cs" />
+    <Compile Include="CakeMarketingApi\Entities\AdvertiserExportResponse.cs" />
+    <Compile Include="CakeMarketingApi\Clients\AdvertisersClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\ApiClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\ApiRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\ClicksClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\ClicksRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\ConversionsClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\ConversionsRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\DailySummariesRequest.cs" />
+    <Compile Include="CakeMarketingApi\Clients\TrafficClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\TrafficRequest.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Advertiser.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Affiliate.cs" />
+    <Compile Include="CakeMarketingApi\Entities\ArrayOfTraffic.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Browser.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Campaign.cs" />
+    <Compile Include="CakeMarketingApi\Entities\CampaignExportResponse.cs" />
+    <Compile Include="CakeMarketingApi\Entities\CampaignSummary.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Click.cs" />
+    <Compile Include="CakeMarketingApi\Entities\ClickReportResponse.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Contact.cs" />
+    <Compile Include="CakeMarketingApi\Entities\ContactInfo.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Conversion.cs" />
+    <Compile Include="CakeMarketingApi\Entities\ConversionReportResponse.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Country.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Creative.cs" />
+    <Compile Include="CakeMarketingApi\Entities\CreativeExportResponse.cs" />
+    <Compile Include="CakeMarketingApi\Entities\CreativeFile.cs" />
+    <Compile Include="CakeMarketingApi\Entities\CreativeMonthlySummary.cs" />
+    <Compile Include="CakeMarketingApi\Entities\CreativeType.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Currency.cs" />
+    <Compile Include="CakeMarketingApi\Entities\DateRangeTraffic.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Device.cs" />
+    <Compile Include="CakeMarketingApi\Entities\EventConversion.cs" />
+    <Compile Include="CakeMarketingApi\Entities\IdNameEntities.cs" />
+    <Compile Include="CakeMarketingApi\Entities\MoneyAmount.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OfferAffiliateDailySummary.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OfferContractInfo.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OfferStatus.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OfferSummary.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OfferType.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OperatingSystem.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Payout.cs" />
+    <Compile Include="CakeMarketingApi\Entities\PriceFormat.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Received.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Region.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Role.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Tag.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Vertical.cs" />
+    <Compile Include="Commands\DA\DASynchAdformStats.cs" />
+    <Compile Include="Commands\DA\DASynchAmazonStats.cs" />
+    <Compile Include="Commands\DA\DASynchCakeEventConversions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\DA\DASynchCampSums.cs" />
+    <Compile Include="Commands\DA\DASynchCriteoStats.cs" />
+    <Compile Include="Commands\DA\DASynchYAMStats.cs" />
+    <Compile Include="Commands\EOMSynchCPCCommand.cs" />
+    <Compile Include="Commands\DA\DASynchFacebookAdPreviews.cs" />
+    <Compile Include="Commands\DA\DASynchDBMCreatives.cs" />
+    <Compile Include="Commands\DA\DASeed.cs" />
+    <Compile Include="Commands\DA\DASynchAdrollAds.cs" />
+    <Compile Include="Commands\DA\DASynchDBMStatsOld.cs" />
+    <Compile Include="Commands\RT\RTSynchTest.cs" />
+    <Compile Include="Commands\Search\CopySearchDailySummariesCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchDailySummariesAppleCommand.cs" />
+    <Compile Include="Commands\Test\TestABCommand.cs" />
+    <Compile Include="Commands\Test\TestAdformCommand.cs" />
+    <Compile Include="Commands\Test\TestAdWordsCommand.cs" />
+    <Compile Include="Commands\Test\TestAmazonCommand.cs" />
+    <Compile Include="Commands\Test\TestAppleCommand.cs" />
+    <Compile Include="Commands\Test\TestFacebookCommand.cs" />
+    <Compile Include="Commands\Test\TestYAMCommand.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Common\Compare.cs" />
+    <Compile Include="Etl\CakeMarketing\DALoaders\DAAffiliatesLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\DALoaders\DACampLoader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Etl\CakeMarketing\DALoaders\DACampSumLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\DALoaders\DAEventConversionLoader.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Etl\CakeMarketing\Extracters\AffiliatesExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\EventConversionExtracter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Etl\CakeMarketing\Loaders\CPCLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\AppleApiExtracter.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\DbExtracters.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\AdWordsConvSummaryLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\AppleApiLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\BingConvSummaryLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\SearchDailySummaryLoaders.cs" />
+    <Compile Include="Etl\SocialMarketing\LoadersDA\FacebookAdPreviewLoader.cs" />
+    <Compile Include="Etl\SocialMarketing\LoadersDA\FacebookAdSetSummaryLoader.cs" />
+    <Compile Include="Etl\SocialMarketing\LoadersDA\FacebookAdSummaryLoader.cs" />
+    <Compile Include="Etl\SocialMarketing\LoadersDA\FacebookCampaignSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AmazonExtracters.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AdformExtracters.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AmazonTransformers.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AdformTransformers.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AdRollAdExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AdrollSiteStatsCsvExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\CPCExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\CriteoExtracters.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DatabaseExtracters.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DbmCreativeCloudStorageExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DBMCreativeExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\TDAdSetSummaryExtracter.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Etl\TradingDesk\Extracters\TDadSummaryExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\TDConvExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\TDSiteSummaryExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\TDStrategySummaryExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\YAMConValExtracters.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\YAMExtracters.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdRollAdLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdrollAttributionSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdrollSiteStatsLoader.cs" />
+    <Compile Include="Commands\DA\DASynchAdrollSiteStatsCsv.cs" />
+    <Compile Include="Commands\DA\DASynchAdrollAccounts.cs" />
+    <Compile Include="Commands\DA\DASynchAdrollConvCsv.cs" />
+    <Compile Include="Commands\DA\DASynchAdrollStats.cs" />
+    <Compile Include="Commands\DA\DASynchAdvertisers.cs" />
+    <Compile Include="Commands\DA\DASynchDBMStats.cs" />
+    <Compile Include="Commands\DA\DASynchFacebookStats.cs" />
+    <Compile Include="Commands\DA\DASynchOfferBudgetStats2.cs" />
+    <Compile Include="Commands\DA\DASynchOfferBudgetStats.cs" />
+    <Compile Include="Commands\DA\DASynchOfferDailySummaries.cs" />
+    <Compile Include="Commands\DA\DASynchOffers.cs" />
+    <Compile Include="Commands\DA\DASynchTDDailySummaries.cs" />
+    <Compile Include="Commands\PrintItCommand.cs" />
+    <Compile Include="Commands\ScheduledCommand.cs" />
+    <Compile Include="Commands\ScheduledJob.cs" />
+    <Compile Include="Commands\SendAutomatedReportsCommand.cs" />
+    <Compile Include="Commands\SendSimpleReportsCommand.cs" />
+    <Compile Include="Commands\SynchAdvertisersCommand.cs" />
+    <Compile Include="Commands\SynchCampaignsCommand.cs" />
+    <Compile Include="Commands\SynchClicksCommand2.cs" />
+    <Compile Include="Commands\SynchConversionsCommand.cs" />
+    <Compile Include="Commands\SynchCakeTrafficCommand.cs" />
+    <Compile Include="Commands\SynchClicksCommand.cs" />
+    <Compile Include="Commands\SynchCreativesCommand.cs" />
+    <Compile Include="Commands\SynchCreativeSummariesCommand.cs" />
+    <Compile Include="Commands\SynchDailySummaries2.cs" />
+    <Compile Include="Commands\SynchOfferDailySummariesCommand.cs" />
+    <Compile Include="Commands\SynchOffersCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchCallDailySummariesCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchDailySummariesAdWordsCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchDailySummariesAnalyticsCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchDailySummariesBingCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchDailySummariesBingCsvCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchDailySummariesCriteoCommand.cs" />
+    <Compile Include="Commands\TD\TDSynchAdDailySummariesAdroll.cs" />
+    <Compile Include="Commands\TD\TDSynchAdDailySummariesAdrollCsv.cs" />
+    <Compile Include="Commands\TD\TDSynchCreativeDailySummariesDbm.cs" />
+    <Compile Include="Commands\TD\TDSynchCreativeDailySummariesDbmCsv.cs" />
+    <Compile Include="Commands\TD\TDSynchDailyStatsDbm.cs" />
+    <Compile Include="Commands\TD\TDSynchDailySummariesDbmCsv.cs" />
+    <Compile Include="Commands\TD\TDSynchDataTransferFilesDbm.cs" />
+    <Compile Include="Commands\TD\TDSynchUserListStats.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Commands\Test\TestAdRollCommand.cs" />
+    <Compile Include="Commands\Test\TestBingCommand.cs" />
+    <Compile Include="Commands\Test\TestChartCommand.cs" />
+    <Compile Include="Commands\Test\TestCriteoCommand.cs" />
+    <Compile Include="Commands\Test\TestDbmCommand.cs" />
+    <Compile Include="Commands\Test\TestExcelCommand.cs" />
+    <Compile Include="Commands\Test\TestLCCommand.cs" />
+    <Compile Include="Common\CopyPropertiesUtility.cs" />
+    <Compile Include="Common\EmailUtility.cs" />
+    <Compile Include="Common\EntityFrameworkExtensions.cs" />
+    <Compile Include="Common\LinqExtensions.cs" />
+    <Compile Include="Common\LogElapsedTime.cs" />
+    <Compile Include="Common\ReflectionExtensions.cs" />
+    <Compile Include="CakeMarketingApi\Entities\ArrayOfDailySummary.cs" />
+    <Compile Include="CakeMarketingApi\Clients\DailySummariesClient.cs" />
+    <Compile Include="CakeMarketingApi\Entities\DailySummary.cs" />
+    <Compile Include="CakeMarketingApi\Entities\Offer.cs" />
+    <Compile Include="CakeMarketingApi\Clients\OffersClient.cs" />
+    <Compile Include="CakeMarketingApi\Clients\OffersRequest.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OfferExportResponse.cs" />
+    <Compile Include="CakeMarketingCache.cs" />
+    <Compile Include="CakeMarketing.cs" />
+    <Compile Include="CakeModels.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Common\ConsoleCommand.cs" />
+    <Compile Include="Common\ConsoleCommandDispatcher.cs" />
+    <Compile Include="Common\DateRange.cs" />
+    <Compile Include="Commands\SynchDailySummariesCommand.cs" />
+    <Compile Include="Commands\Search\SynchSearchDailySummariesXmlCommand.cs" />
+    <Compile Include="Common\SqlUtility.cs" />
+    <Compile Include="Common\Utility.cs" />
+    <Compile Include="Common\XmlExtensions.cs" />
+    <Compile Include="DataWarehouse.cs" />
+    <Compile Include="Bootstrappers\EnterpriseLibraryBootstrapper.cs" />
+    <Compile Include="Common\BatchingExtensions.cs" />
+    <Compile Include="CakeMarketingApi\CakeMarketingUtility.cs" />
+    <Compile Include="Data\CakeTraffic\CakeTrafficContext.cs" />
+    <Compile Include="Etl\CakeMarketing\DALoaders\DAAdvertisersLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\DALoaders\DAOfferDailySummariesLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\DALoaders\DAOffersLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\DALoaders\DAOfferSummaryLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\AdvertisersExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\CampaignsExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\CampaignSummaryExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\ClicksExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\ConversionsExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\CreativeMonthlySummariesExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\CreativesExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\OfferDailySummariesExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\OffersExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\OfferSummaryExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\TrafficExtracter.cs" />
+    <Compile Include="Etl\CakeMarketing\Extracters\DailySummariesExtracter.cs" />
+    <Compile Include="CakeMarketingApi\Entities\OfferDailySummary.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\AdvertisersLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\CampaignsLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\CampaignSummaryLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\ClicksLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\ClicksLoader2.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\ConversionsLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\CreativeMonthlySummariesLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\CreativesLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\OfferDailySummariesLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\OffersLoader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\TrafficLoader.cs" />
+    <Compile Include="Etl\ILoader.cs" />
+    <Compile Include="Etl\MultiLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\AdWordsApiExtracter.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\AnalyticsApiExtracter.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\BingCsvReportExtracter.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\BingApiExtracters.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\CriteoApiExtracter.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\CriteoApiExtracter2.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\LocalConnexApiExtracter.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\AdWordsApiLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\AnalyticsApiLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\BingLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\CallDailySummaryLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\CriteoDailySummaryLoader.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\CriteoDailySummaryLoader2.cs" />
+    <Compile Include="Etl\SocialMarketing\Extracters\FacebookApiExtracter.cs" />
+    <Compile Include="Etl\SocialMarketing\LoadersDA\FacebookDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AdrollApiExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AdrollConvCsvExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\AdrollCsvExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DbmCloudStorageExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DbmConversionExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DbmCsvExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DbmDailyStatsExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\DbmUserListStatExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\Extracters\TDDailySummaryExtracter.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdrollAdDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdrollCampaignSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdrollConvLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AmazonAdSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AmazonAdSetSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AmazonDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AmazonCampaignSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\DbmConvLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDadPreviewLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\DBMCreativeDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\DbmCreativeSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\DbmDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\DbmLineItemSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\DbmSiteSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdrollAdSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDAdSetSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDadSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDConvLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDSiteSummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDStrategyConValLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDStrategySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\TDDailyConValLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Loaders\AdrollAdDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Loaders\AdrollAdDailySummaryLoader2.cs" />
+    <Compile Include="Etl\TradingDesk\LoadersDA\AdrollDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Loaders\DbmConversionLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Loaders\DbmCreativeDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Loaders\DbmDailyStatsLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Loaders\DbmDailySummaryLoader.cs" />
+    <Compile Include="Etl\TradingDesk\Loaders\DbmUserListStatLoader.cs" />
+    <Compile Include="Etl\Transformer.cs" />
+    <Compile Include="Etl\SearchMarketing\Extracters\AdWordsXmlReportExtracter.cs" />
+    <Compile Include="Etl\SearchMarketing\Loaders\AdWordsLoader.cs" />
+    <Compile Include="Etl\Extracter.cs" />
+    <Compile Include="Etl\Loader.cs" />
+    <Compile Include="Etl\CakeMarketing\Loaders\DailySummariesLoader.cs" />
+    <Compile Include="Etl\LoaderTask.cs" />
+    <Compile Include="ICakeMarketing.cs" />
+    <Compile Include="ICakeMarketingCache.cs" />
+    <Compile Include="Logging\Loggers\ConsoleLogger.cs" />
+    <Compile Include="Logging\Loggers\EnterpriseLibraryLogger.cs" />
+    <Compile Include="Logging\ILogger.cs" />
+    <Compile Include="Logging\Logger.cs" />
+    <Compile Include="Logging\Loggers\NullLogger.cs" />
+    <Compile Include="Mef\Composer.cs" />
+    <Compile Include="MetricNames.cs" />
+    <Compile Include="Logging\EnterpriseLibrary\ConsoleCustomTraceListener.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\CakeReport.cs" />
+    <Compile Include="Reports\CakeReportRuntimeTextTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CakeReportRuntimeTextTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CakeReportRuntimeTextTemplate.partial.cs" />
+    <Compile Include="Reports\GmailEmailer.cs" />
+    <Compile Include="Reports\IReport.cs" />
+    <Compile Include="Reports\ReportManager.cs" />
+    <Compile Include="Reports\SearchReport.cs" />
+    <Compile Include="Reports\SearchReportRuntimeTextTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SearchReportRuntimeTextTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\SimpleReportManager.cs" />
+    <Compile Include="Syncher.cs" />
+    <Compile Include="Data\UsersContext.cs" />
+    <Compile Include="Common\RetryUtility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="271266501f61f25ee49c19a3c5cf3bb9a769ba00-privatekey.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CakeMarketingApi\CakeMarketingApi.cd" />
+    <None Include="CakeMarketingApi\Entities\Entities.cd" />
+    <None Include="Etl\Etl.cd" />
+    <None Include="packages.config" />
+    <Compile Include="Reports\SearchReportRuntimeTextTemplate.partial.cs" />
+    <None Include="Reports\CakeReportRuntimeTextTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CakeReportRuntimeTextTemplate.cs</LastGenOutput>
+    </None>
+    <None Include="Reports\SearchReportRuntimeTextTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SearchReportRuntimeTextTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\1\DirectAgents.Domain\DirectAgents.Domain.csproj">
+      <Project>{278911ab-cb92-4316-843e-4571cd0c3410}</Project>
+      <Name>DirectAgents.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\1\EomTool\EomTool.Domain\EomTool.Domain.csproj">
+      <Project>{f41da2e2-d584-479a-9f24-9b2d3d33f927}</Project>
+      <Name>EomTool.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\Adform\Adform.csproj">
+      <Project>{a73b51cc-60d1-4d14-b90c-1504cde05303}</Project>
+      <Name>Adform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\AdRoll\AdRoll.csproj">
+      <Project>{feb04d4a-cf17-43bf-bf2c-635e87a38279}</Project>
+      <Name>AdRoll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\Amazon\Amazon.csproj">
+      <Project>{5c59f9fe-a478-4701-bb84-17e7d0e5e012}</Project>
+      <Name>Amazon</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\Apple\Apple.csproj">
+      <Project>{63f5069c-4aa1-4fa1-aba4-352fe8373e09}</Project>
+      <Name>Apple</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\Criteo\Criteo.csproj">
+      <Project>{d96a10b3-8700-45c1-ada4-96cac22cbd5c}</Project>
+      <Name>Criteo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\DBM\DBM.csproj">
+      <Project>{7b3c53ed-633b-4dde-b925-6161f39fd9ca}</Project>
+      <Name>DBM</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\FacebookAPI\FacebookAPI.csproj">
+      <Project>{3358a07a-a5a0-4933-9680-03d4308b278c}</Project>
+      <Name>FacebookAPI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\LocalConnex\LocalConnex.csproj">
+      <Project>{b0ed69e7-2ff1-4205-a10a-d1afb3f5f89d}</Project>
+      <Name>LocalConnex</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\Yahoo\Yahoo.csproj">
+      <Project>{b5c95cb8-dbe8-4d94-9a6d-6c2ed3535a26}</Project>
+      <Name>Yahoo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\API\BingAds\BingAds.csproj">
+      <Project>{e2ea8ab5-abaf-4007-a446-09624cb159e6}</Project>
+      <Name>BingAds</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ClientPortal.Data\ClientPortal.Data.csproj">
+      <Project>{2e621b59-9455-4fa5-b9bd-6bdc418ffbfa}</Project>
+      <Name>ClientPortal.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\DAGenerators\DAGenerators.csproj">
+      <Project>{70f3e367-5f86-4718-9a27-6edc9fef9ec9}</Project>
+      <Name>DAGenerators</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\DirectAgents.Web\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\..\DirectAgents.Web\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
+</Project>

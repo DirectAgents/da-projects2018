@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Advertiser>
+@using DirectAgents.Domain.Entities.CPProg;
+@{
+    DateTime currMonth = ViewBag.CurrMonth;
+    bool activeLastMonth = ViewBag.ActiveLastMonth;
+}
+
+@section scripts {
+<script>
+    function ChangeMonth(month) {
+        var url = '@Html.Raw(Url.Action("IndexFees", new { month = "monthVal" }))';
+        location.href = url.replace('monthVal', month);
+    }
+</script>
+}
+<h2>Budget/Fee Summary</h2>
+@Html.Partial("ChooseMonthNonSubmit", (SelectList)ViewBag.ChooseMonthSelectList)
+
+<table border="1">
+<tr>
+    <th></th>
+    <th>Budget</th>
+    <th>MgmtFeePct</th>
+    <th>MarginPct</th>
+    <th></th>
+    <th>BaseFee</th>
+</tr>
+@foreach (var adv in Model)
+{
+    <tr><td colspan="5"><b>@adv.Name</b></td></tr>
+    foreach (var camp in adv.Campaigns.OrderBy(x => x.Name))
+    {
+        bool usingDefaults = false;
+        BudgetInfoVals bi = camp.BudgetInfos.FirstOrDefault(x => x.Date == currMonth);
+        if (bi == null)
+        {
+            bi = camp.DefaultBudgetInfo;
+            usingDefaults = true;
+        }
+        <tr>
+            <td>Campaign: @camp.Name</td>
+            <td style="@(usingDefaults ? "" : "color:green")">@bi.MediaSpend.ToString("C")</td>
+            <td>@bi.MgmtFeePct.ToString("#0.##### \\%")</td>
+            <td>@bi.MarginPct.ToString("#0.##### \\%")</td>
+            <td>@(usingDefaults ? "(defaults)" : "")</td>
+            <td>@(camp.BaseFee > 0 ? camp.BaseFee.ToString("C") : "")</td>
+        </tr>
+        var pbis = camp.PlatformBudgetInfosFor(currMonth);
+        foreach (var pbi in pbis.OrderBy(x => x.Platform.Name))
+        {
+            <tr>
+                <td style="text-align:right; color:red">@pbi.Platform.Name</td>
+                <td style="color:red">@pbi.MediaSpend.ToString("C")</td>
+                <td style="color:red">@pbi.MgmtFeePct.ToString("#0.##### \\%")</td>
+                <td style="color:red">@pbi.MarginPct.ToString("#0.##### \\%")</td>
+            </tr>
+        }
+    }
+    <tr><td></td></tr>
+}
+</table>
+
+<br />
+@Html.ActionLink("Copy Budgets,Percents&Exceptions from last month", "CopyInfos", new { month = currMonth.ToShortDateString(), activeLastMonth = activeLastMonth })
+<br /><br />
+@Html.ActionLink("Create BaseFee items for the month", "CreateBaseFees", new { month = currMonth.ToShortDateString() })
+
+@*@Html.ActionLink("Delete All (including exceptions)", "Delete", "BudgetInfos", new { date = currMonth.ToShortDateString(), pbiAlso = true }, new { })*@

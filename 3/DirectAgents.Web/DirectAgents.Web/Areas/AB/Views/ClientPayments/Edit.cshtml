@@ -1,0 +1,82 @@
+﻿@model DirectAgents.Domain.Entities.AB.ClientPayment
+@{
+    var jobs = (IEnumerable<DirectAgents.Domain.Entities.AB.Job>)ViewBag.Jobs;
+    bool multipleBits = (Model.Bits.Count() > 1);
+}
+
+<fieldset>
+    <legend>Edit ClientPayment</legend>
+    Client: @Model.Client.Name
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.ClientId)
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Date)</td>
+                    <td>@Html.EditorFor(m => m.Date, "Date")</td>
+                    <td>
+                        <input id="btnSubmitPayment" type="submit" value="Save" onclick="SavePayment()" />
+                        <div id="divSavePaymentMessage"></div>
+                    </td>
+                </tr>
+            </table>
+    }
+    <br />
+    @if (multipleBits)
+    {
+        <text>Total Payment: @Model.TotalValue()</text>
+        <br /><br />
+    }
+    @using (Html.BeginForm("SaveBits", null, FormMethod.Post, new { id = "formBits" }))
+    {
+        <text>Breakdown:</text>
+        <table style="margin-bottom:5px">
+            <tr>
+                <th>Amount</th>
+                <th>Account</th>
+            </tr>
+        @{
+            int i = 0;
+        }
+        @foreach (var bit in Model.Bits)
+        {
+            var jobSelectList = new SelectList(jobs, "Id", "Name", bit.JobId);
+            @Html.Hidden("id" + i, bit.Id)
+            <tr>
+                <td>@Html.TextBox("val" + i, bit.Value)</td>
+                <td>@Html.DropDownList("job" + i, jobSelectList, "- General -")</td>
+                @if (multipleBits)
+                {
+                    <td>@Html.ActionLink("delete", "DeleteBit", new { bitId = bit.Id }, new { onclick="if (!confirm('Are you sure?')) return false" })</td>
+                }
+            </tr>
+            i++;
+        }
+        </table>
+        <div id="divSaveBits">
+            <input type="submit" value="Save Amounts" onclick="SaveBits()" />&nbsp;
+            @Html.ActionLink("new amount", "NewBit", new { id = Model.Id })
+        </div>
+        <div id="divSaveBitsMessage"></div>
+        @Html.Hidden("numBits", i)
+        @Html.Hidden("paymentId", Model.Id)
+    }
+</fieldset>
+
+<br />
+Links:<br />
+@Html.ActionLink("List of Payments", "Index", new { clientId = Model.ClientId })<br />
+@Html.ActionLink("View/Edit ClientX", "ShowX", "Clients", new { id = Model.ClientId }, null)
+
+<script>
+    function SavePayment() {
+        $('#btnSubmitPayment').hide();
+        $('#divSavePaymentMessage').html("<i>Saving...</i>");
+    }
+    function SaveBits() {
+        $('#divSaveBits').hide();
+        $('#divSaveBitsMessage').html("<i>Saving...</i>");
+    }
+</script>

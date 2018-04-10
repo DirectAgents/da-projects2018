@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CakeModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="CakeModelStoreContainer">
+    <EntitySet Name="CakeAdvertisers" EntityType="CakeModel.Store.CakeAdvertisers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CakeAffiliates" EntityType="CakeModel.Store.CakeAffiliates" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CakeConversions" EntityType="CakeModel.Store.CakeConversions" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CakeOffers" EntityType="CakeModel.Store.CakeOffers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CakeContacts" EntityType="CakeModel.Store.CakeContacts" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CakeCampaigns" EntityType="CakeModel.Store.CakeCampaigns" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CakeUtilityErrors" EntityType="CakeModel.Store.CakeUtilityErrors" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_CakeOfferCakeCampaign" Association="CakeModel.Store.FK_CakeOfferCakeCampaign">
+      <End Role="CakeOffer" EntitySet="CakeOffers" />
+      <End Role="CakeCampaign" EntitySet="CakeCampaigns" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CakeConversions_CakeCampaigns" Association="CakeModel.Store.FK_CakeConversions_CakeCampaigns">
+      <End Role="CakeCampaign" EntitySet="CakeCampaigns" />
+      <End Role="CakeConversion" EntitySet="CakeConversions" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CakeAdvertisers">
+    <Key>
+      <PropertyRef Name="Advertiser_Id" />
+    </Key>
+    <Property Name="Advertiser_Id" Type="int" Nullable="false" />
+    <Property Name="AdvertiserName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="AccountManager_Id" Type="int" Nullable="true" />
+    <Property Name="AccountManagerName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="AdManagerName" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CakeAffiliates">
+    <Key>
+      <PropertyRef Name="Affiliate_Id" />
+    </Key>
+    <Property Name="Affiliate_Id" Type="int" Nullable="false" />
+    <Property Name="AffiliateName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="AccountManager_Id" Type="int" Nullable="true" />
+    <Property Name="StatusName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Website" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="AccountManagerName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Currency" Type="nchar" Nullable="true" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="CakeConversions">
+    <Key>
+      <PropertyRef Name="Conversion_Id" />
+    </Key>
+    <Property Name="Conversion_Id" Type="int" Nullable="false" />
+    <Property Name="ConversionDate" Type="datetime" Nullable="true" />
+    <Property Name="Affiliate_Id" Type="int" Nullable="true" />
+    <Property Name="Offer_Id" Type="int" Nullable="true" />
+    <Property Name="Advertiser_Id" Type="int" Nullable="true" />
+    <Property Name="Campaign_Id" Type="int" Nullable="false" />
+    <Property Name="Creative_Id" Type="int" Nullable="true" />
+    <Property Name="CreativeName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Subid1" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="ConversionType" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="PricePaid" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="PriceReceived" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="IpAddress" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="EomDatabase_Id" Type="int" Nullable="true" />
+    <Property Name="EomItem_Id" Type="int" Nullable="true" />
+    <Property Name="EomItemName" Type="varchar" Nullable="true" MaxLength="300" />
+    <Property Name="PricePaidCurrencyId" Type="int" Nullable="false" />
+    <Property Name="PriceReceivedCurrencyId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CakeOffers">
+    <Key>
+      <PropertyRef Name="Offer_Id" />
+    </Key>
+    <Property Name="Offer_Id" Type="int" Nullable="false" />
+    <Property Name="OfferName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Advertiser_Id" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="VerticalName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="OfferType" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="StatusName" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="DefaultPriceFormat" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="DefaultPayout" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="PriceReceived" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="Secure" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="OfferLink" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="ThumbnailImageUrl" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="ExpirationDate" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="CookieDays" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="CookieDaysImpressions" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="DateCreated" Type="nvarchar" Nullable="true" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="CakeContacts">
+    <Key>
+      <PropertyRef Name="Contact_Id" />
+    </Key>
+    <Property Name="Contact_Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CakeCampaigns">
+    <Key>
+      <PropertyRef Name="Campaign_Id" />
+    </Key>
+    <Property Name="Campaign_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CakeOffer_Offer_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CakeUtilityErrors">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Tag" Type="nvarchar" Nullable="true" MaxLength="255" />
+    <Property Name="ExceptionMessage" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ExceptionStackTrace" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="InnerExceptionMessage" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="InnerExceptionStackTrace" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <Association Name="FK_CakeOfferCakeCampaign">
+    <End Role="CakeOffer" Type="CakeModel.Store.CakeOffers" Multiplicity="1" />
+    <End Role="CakeCampaign" Type="CakeModel.Store.CakeCampaigns" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CakeOffer">
+        <PropertyRef Name="Offer_Id" />
+      </Principal>
+      <Dependent Role="CakeCampaign">
+        <PropertyRef Name="CakeOffer_Offer_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CakeConversions_CakeCampaigns">
+    <End Role="CakeCampaign" Type="CakeModel.Store.CakeCampaigns" Multiplicity="1" />
+    <End Role="CakeConversion" Type="CakeModel.Store.CakeConversions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CakeCampaign">
+        <PropertyRef Name="Campaign_Id" />
+      </Principal>
+      <Dependent Role="CakeConversion">
+        <PropertyRef Name="Campaign_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="CakeModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="CakeEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CakeAdvertisers" EntityType="CakeModel.CakeAdvertiser" />
+          <EntitySet Name="CakeAffiliates" EntityType="CakeModel.CakeAffiliate" />
+          <EntitySet Name="CakeConversions" EntityType="CakeModel.CakeConversion" />
+          <EntitySet Name="CakeOffers" EntityType="CakeModel.CakeOffer" />
+          <EntitySet Name="CakeContacts" EntityType="CakeModel.CakeContact" />
+          <FunctionImport Name="ResetTables" />
+          <EntitySet Name="CakeCampaigns" EntityType="CakeModel.CakeCampaign" />
+          <AssociationSet Name="FK_CakeOfferCakeCampaign" Association="CakeModel.FK_CakeOfferCakeCampaign">
+            <End Role="CakeOffer" EntitySet="CakeOffers" />
+            <End Role="CakeCampaign" EntitySet="CakeCampaigns" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CakeConversions_CakeCampaigns" Association="CakeModel.FK_CakeConversions_CakeCampaigns">
+            <End Role="CakeCampaign" EntitySet="CakeCampaigns" />
+            <End Role="CakeConversion" EntitySet="CakeConversions" />
+          </AssociationSet>
+          <EntitySet Name="CakeUtilityErrors" EntityType="CakeModel.CakeUtilityError" />
+        </EntityContainer>
+        <EntityType Name="CakeAdvertiser">
+          <Key>
+            <PropertyRef Name="Advertiser_Id" />
+          </Key>
+          <Property Type="Int32" Name="Advertiser_Id" Nullable="false" />
+          <Property Type="String" Name="AdvertiserName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AccountManager_Id" />
+          <Property Type="String" Name="AccountManagerName" MaxLength="255" />
+          <Property Type="String" Name="AdManagerName" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CakeAffiliate">
+          <Key>
+            <PropertyRef Name="Affiliate_Id" />
+          </Key>
+          <Property Type="Int32" Name="Affiliate_Id" Nullable="false" />
+          <Property Type="String" Name="AffiliateName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="AccountManager_Id" />
+          <Property Type="String" Name="StatusName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Website" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AccountManagerName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Currency" MaxLength="3" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CakeConversion">
+          <Key>
+            <PropertyRef Name="Conversion_Id" />
+          </Key>
+          <Property Type="Int32" Name="Conversion_Id" Nullable="false" />
+          <Property Type="DateTime" Name="ConversionDate" />
+          <Property Type="Int32" Name="Affiliate_Id" />
+          <Property Type="Int32" Name="Offer_Id" />
+          <Property Type="Int32" Name="Advertiser_Id" />
+          <Property Type="Int32" Name="Campaign_Id" Nullable="false" />
+          <Property Type="Int32" Name="Creative_Id" />
+          <Property Type="String" Name="CreativeName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Subid1" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ConversionType" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PricePaid" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PriceReceived" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="IpAddress" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="EomDatabase_Id" />
+          <Property Type="Int32" Name="EomItem_Id" />
+          <NavigationProperty Name="CakeCampaign" Relationship="CakeModel.FK_CakeConversions_CakeCampaigns" FromRole="CakeConversion" ToRole="CakeCampaign" />
+          <Property Type="String" Name="EomItemName" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PricePaidCurrencyId" Nullable="false" />
+          <Property Type="Int32" Name="PriceReceivedCurrencyId" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CakeOffer">
+          <Key>
+            <PropertyRef Name="Offer_Id" />
+          </Key>
+          <Property Type="Int32" Name="Offer_Id" Nullable="false" />
+          <Property Type="String" Name="OfferName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Advertiser_Id" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="VerticalName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OfferType" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="StatusName" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DefaultPriceFormat" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DefaultPayout" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PriceReceived" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Secure" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="OfferLink" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ThumbnailImageUrl" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExpirationDate" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CookieDays" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CookieDaysImpressions" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DateCreated" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CakeCampaigns" Relationship="CakeModel.FK_CakeOfferCakeCampaign" FromRole="CakeOffer" ToRole="CakeCampaign" />
+        </EntityType>
+        <EntityType Name="CakeContact">
+          <Key>
+            <PropertyRef Name="Contact_Id" />
+          </Key>
+          <Property Type="Int32" Name="Contact_Id" Nullable="false" annotation:StoreGeneratedPattern="None" />
+          <Property Type="String" Name="Name" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CakeCampaign">
+          <Key>
+            <PropertyRef Name="Campaign_Id" />
+          </Key>
+          <Property Type="Int32" Name="Campaign_Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CakeOffer_Offer_Id" Nullable="false" />
+          <NavigationProperty Name="CakeOffer" Relationship="CakeModel.FK_CakeOfferCakeCampaign" FromRole="CakeCampaign" ToRole="CakeOffer" />
+          <NavigationProperty Name="CakeConversions" Relationship="CakeModel.FK_CakeConversions_CakeCampaigns" FromRole="CakeCampaign" ToRole="CakeConversion" />
+        </EntityType>
+        <Association Name="FK_CakeOfferCakeCampaign">
+          <End Type="CakeModel.CakeOffer" Role="CakeOffer" Multiplicity="1" />
+          <End Type="CakeModel.CakeCampaign" Role="CakeCampaign" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CakeOffer">
+              <PropertyRef Name="Offer_Id" />
+            </Principal>
+            <Dependent Role="CakeCampaign">
+              <PropertyRef Name="CakeOffer_Offer_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CakeConversions_CakeCampaigns">
+          <End Type="CakeModel.CakeCampaign" Role="CakeCampaign" Multiplicity="1" />
+          <End Type="CakeModel.CakeConversion" Role="CakeConversion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CakeCampaign">
+              <PropertyRef Name="Campaign_Id" />
+            </Principal>
+            <Dependent Role="CakeConversion">
+              <PropertyRef Name="Campaign_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="CakeUtilityError">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Tag" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExceptionMessage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ExceptionStackTrace" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerExceptionMessage" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="InnerExceptionStackTrace" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CakeModelStoreContainer" CdmEntityContainer="CakeEntities">
+    <EntitySetMapping Name="CakeAdvertisers">
+      <EntityTypeMapping TypeName="IsTypeOf(CakeModel.CakeAdvertiser)">
+        <MappingFragment StoreEntitySet="CakeAdvertisers">
+          <ScalarProperty Name="Advertiser_Id" ColumnName="Advertiser_Id" />
+          <ScalarProperty Name="AdvertiserName" ColumnName="AdvertiserName" />
+          <ScalarProperty Name="AccountManager_Id" ColumnName="AccountManager_Id" />
+          <ScalarProperty Name="AccountManagerName" ColumnName="AccountManagerName" />
+          <ScalarProperty Name="AdManagerName" ColumnName="AdManagerName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CakeAffiliates">
+      <EntityTypeMapping TypeName="IsTypeOf(CakeModel.CakeAffiliate)">
+        <MappingFragment StoreEntitySet="CakeAffiliates">
+          <ScalarProperty Name="Affiliate_Id" ColumnName="Affiliate_Id" />
+          <ScalarProperty Name="AffiliateName" ColumnName="AffiliateName" />
+          <ScalarProperty Name="AccountManager_Id" ColumnName="AccountManager_Id" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="Website" ColumnName="Website" />
+          <ScalarProperty Name="AccountManagerName" ColumnName="AccountManagerName" />
+          <ScalarProperty Name="Currency" ColumnName="Currency" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CakeConversions">
+      <EntityTypeMapping TypeName="IsTypeOf(CakeModel.CakeConversion)">
+        <MappingFragment StoreEntitySet="CakeConversions">
+          <ScalarProperty Name="Conversion_Id" ColumnName="Conversion_Id" />
+          <ScalarProperty Name="ConversionDate" ColumnName="ConversionDate" />
+          <ScalarProperty Name="Affiliate_Id" ColumnName="Affiliate_Id" />
+          <ScalarProperty Name="Offer_Id" ColumnName="Offer_Id" />
+          <ScalarProperty Name="Advertiser_Id" ColumnName="Advertiser_Id" />
+          <ScalarProperty Name="Campaign_Id" ColumnName="Campaign_Id" />
+          <ScalarProperty Name="Creative_Id" ColumnName="Creative_Id" />
+          <ScalarProperty Name="CreativeName" ColumnName="CreativeName" />
+          <ScalarProperty Name="Subid1" ColumnName="Subid1" />
+          <ScalarProperty Name="ConversionType" ColumnName="ConversionType" />
+          <ScalarProperty Name="PricePaid" ColumnName="PricePaid" />
+          <ScalarProperty Name="PriceReceived" ColumnName="PriceReceived" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="EomDatabase_Id" ColumnName="EomDatabase_Id" />
+          <ScalarProperty Name="EomItem_Id" ColumnName="EomItem_Id" />
+          <ScalarProperty Name="EomItemName" ColumnName="EomItemName" />
+          <ScalarProperty Name="PricePaidCurrencyId" ColumnName="PricePaidCurrencyId" />
+          <ScalarProperty Name="PriceReceivedCurrencyId" ColumnName="PriceReceivedCurrencyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CakeOffers">
+      <EntityTypeMapping TypeName="IsTypeOf(CakeModel.CakeOffer)">
+        <MappingFragment StoreEntitySet="CakeOffers">
+          <ScalarProperty Name="Offer_Id" ColumnName="Offer_Id" />
+          <ScalarProperty Name="OfferName" ColumnName="OfferName" />
+          <ScalarProperty Name="Advertiser_Id" ColumnName="Advertiser_Id" />
+          <ScalarProperty Name="VerticalName" ColumnName="VerticalName" />
+          <ScalarProperty Name="OfferType" ColumnName="OfferType" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="DefaultPriceFormat" ColumnName="DefaultPriceFormat" />
+          <ScalarProperty Name="DefaultPayout" ColumnName="DefaultPayout" />
+          <ScalarProperty Name="PriceReceived" ColumnName="PriceReceived" />
+          <ScalarProperty Name="Secure" ColumnName="Secure" />
+          <ScalarProperty Name="OfferLink" ColumnName="OfferLink" />
+          <ScalarProperty Name="ThumbnailImageUrl" ColumnName="ThumbnailImageUrl" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="CookieDays" ColumnName="CookieDays" />
+          <ScalarProperty Name="CookieDaysImpressions" ColumnName="CookieDaysImpressions" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CakeContacts">
+      <EntityTypeMapping TypeName="IsTypeOf(CakeModel.CakeContact)">
+        <MappingFragment StoreEntitySet="CakeContacts">
+          <ScalarProperty Name="Contact_Id" ColumnName="Contact_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CakeCampaigns">
+      <EntityTypeMapping TypeName="IsTypeOf(CakeModel.CakeCampaign)">
+        <MappingFragment StoreEntitySet="CakeCampaigns">
+          <ScalarProperty Name="Campaign_Id" ColumnName="Campaign_Id" />
+          <ScalarProperty Name="CakeOffer_Offer_Id" ColumnName="CakeOffer_Offer_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CakeUtilityErrors">
+      <EntityTypeMapping TypeName="IsTypeOf(CakeModel.CakeUtilityError)">
+        <MappingFragment StoreEntitySet="CakeUtilityErrors">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="ExceptionMessage" ColumnName="ExceptionMessage" />
+          <ScalarProperty Name="ExceptionStackTrace" ColumnName="ExceptionStackTrace" />
+          <ScalarProperty Name="InnerExceptionMessage" ColumnName="InnerExceptionMessage" />
+          <ScalarProperty Name="InnerExceptionStackTrace" ColumnName="InnerExceptionStackTrace" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="Cake" >
+        <EntityTypeShape EntityType="CakeModel.CakeAdvertiser" Width="2" PointX="0.5" PointY="1.625" Height="1.9802864583333331" />
+        <EntityTypeShape EntityType="CakeModel.CakeAffiliate" Width="2.25" PointX="5.25" PointY="3.5" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="CakeModel.CakeConversion" Width="1.5" PointX="2.875" PointY="0.875" Height="3.5186979166666656" />
+        <EntityTypeShape EntityType="CakeModel.CakeOffer" Width="2" PointX="8.375" PointY="1.375" Height="4.2879036458333317" />
+        <EntityTypeShape EntityType="CakeModel.CakeContact" Width="1.5" PointX="11.25" PointY="0.5" Height="1.4033821614583333" />
+        <EntityTypeShape EntityType="CakeModel.CakeCampaign" Width="1.5" PointX="5.625" PointY="1.25" Height="1.7879850260416657" />
+        <AssociationConnector Association="CakeModel.FK_CakeOfferCakeCampaign" >
+          <ConnectorPoint PointX="8.375" PointY="2.2064925130208328" />
+          <ConnectorPoint PointX="7.125" PointY="2.2064925130208328" />
+        </AssociationConnector>
+        <AssociationConnector Association="CakeModel.FK_CakeConversions_CakeCampaigns" >
+          <ConnectorPoint PointX="5.625" PointY="2.1439925130208328" />
+          <ConnectorPoint PointX="4.375" PointY="2.1439925130208328" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="CakeModel.CakeUtilityError" Width="2.375" PointX="11" PointY="2.25" Height="2.1725878906249996" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

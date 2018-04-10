@@ -1,0 +1,29 @@
+# Build Folders (you can keep bin if you'd like, to store dlls and pdbs)
+bin
+obj
+debug
+Debug - EOM
+*.csproj.user
+
+# mstest test results
+TestResults
+
+# SQL Server backups
+*.bak
+
+connectionsconfig.xml
+
+ThirdParty
+
+# other
+*.dbmdl
+*.suo
+*.vssettings
+
+# SSRS
+*.rdl.data
+*.rptproj.user
+
+# NuGet
+packages
+

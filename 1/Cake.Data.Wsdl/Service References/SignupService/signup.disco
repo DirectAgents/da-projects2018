@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="https://login.directagents.com/api/1/signup.asmx?wsdl" docRef="https://login.directagents.com/api/1/signup.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="https://login.directagents.com/api/1/signup.asmx" xmlns:q1="http://cakemarketing.com/api/1/" binding="q1:signupSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="https://login.directagents.com/api/1/signup.asmx" xmlns:q2="http://cakemarketing.com/api/1/" binding="q2:signupSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

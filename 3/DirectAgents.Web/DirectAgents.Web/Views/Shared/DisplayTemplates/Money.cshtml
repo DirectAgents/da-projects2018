@@ -1,0 +1,6 @@
+﻿@model System.Decimal?
+
+@if (Model.HasValue)
+{
+    <text>@Model.Value.ToString("C2")</text>
+}

@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPProg.AdSet>
+
+<h2>AdSets</h2>
+
+<table>
+<tr>
+    <th>Id</th>
+    <th>@Html.ActionLink("Name", "AdSets")</th>
+    <th>ExternalId</th>
+    <th>@Html.ActionLink("Strategy", "AdSets", new { sort = "strat" })</th>
+</tr>
+@foreach (var adset in Model)
+{
+<tr>
+    <td>@adset.Id</td>
+    <td>@adset.Name</td>
+    <td>@adset.ExternalId</td>
+    <td>@(adset.Strategy != null ? adset.Strategy.Name + " (" + adset.StrategyId + ")" : "")</td>
+</tr>
+}
+</table>
+

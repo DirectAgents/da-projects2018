@@ -1,0 +1,120 @@
+﻿@model int
+
+<h2>Spreadsheet</h2>
+
+<div>
+    <div id="spreadsheet" style="width:100%"></div>
+</div>
+
+@section scripts {
+<script>
+    $(document).ready(function () {
+        SetupDataSourceAndSpreadsheet();
+    });
+
+    function SetupDataSourceAndSpreadsheet() {
+        var datasource = new kendo.data.DataSource({
+            transport: {
+                read: {
+                    url: '@Url.Action("SpreadsheetData", new { ioID = Model })',
+                    type: 'post',
+                    dataType: 'json'
+                }
+            },
+            schema: {
+                model: {
+                    id: 'Id'
+                }
+            }
+        });
+        $('#spreadsheet').kendoSpreadsheet({
+            columns: 12,
+            rows: 100,
+            //toolbar: false,
+            //sheetsbar: false,
+            sheets: [{
+                name: 'ExtAccounts',
+                dataSource: datasource,
+                rows: [{
+                    cells: [
+                    {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }, {
+                        bold: "true",
+                        background: "#9c27b0",
+                        textAlign: "center",
+                        color: "white"
+                    }]
+                }],
+                columns: [
+                    { width: 250 },
+                    { width: 1 },
+                    { width: 1 },
+                    { width: 100 },
+                    { width: 100 },
+                    { width: 100 },
+                    { width: 100 },
+                    { width: 100 },
+                    { width: 100 },
+                    { width: 100 },
+                    { width: 100 },
+                    { width: 1 }
+                ]
+            }]
+        });
+    }
+</script>
+}

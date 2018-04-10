@@ -1,0 +1,66 @@
+﻿@model DirectAgents.Domain.Entities.AB.ABClient
+@{
+    int? editJobId = ViewBag.EditJobId;
+}
+
+<h2>Jobs</h2>
+
+Client: @Model.Name
+<br /><br />
+
+<div class="validation-summary-errors" style="display:none">
+    <ul>
+        <li>Row(s) could not be saved.</li>
+    </ul>
+</div>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Job</th>
+    <th></th>
+</tr>
+@foreach (var job in Model.Jobs.OrderBy(x => x.Name))
+{
+    ViewBag.EditMode = (editJobId.HasValue && editJobId.Value == job.Id);
+    <tr id="jobrow@(job.Id)">
+        @Html.Partial("JobRow", job)
+    </tr>
+}
+</table>
+[@Html.ActionLink("new job", "New", new { clientId = Model.Id })]
+
+<br /><br />
+Links:<br />
+@Html.ActionLink("View/Edit ClientX", "ShowX", "Clients", new { id = Model.Id }, null)<br />
+@Html.ActionLink("Single Client Detail", "Client", "Dashboard", new { id = Model.Id }, null)
+
+@section scripts {
+    <script type="text/javascript">
+
+        function LoadJobRow(jobId, editMode) {
+            var url = '@Url.Action("JobRow")';
+            var data = {
+                id: jobId,
+                editMode: editMode
+            };
+            $.get(url, data, function (data) {
+                $('#jobrow' + jobId).html(data);
+            });
+        }
+        function SaveJobRow(jobId) {
+            var url = '@Url.Action("SaveJobRow")';
+            var data = {
+                Id: jobId,
+                Name: $('#jobrow' + jobId + ' input[name="Name"]').val()
+            };
+            $.post(url, data, function (data) {
+                if (data)
+                    LoadJobRow(jobId, false);
+                else
+                    $('.validation-summary-errors').show();
+            });
+        }
+
+    </script>
+}

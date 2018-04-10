@@ -1,0 +1,14 @@
+﻿@model DirectAgents.Domain.Entities.Cake.Advertiser
+@{
+    var adv = Model;
+}
+
+<td>@(adv.AdManager==null ? "" : adv.AdManager.FullName)</td>
+<td style="text-align:right">@adv.AdvertiserId</td>
+<td>@adv.AdvertiserName</td>
+<td>
+    @Html.ActionLink(adv.Offers.Count.ToString() + " offers", "Offers", new { advId = @adv.AdvertiserId })
+</td>
+<td id="cmd@(adv.AdvertiserId)">
+    <a href="#" onclick="SynchOffers(@adv.AdvertiserId); return false">(resync)</a>
+</td>

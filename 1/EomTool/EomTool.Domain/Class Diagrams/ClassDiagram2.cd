@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="EomTool.Domain.Entities.PublisherSummary">
+    <Position X="4.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAQAAAAAAAAAAAAAICAAAAAAAIAAAgAgAIAA=</HashCode>
+      <FileName>Entities\PublisherSummary.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.CampaignStatus" Collapsed="true">
+    <Position X="10.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAABAIAAABAEEwAAgAAAAAAAyAgA=</HashCode>
+      <FileName>Entities\CampaignStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.EomEntities">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>SABBDiARBDQAKpcABQgAAgQiBBsYBYjEASAA9AIA4GE=</HashCode>
+      <FileName>Entities\EomEntities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.AccountingView2" Collapsed="true">
+    <Position X="12.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RCBSaE1cHlBVYEQAjKtJBZpA28lE+TWAOYFjAEIERgE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Advertiser" Collapsed="true">
+    <Position X="12.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAABAAAAABAEEQAAAAABAAAAQAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Affiliate" Collapsed="true">
+    <Position X="12.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ARAjJhAEAYUEAsAgBMBAiERQHgIEUQAQAAgGMSkRh8M=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Batch" Collapsed="true">
+    <Position X="12.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAEACAAAAABAAAAABAAEQAAAAAAAAAIQAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.BatchUpdate" Collapsed="true">
+    <Position X="12.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ERAQAgCBEACEIAACFEBAAIABBAAAAAAAAIAGAKgQggA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Campaign" Collapsed="true">
+    <Position X="12.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>w0QwEkAgOODhVFNRooBQJQAgBgAYJ9wEQwAzIYdQa1A=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.CampaignsPublisherReportDetail" Collapsed="true">
+    <Position X="12.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABZEBWC4gAAkAgQAbAGAeABOIwkYQAAAACkgEAEAiMA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.CampaignsPublisherReportSummary" Collapsed="true">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QiRAAYAigAAgABAQTAGAaABKIwgQQAAAACEAAIECiQA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Currency" Collapsed="true">
+    <Position X="10.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIQAAAAAACAAAAABAAACABAAEQAAAgAAABAASAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Item" Collapsed="true">
+    <Position X="9" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>tVFyPUGQC0ABFAPjtQDYMIgBrxokZB0CABgkYUjQN0A=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.ItemAccountingStatus" Collapsed="true">
+    <Position X="9" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAACAAAADAAABABAIAAABAoEQAAAAAAAAABSAgA=</HashCode>
+      <FileName>Entities\ItemAccountingStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.MediaBuyer" Collapsed="true">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAEAABAAAAABAAEQAAAAAAABAAQAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.MediaBuyerApprovalStatus" Collapsed="true">
+    <Position X="10.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAACAAAACAAAAABAYAAARAgEQAAAAAAAAEIQAgA=</HashCode>
+      <FileName>Entities\MediaBuyerApprovalStatus.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.NetTermType" Collapsed="true">
+    <Position X="12.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAACIAAAAAAAAAAAAABAAAAABAAEQAAAAAAABAAQAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.PublisherPayout" Collapsed="true">
+    <Position X="9" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>TSRQTE3eD1BVaGZAnKMLJZ5E+0lKuTWAOYFnIErETgE=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.PublisherReport" Collapsed="true">
+    <Position X="9" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABZEBWC4gAAkAgQAbIGAeABKIwkYQAAAACkgEAEAiMA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.PublisherReportDetail" Collapsed="true">
+    <Position X="10.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABJEBmQ6AAJMAgQgIABEsAEMAxIIhAQAAAioAJEAgcA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.PublisherReportSummary" Collapsed="true">
+    <Position X="10.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACFEAAAAAgIAAAQAEAaAQEAAAYxAAAACAQIAAQgAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Source" Collapsed="true">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAACAAAAABAAAAABAAEQAAAAAAAAAAQAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.TrackingSystem" Collapsed="true">
+    <Position X="9" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAAAAAAAABAAAAABAEEwAAAAAAABAAQAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.UnitType" Collapsed="true">
+    <Position X="10.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACIAAAAAAACABAAABAAAAABAAEQAAAAAAAAAAQAgA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.EomToolSecurityEntities">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAMAAAAAAABAAAAAAAAAACwAAAEAAECAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Group" Collapsed="true">
+    <Position X="9" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAAACAAAAACACAYAQABgAAQAAAAAgAAgAUAAQ=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Permission" Collapsed="true">
+    <Position X="9" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABACAAAAAAggAAAAAAAAIARABgAAQAAAAACAAAAUAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EomTool.Domain.Entities.Role" Collapsed="true">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEAAAAAAAAAAAAAAIAQABAAAQAAAEAAAAAAUAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="EomTool.Domain.Entities.IEomEntitiesConfig">
+    <Position X="1" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Entities\IEomEntitiesConfig.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.RevTrack.ProgClient>
+
+<h2>ProgClients (RevTrack)</h2>
+
+<table>
+<tr>
+    <th>ABId</th>
+    <th>ProgId</th>
+    <th>Name</th>
+</tr>
+@foreach (var client in Model.OrderBy(c => c.Name))
+{
+    <tr>
+        <td>@client.ABClientId</td>
+        <td>@client.Id</td>
+        <td>@client.Name</td>
+    </tr>
+}
+</table>

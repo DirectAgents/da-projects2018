@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://cakemarketing.com/api/1/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://cakemarketing.com/api/1/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://cakemarketing.com/api/1/">
+      <s:element name="Affiliate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="company_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_street" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_street2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_zip_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="referred_by" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="first_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="last_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="tax_class" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ssn_taxid" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="website" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_phone_work" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_phone_cell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_phone_fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_im_name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="contact_im_service" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="media_type" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="price_format" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="primary_vertical_category" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="secondary_vertical_category" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="payment_to" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ip_address" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AffiliateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AffiliateResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Advertiser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="company_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_street" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_street2" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_city" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_state" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_zip_code" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="address_country" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="first_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="last_name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="email_address" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="website" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="notes" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_title" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_phone_work" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_phone_cell" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_phone_fax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contact_im_name" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="contact_im_service" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="ip_address" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AdvertiserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AdvertiserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrafficTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetTrafficTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetTrafficTypesResult" type="tns:TrafficTypes" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="TrafficTypes">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MediaTypes" type="tns:ArrayOfMediaType" />
+          <s:element minOccurs="0" maxOccurs="1" name="PriceFormats" type="tns:ArrayOfPriceFormat" />
+          <s:element minOccurs="0" maxOccurs="1" name="VerticalCategories" type="tns:ArrayOfVerticalCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMediaType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="MediaType" nillable="true" type="tns:MediaType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MediaType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="media_type_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="type_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfPriceFormat">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="PriceFormat" nillable="true" type="tns:PriceFormat" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="PriceFormat">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="price_format_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="format_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVerticalCategory">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="VerticalCategory" nillable="true" type="tns:VerticalCategory" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="VerticalCategory">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="vertical_category_id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="category_name" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetMediaTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetMediaTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetMediaTypesResult" type="tns:ArrayOfMediaType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPriceFormats">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPriceFormatsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPriceFormatsResult" type="tns:ArrayOfPriceFormat" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVerticalCategories">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="api_key" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetVerticalCategoriesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetVerticalCategoriesResult" type="tns:ArrayOfVerticalCategory" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+      <s:element name="TrafficTypes" nillable="true" type="tns:TrafficTypes" />
+      <s:element name="ArrayOfMediaType" nillable="true" type="tns:ArrayOfMediaType" />
+      <s:element name="ArrayOfPriceFormat" nillable="true" type="tns:ArrayOfPriceFormat" />
+      <s:element name="ArrayOfVerticalCategory" nillable="true" type="tns:ArrayOfVerticalCategory" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AffiliateSoapIn">
+    <wsdl:part name="parameters" element="tns:Affiliate" />
+  </wsdl:message>
+  <wsdl:message name="AffiliateSoapOut">
+    <wsdl:part name="parameters" element="tns:AffiliateResponse" />
+  </wsdl:message>
+  <wsdl:message name="AdvertiserSoapIn">
+    <wsdl:part name="parameters" element="tns:Advertiser" />
+  </wsdl:message>
+  <wsdl:message name="AdvertiserSoapOut">
+    <wsdl:part name="parameters" element="tns:AdvertiserResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetTrafficTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetTrafficTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetTrafficTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetTrafficTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetMediaTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetMediaTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetMediaTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetMediaTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceFormatsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPriceFormats" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceFormatsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPriceFormatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetVerticalCategoriesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetVerticalCategories" />
+  </wsdl:message>
+  <wsdl:message name="GetVerticalCategoriesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetVerticalCategoriesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AffiliateHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="company_name" type="s:string" />
+    <wsdl:part name="address_street" type="s:string" />
+    <wsdl:part name="address_street2" type="s:string" />
+    <wsdl:part name="address_city" type="s:string" />
+    <wsdl:part name="address_state" type="s:string" />
+    <wsdl:part name="address_zip_code" type="s:string" />
+    <wsdl:part name="address_country" type="s:string" />
+    <wsdl:part name="referred_by" type="s:string" />
+    <wsdl:part name="first_name" type="s:string" />
+    <wsdl:part name="last_name" type="s:string" />
+    <wsdl:part name="email_address" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="tax_class" type="s:string" />
+    <wsdl:part name="ssn_taxid" type="s:string" />
+    <wsdl:part name="website" type="s:string" />
+    <wsdl:part name="notes" type="s:string" />
+    <wsdl:part name="contact_title" type="s:string" />
+    <wsdl:part name="contact_phone_work" type="s:string" />
+    <wsdl:part name="contact_phone_cell" type="s:string" />
+    <wsdl:part name="contact_phone_fax" type="s:string" />
+    <wsdl:part name="contact_im_name" type="s:string" />
+    <wsdl:part name="contact_im_service" type="s:string" />
+    <wsdl:part name="media_type" type="s:string" />
+    <wsdl:part name="price_format" type="s:string" />
+    <wsdl:part name="primary_vertical_category" type="s:string" />
+    <wsdl:part name="secondary_vertical_category" type="s:string" />
+    <wsdl:part name="payment_to" type="s:string" />
+    <wsdl:part name="ip_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AffiliateHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AdvertiserHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="company_name" type="s:string" />
+    <wsdl:part name="address_street" type="s:string" />
+    <wsdl:part name="address_street2" type="s:string" />
+    <wsdl:part name="address_city" type="s:string" />
+    <wsdl:part name="address_state" type="s:string" />
+    <wsdl:part name="address_zip_code" type="s:string" />
+    <wsdl:part name="address_country" type="s:string" />
+    <wsdl:part name="first_name" type="s:string" />
+    <wsdl:part name="last_name" type="s:string" />
+    <wsdl:part name="email_address" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="website" type="s:string" />
+    <wsdl:part name="notes" type="s:string" />
+    <wsdl:part name="contact_title" type="s:string" />
+    <wsdl:part name="contact_phone_work" type="s:string" />
+    <wsdl:part name="contact_phone_cell" type="s:string" />
+    <wsdl:part name="contact_phone_fax" type="s:string" />
+    <wsdl:part name="contact_im_name" type="s:string" />
+    <wsdl:part name="contact_im_service" type="s:string" />
+    <wsdl:part name="ip_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdvertiserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTrafficTypesHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTrafficTypesHttpGetOut">
+    <wsdl:part name="Body" element="tns:TrafficTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetMediaTypesHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMediaTypesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMediaType" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceFormatsHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceFormatsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPriceFormat" />
+  </wsdl:message>
+  <wsdl:message name="GetVerticalCategoriesHttpGetIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVerticalCategoriesHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVerticalCategory" />
+  </wsdl:message>
+  <wsdl:message name="AffiliateHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="company_name" type="s:string" />
+    <wsdl:part name="address_street" type="s:string" />
+    <wsdl:part name="address_street2" type="s:string" />
+    <wsdl:part name="address_city" type="s:string" />
+    <wsdl:part name="address_state" type="s:string" />
+    <wsdl:part name="address_zip_code" type="s:string" />
+    <wsdl:part name="address_country" type="s:string" />
+    <wsdl:part name="referred_by" type="s:string" />
+    <wsdl:part name="first_name" type="s:string" />
+    <wsdl:part name="last_name" type="s:string" />
+    <wsdl:part name="email_address" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="tax_class" type="s:string" />
+    <wsdl:part name="ssn_taxid" type="s:string" />
+    <wsdl:part name="website" type="s:string" />
+    <wsdl:part name="notes" type="s:string" />
+    <wsdl:part name="contact_title" type="s:string" />
+    <wsdl:part name="contact_phone_work" type="s:string" />
+    <wsdl:part name="contact_phone_cell" type="s:string" />
+    <wsdl:part name="contact_phone_fax" type="s:string" />
+    <wsdl:part name="contact_im_name" type="s:string" />
+    <wsdl:part name="contact_im_service" type="s:string" />
+    <wsdl:part name="media_type" type="s:string" />
+    <wsdl:part name="price_format" type="s:string" />
+    <wsdl:part name="primary_vertical_category" type="s:string" />
+    <wsdl:part name="secondary_vertical_category" type="s:string" />
+    <wsdl:part name="payment_to" type="s:string" />
+    <wsdl:part name="ip_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AffiliateHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AdvertiserHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+    <wsdl:part name="company_name" type="s:string" />
+    <wsdl:part name="address_street" type="s:string" />
+    <wsdl:part name="address_street2" type="s:string" />
+    <wsdl:part name="address_city" type="s:string" />
+    <wsdl:part name="address_state" type="s:string" />
+    <wsdl:part name="address_zip_code" type="s:string" />
+    <wsdl:part name="address_country" type="s:string" />
+    <wsdl:part name="first_name" type="s:string" />
+    <wsdl:part name="last_name" type="s:string" />
+    <wsdl:part name="email_address" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="website" type="s:string" />
+    <wsdl:part name="notes" type="s:string" />
+    <wsdl:part name="contact_title" type="s:string" />
+    <wsdl:part name="contact_phone_work" type="s:string" />
+    <wsdl:part name="contact_phone_cell" type="s:string" />
+    <wsdl:part name="contact_phone_fax" type="s:string" />
+    <wsdl:part name="contact_im_name" type="s:string" />
+    <wsdl:part name="contact_im_service" type="s:string" />
+    <wsdl:part name="ip_address" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AdvertiserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTrafficTypesHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetTrafficTypesHttpPostOut">
+    <wsdl:part name="Body" element="tns:TrafficTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetMediaTypesHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetMediaTypesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfMediaType" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceFormatsHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPriceFormatsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfPriceFormat" />
+  </wsdl:message>
+  <wsdl:message name="GetVerticalCategoriesHttpPostIn">
+    <wsdl:part name="api_key" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetVerticalCategoriesHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfVerticalCategory" />
+  </wsdl:message>
+  <wsdl:portType name="signupSoap">
+    <wsdl:operation name="Affiliate">
+      <wsdl:input message="tns:AffiliateSoapIn" />
+      <wsdl:output message="tns:AffiliateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Advertiser">
+      <wsdl:input message="tns:AdvertiserSoapIn" />
+      <wsdl:output message="tns:AdvertiserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrafficTypes">
+      <wsdl:input message="tns:GetTrafficTypesSoapIn" />
+      <wsdl:output message="tns:GetTrafficTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaTypes">
+      <wsdl:input message="tns:GetMediaTypesSoapIn" />
+      <wsdl:output message="tns:GetMediaTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceFormats">
+      <wsdl:input message="tns:GetPriceFormatsSoapIn" />
+      <wsdl:output message="tns:GetPriceFormatsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerticalCategories">
+      <wsdl:input message="tns:GetVerticalCategoriesSoapIn" />
+      <wsdl:output message="tns:GetVerticalCategoriesSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="signupHttpGet">
+    <wsdl:operation name="Affiliate">
+      <wsdl:input message="tns:AffiliateHttpGetIn" />
+      <wsdl:output message="tns:AffiliateHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Advertiser">
+      <wsdl:input message="tns:AdvertiserHttpGetIn" />
+      <wsdl:output message="tns:AdvertiserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrafficTypes">
+      <wsdl:input message="tns:GetTrafficTypesHttpGetIn" />
+      <wsdl:output message="tns:GetTrafficTypesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaTypes">
+      <wsdl:input message="tns:GetMediaTypesHttpGetIn" />
+      <wsdl:output message="tns:GetMediaTypesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceFormats">
+      <wsdl:input message="tns:GetPriceFormatsHttpGetIn" />
+      <wsdl:output message="tns:GetPriceFormatsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerticalCategories">
+      <wsdl:input message="tns:GetVerticalCategoriesHttpGetIn" />
+      <wsdl:output message="tns:GetVerticalCategoriesHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="signupHttpPost">
+    <wsdl:operation name="Affiliate">
+      <wsdl:input message="tns:AffiliateHttpPostIn" />
+      <wsdl:output message="tns:AffiliateHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Advertiser">
+      <wsdl:input message="tns:AdvertiserHttpPostIn" />
+      <wsdl:output message="tns:AdvertiserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTrafficTypes">
+      <wsdl:input message="tns:GetTrafficTypesHttpPostIn" />
+      <wsdl:output message="tns:GetTrafficTypesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaTypes">
+      <wsdl:input message="tns:GetMediaTypesHttpPostIn" />
+      <wsdl:output message="tns:GetMediaTypesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceFormats">
+      <wsdl:input message="tns:GetPriceFormatsHttpPostIn" />
+      <wsdl:output message="tns:GetPriceFormatsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetVerticalCategories">
+      <wsdl:input message="tns:GetVerticalCategoriesHttpPostIn" />
+      <wsdl:output message="tns:GetVerticalCategoriesHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="signupSoap" type="tns:signupSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Affiliate">
+      <soap:operation soapAction="http://cakemarketing.com/api/1/Affiliate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertiser">
+      <soap:operation soapAction="http://cakemarketing.com/api/1/Advertiser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrafficTypes">
+      <soap:operation soapAction="http://cakemarketing.com/api/1/GetTrafficTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaTypes">
+      <soap:operation soapAction="http://cakemarketing.com/api/1/GetMediaTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceFormats">
+      <soap:operation soapAction="http://cakemarketing.com/api/1/GetPriceFormats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerticalCategories">
+      <soap:operation soapAction="http://cakemarketing.com/api/1/GetVerticalCategories" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="signupSoap12" type="tns:signupSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Affiliate">
+      <soap12:operation soapAction="http://cakemarketing.com/api/1/Affiliate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertiser">
+      <soap12:operation soapAction="http://cakemarketing.com/api/1/Advertiser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrafficTypes">
+      <soap12:operation soapAction="http://cakemarketing.com/api/1/GetTrafficTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaTypes">
+      <soap12:operation soapAction="http://cakemarketing.com/api/1/GetMediaTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceFormats">
+      <soap12:operation soapAction="http://cakemarketing.com/api/1/GetPriceFormats" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerticalCategories">
+      <soap12:operation soapAction="http://cakemarketing.com/api/1/GetVerticalCategories" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="signupHttpGet" type="tns:signupHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Affiliate">
+      <http:operation location="/Affiliate" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertiser">
+      <http:operation location="/Advertiser" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrafficTypes">
+      <http:operation location="/GetTrafficTypes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaTypes">
+      <http:operation location="/GetMediaTypes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceFormats">
+      <http:operation location="/GetPriceFormats" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerticalCategories">
+      <http:operation location="/GetVerticalCategories" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="signupHttpPost" type="tns:signupHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Affiliate">
+      <http:operation location="/Affiliate" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Advertiser">
+      <http:operation location="/Advertiser" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTrafficTypes">
+      <http:operation location="/GetTrafficTypes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMediaTypes">
+      <http:operation location="/GetMediaTypes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPriceFormats">
+      <http:operation location="/GetPriceFormats" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetVerticalCategories">
+      <http:operation location="/GetVerticalCategories" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="signup">
+    <wsdl:port name="signupSoap" binding="tns:signupSoap">
+      <soap:address location="https://login.directagents.com/api/1/signup.asmx" />
+    </wsdl:port>
+    <wsdl:port name="signupSoap12" binding="tns:signupSoap12">
+      <soap12:address location="https://login.directagents.com/api/1/signup.asmx" />
+    </wsdl:port>
+    <wsdl:port name="signupHttpGet" binding="tns:signupHttpGet">
+      <http:address location="https://login.directagents.com/api/1/signup.asmx" />
+    </wsdl:port>
+    <wsdl:port name="signupHttpPost" binding="tns:signupHttpPost">
+      <http:address location="https://login.directagents.com/api/1/signup.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,71 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<table width="620" border="0" align="center" cellpadding="0" cellspacing="0" style="border:1px solid #c7c3c7;">
+<tr><td style="font-size:0px;">
+<table width="620" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td width="13" rowspan="2" align="left" valign="top">&nbsp;</td>
+    <td width="195" rowspan="2" align="left" valign="top"><img src="https://portal.directagents.com/Images/logo1.png" alt="" width="152" height="86" /></td>
+    <td height="24" colspan="2" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="399" align="right" valign="top"><strong style="font-family: Arial, Helvetica, sans-serif; text-align: center; font-size: 18px;">Weekly Summary Report for <#=this.AdvertiserName#></strong></td>
+    <td width="13" align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">&nbsp;</td>
+    <td colspan="2" align="left" valign="top" style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">Thank you for using the Direct Agents client portal. A summary of your campaign performance is included below. Please <a href="https://portal.directagents.com/" style="color:#37A5F2;"><strong>log in</strong></a> to access your complete reports.<br><br></td>
+    <td align="right" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td colspan="4" height="80" align="center" valign="middle">
+   
+    <table width="620" border="0" align="center" cellpadding="0" cellspacing="0" style="border-top:1px solid #c7c3c7; border-bottom:1px solid #c7c3c7; border-left:0px solid #c7c3c7; border-right:0px solid #c7c3c7;">
+      <tr>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Week</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Clicks</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Leads</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Rate</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;Spend</td>
+        <td height="30" align="left" valign="middle" bgcolor="#e5e5e5" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px;">&nbsp;&nbsp;<#=this.ConversionValueName#></td>
+      </tr>
+      <tr>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Week#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Number(Clicks)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Number(Leads)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Rate#>%</td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Currency(Spend)#></td>
+        <td height="30" align="left" valign="middle" bgcolor="#FFFFFF" style="color: #000; border-right:1px solid #c7c3c7; font-family: Arial, Helvetica, sans-serif; font-size: 13px; text-align: center; font-weight: bold;"><#=this.Conv#></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+    <td colspan="2" align="left" valign="top"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;"><br />The Direct Agents Client Portal provides access to real-time reports showing campaign effectiveness and spend across all of your campaigns. Gain insight with our unique dashboard with visualizations of key metrics, custom goals and more. <a href="https://portal.directagents.com/" style="color:#37A5F2;"><strong>View reports now</strong></a></span></td>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+    <td colspan="2" align="left" valign="top" ><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;" ><br>Questions? Contact your account manager, <#=this.AcctMgrName#>: <a href="mailto:<#=this.AcctMgrEmail#>" style="color:#37A5F2;"><#=this.AcctMgrEmail#></a></span></td>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td height="13" colspan="4" align="left" valign="top">&nbsp;</td>
+  </tr>
+  <tr>
+    <td width="13" align="left" valign="top">&nbsp;</td>
+    <td height="80" colspan="2" align="left" valign="middle"><table width="540" border="0" align="left" cellpadding="0" cellspacing="0">
+        <tr>
+          <td width="68" align="center" valign="middle"><img src="https://portal.directagents.com/Images/icon_reports.gif" alt="" style="width:65%; height:auto;" /></td>
+          <td width="450" align="left" valign="middle"><span style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;"><strong>Top Tip: Your dashboard provides detailed information about mobile devices responding to your campaign. </strong><a href="https://portal.directagents.com/" style="color:#37A5F2;"><strong>Log in</strong></a></span></td>
+        </tr>
+    </table></td>
+    <td width="13" align="right" valign="top">&nbsp;</td>
+  </tr>
+</table>
+</td>
+</tr>
+</table>

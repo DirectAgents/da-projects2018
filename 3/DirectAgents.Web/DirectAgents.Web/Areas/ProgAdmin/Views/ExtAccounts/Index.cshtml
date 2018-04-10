@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPProg.ExtAccount>
+@{
+    string platformCode = (string)Session["platformCode"];
+    var yesterday = DateTime.Today.AddDays(-1);
+    var month = new DateTime(yesterday.Year, yesterday.Month, 1);
+}
+<h2>External Accounts</h2>
+
+<table>
+<tr>
+    <th></th>
+    <th>Partner</th>
+    <th style="text-align:right">ID</th>
+    <th colspan="2">Ext Account (X = disabled)</th>
+    <th>External Id</th>
+    <th colspan="2">Network / Filter?</th>
+    <th>Stats</th>
+    <th>List...</th>
+    <th>Creative URL Format</th>
+</tr>
+@foreach (var extAcct in Model)
+{
+<tr>
+    <td>@Html.ActionLink("Edit", "Edit", new { id = extAcct.Id })</td>
+    <td>@extAcct.Platform.Name</td>
+    <td style="text-align:right">@extAcct.Id</td>
+    <td>@extAcct.Name</td>
+    <td>@(extAcct.Disabled ? "X" : "")</td>
+    <td>@extAcct.ExternalId</td>
+    <td>@(extAcct.Network != null ? extAcct.Network.Name : "")</td>
+    <td>@(extAcct.HasAnyFilter() ? "*" : "")</td>
+    <td>
+        @Html.ActionLink("Upload", "UploadStats", new { id = extAcct.Id }) |
+        @Html.ActionLink("Raw", "ExtAccount", "Stats", new { acctid = extAcct.Id }, null)
+    </td>
+    <td>
+        @Html.ActionLink("Strategies", "Strategies", new { id = extAcct.Id }, null) |
+        @Html.ActionLink("AdSets", "AdSets", new { id = extAcct.Id }, null) |
+        @Html.ActionLink("Creatives", "Index", "TDads", new { acctid = extAcct.Id }, null)
+    </td>
+    <td>@extAcct.CreativeURLFormat</td>
+</tr>
+}
+</table>
+<br />
+@if (!string.IsNullOrWhiteSpace(platformCode))
+{
+    @Html.ActionLink("New ExtAccount", "CreateNew", new { platform = platformCode })
+    <br />
+}

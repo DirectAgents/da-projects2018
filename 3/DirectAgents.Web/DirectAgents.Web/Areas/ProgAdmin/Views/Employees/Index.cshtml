@@ -1,0 +1,22 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.Employee>
+
+<h2>Employees</h2>
+
+<table>
+<tr>
+    <th></th>
+    <th>First</th>
+    <th>Last</th>
+</tr>
+@foreach (var emp in Model)
+{
+<tr>
+    <td>@Html.ActionLink("Edit", "Edit", new { id = emp.Id })</td>
+    <td>@emp.FirstName</td>
+    <td>@emp.LastName</td>
+</tr>
+}
+</table>
+<br />
+@Html.ActionLink("New Employee", "CreateNew")
+<br />

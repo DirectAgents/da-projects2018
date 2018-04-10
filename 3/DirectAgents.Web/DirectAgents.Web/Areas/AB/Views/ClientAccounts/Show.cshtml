@@ -1,0 +1,12 @@
+﻿@model DirectAgents.Domain.Entities.AB.ClientAccount
+
+<h2>View ClientAccount</h2>
+
+Client: @Html.ActionLink(Model.Client.Name, "Show", "Clients", new { id = Model.ClientId }, null)<br />
+Account: @Model.Name (ID: @Model.Id)<br />
+[@Html.ActionLink("edit", "Edit", new { id = Model.Id })]
+<br /><br />
+
+Payments<br />
+Invoices<br />
+@Html.ActionLink("Campaigns/SpendBuckets", "BucketList", "Campaigns", new { acctId = @Model.Id }, null)

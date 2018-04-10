@@ -1,0 +1,56 @@
+﻿@model DirectAgents.Web.Areas.AB.Models.ProtoVM
+
+<h2>Single Client Detail - Prototype</h2>
+
+Client:
+@Html.ActionLink(Model.ABClient.Name, "Show", "Clients", new { id = Model.ABClient.Id }, null)
+<br /><br />
+
+@Html.ActionLink("ProtoCampaigns", "Index", "ProtoCampaigns", new { clientId = Model.ABClient.Id }, null)
+<table>
+@foreach (var periodGroup in Model.PeriodGroups)
+{
+    int numAccts = periodGroup.AccountGroups.Count();
+    <tr>
+        <th>@periodGroup.Month.ToString("MMM yyyy")</th>
+        <th>Notes</th>
+        @foreach (var ag in periodGroup.AccountGroups)
+        {
+            <th>@ag.Name</th>
+        }
+    </tr>
+    int skipCols = 0;
+    foreach (var ag in periodGroup.AccountGroups)
+    {
+        foreach (var li in ag.LineItems)
+        {
+            <tr>
+                <td>@li.Name</td>
+                <td>@li.Note</td>
+                @if (skipCols > 0) {
+                    <td colspan="@skipCols"></td>
+                }
+                <td style="text-align:right">@li.Rev</td>
+            </tr>
+        }
+        skipCols++;
+    }
+}
+</table>
+<br />
+
+@*@Html.ActionLink("Payments Received", "Index", "ClientPayments", new { clientId = Model.ABClient.Id }, null)*@
+Payments Received
+<table>
+    <tr>
+        <th>Date</th>
+        <th>Total Received</th>
+    </tr>
+@foreach (var payment in Model.ABClient.ProtoPayments.OrderBy(x => x.Date))
+{
+    <tr>
+        <td>@payment.Date.ToShortDateString()</td>
+        <td style="text-align:right">@payment.TotalValue()</td>
+    </tr>
+}
+</table>

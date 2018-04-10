@@ -1,0 +1,50 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.TDad
+@{
+    string acctId = (string)Session["acctId"]; // for filtering when returning back to Index
+}
+
+<fieldset>
+    <legend>Edit Creative</legend>
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+        @Html.HiddenFor(m => m.Id)
+        @Html.HiddenFor(m => m.AccountId)
+        @Html.HiddenFor(m => m.Name)
+        @Html.HiddenFor(m => m.ExternalId)
+        <div style="float:left">
+            Platform: @Model.ExtAccount.Platform.Name<br />
+            External Account: @Model.ExtAccount.Name (ID: @Model.ExtAccount.Id)
+            <br /><br />
+            <table>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Id, "Creative ID")</td>
+                    <td>@Html.DisplayFor(m => m.Id)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.ExternalId)</td>
+                    <td>@Html.DisplayFor(m => m.ExternalId)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Name)</td>
+                    <td>@Html.DisplayFor(m => m.Name)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Width)</td>
+                    <td>@Html.EditorFor(m => m.Width)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Height)</td>
+                    <td>@Html.EditorFor(m => m.Height)</td>
+                </tr>
+                <tr>
+                    <td>@Html.LabelFor(m => m.Url)</td>
+                    <td>@Html.EditorFor(m => m.Url)</td>
+                </tr>
+            </table>
+            <br />
+            <input type="submit" value="Save" />
+            &nbsp;@Html.ActionLink("cancel", "Index", new { acctId = acctId })
+        </div>
+    }
+</fieldset>

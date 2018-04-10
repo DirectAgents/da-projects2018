@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPSearch.SearchCampaign>
+
+
+<h2>SearchCampaigns - StatsGauge</h2>
+
+<table>
+    <tr>
+        <th style="text-align:right">spId</th>
+        <th style="text-align:right">saId</th>
+        <th style="text-align:right">Id</th>
+        <th>CampaignName</th>
+        <th style="text-align:center">DaySums</th>
+        <th style="text-align:center">ConvSums</th>
+        <th style="text-align:center">CallSums</th>
+    </tr>
+    @foreach (var sc in Model)
+    {
+        <tr>
+            <td style="text-align:right">@(sc.SearchAccount != null ? sc.SearchAccount.SearchProfileId.ToString() : "")</td>
+            <td style="text-align:right">@sc.SearchAccountId</td>
+            <td style="text-align:right">@sc.SearchCampaignId</td>
+            <td>@sc.SearchCampaignName</td>
+            <td style="text-align:center">@sc.MinDaySum.ToShortDateString() - @sc.MaxDaySum.ToShortDateString()</td>
+            <td style="text-align:center">@sc.MinConvSum.ToShortDateString() - @sc.MaxConvSum.ToShortDateString()</td>
+            <td style="text-align:center">@sc.MinCallSum.ToShortDateString() - @sc.MaxCallSum.ToShortDateString()</td>
+            <td>
+                @Html.ActionLink("Edit-", "Edit", new { id = sc.SearchCampaignId })
+                @sc.LCcmpid
+            </td>
+        </tr>
+    }
+</table>
+<br />

@@ -1,0 +1,105 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.CPSearch.SearchAccount>
+@{
+    string spId = Request.Params["spid"];
+    bool oneProfile = !String.IsNullOrWhiteSpace(spId);
+    string channel = Request.Params["channel"];
+    bool oneChannel = !String.IsNullOrWhiteSpace(channel);
+    var searchAccountSelectList = new SelectList(Model, "SearchAccountId", "DisplayName1");
+    DateTime default_to = DateTime.Today.AddDays(-1);
+    DateTime default_from = (default_to.Day == 1 ? default_to.AddMonths(-1) : new DateTime(default_to.Year, default_to.Month, 1));
+}
+
+<h2>StatsGauge - SearchAccounts</h2>
+
+<table>
+    <tr>
+        <th style="text-align:right">spId</th>
+        <th style="text-align:right">Id</th>
+        <th>Name</th>
+        <th>Channel</th>
+        <th style="text-align:center">DaySums</th>
+        <th style="text-align:center">ConvSums</th>
+        <th style="text-align:center">CallSums</th>
+        <th>By Campaign</th>
+    </tr>
+    @foreach (var sa in Model)
+    {
+        <tr>
+            <td style="text-align:right">@sa.SearchProfileId</td>
+            <td style="text-align:right">@sa.SearchAccountId</td>
+            <td>@sa.Name</td>
+            <td>@sa.Channel</td>
+            <td style="text-align:center">@sa.MinDaySum.ToShortDateString() - @sa.MaxDaySum.ToShortDateString()</td>
+            <td style="text-align:center">@sa.MinConvSum.ToShortDateString() - @sa.MaxConvSum.ToShortDateString()</td>
+            <td style="text-align:center">@sa.MinCallSum.ToShortDateString() - @sa.MaxCallSum.ToShortDateString()</td>
+            <td style="text-align:center">@Html.ActionLink("view", "IndexGauge", "SearchCampaigns", new { saId = @sa.SearchAccountId }, null)</td>
+        </tr>
+    }
+</table>
+@if (oneProfile)
+{
+    <text>&nbsp;</text>@Html.ActionLink("View All by Campaign", "IndexGauge", "SearchCampaigns", new { spId = @spId, channel = channel }, null)
+    <br />
+}
+
+@if (oneChannel)
+{
+    <br />
+    <text>Channel:</text>
+    @Html.ActionLink("Google", "IndexGauge", new { channel = "google", spId = @spId })<text> | </text>
+    @Html.ActionLink("Apple", "IndexGauge", new { channel = "apple", spId = @spId })<text> | </text>
+    @Html.ActionLink("Bing", "IndexGauge", new { channel = "bing", spId = @spId })<text> | </text>
+    @Html.ActionLink("Criteo", "IndexGauge", new { channel = "criteo", spId = @spId })
+}
+else if (oneProfile)
+{ // (and channel not specified)
+    <h4>Re-Sync Stats</h4>
+    using (Html.BeginForm("Sync", "SearchAccounts", FormMethod.Post, new { id = "formSync" }))
+    {
+    @Html.ValidationSummary()
+    @Html.Hidden("spId", spId)
+    <table>
+        <tr>
+            <td>@Html.Label("", "Account:")</td>
+            <td>@Html.DropDownList("id", searchAccountSelectList)</td>
+        </tr>
+        <tr>
+            <td>@Html.Label("", "From:")</td>
+            <td><input type="text" id="sync_from" name="from" value="@default_from.ToShortDateString()" /></td>
+        </tr>
+        <tr>
+            <td>@Html.Label("", "To:")</td>
+            <td><input type="text" id="sync_to" name="to" value="@default_to.ToShortDateString()" /></td>
+        </tr>
+    </table>
+    <text>(Not currently available for Criteo)</text>
+    <br />
+    <div id="divSyncButton">
+        <input type="submit" value="Sync" onclick="DoSync()" />
+        <br /><br />
+        Go to:
+        @Html.ActionLink("SearchAccounts", "Index", new { spId = @spId }) |
+        @Html.ActionLink("Generate Spreadsheet", "GenerateSpreadsheet", "Old", new { spId = @spId }, null)
+        <br /><br />
+        @Html.ActionLink("Back to SearchProfiles", "Index", "SearchProfiles")
+    </div>
+    <div id="divSyncMessage"></div>
+    }
+    <script>
+        $(function () {
+            $('#sync_from').kendoDatePicker({ footer: ' ' });
+            $('#sync_to').kendoDatePicker({ footer: ' ' });
+        });
+
+        function DoSync() {
+            //$('#formSync').submit();
+            $('#divSyncButton').hide();
+            $('#divSyncMessage').html("<i>Syncing... Please wait.</i>");
+        }
+    </script>
+}
+else // no channel or profile specified
+{
+    <br />
+    @Html.ActionLink("By Channel", "Index", "StatsGauges")
+}

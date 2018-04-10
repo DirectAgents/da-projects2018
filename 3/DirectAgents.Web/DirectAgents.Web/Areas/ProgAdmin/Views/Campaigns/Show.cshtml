@@ -1,0 +1,73 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.Campaign
+@{
+    var today = DateTime.Today;
+    var startOfMonth = new DateTime(today.Year, today.Month, 1);
+    var lastMonth = startOfMonth.AddMonths(-1);
+}
+
+<h2>Campaign Details</h2>
+
+<table>
+<tr>
+    <td>
+        Advertiser: <b>@Model.Advertiser.Name</b> (@Model.AdvertiserId)<br />
+        Campaign: <b>@Model.Name</b> (@Model.Id)
+    </td>
+    <td style="text-align:center">
+        SalesRep: <b>@Model.Advertiser.SalesRepName()</b><br />
+        AM: <b>@Model.Advertiser.AMName()</b>
+    </td>
+@if (Model.Advertiser.StartDate.HasValue || Model.Advertiser.EndDate.HasValue)
+{
+    <td>
+        Start: <b>@Model.Advertiser.StartDate.ToShortDateString()</b><br />
+        End: <b>@Model.Advertiser.EndDate.ToShortDateString()</b>
+    </td>
+}
+</tr>
+</table>
+[@Html.ActionLink("Edit Campaign", "Edit", new { id = Model.Id })]
+| [@Html.ActionLink("Edit Advertiser", "Edit", "Advertisers", new { id = Model.AdvertiserId }, null)]
+<br /><br />
+
+External Accounts:
+[@Html.ActionLink("List/Edit", "Index", "ExtAccounts", new { campid = Model.Id }, null)]
+<table>
+<tr>
+    <th>Partner</th>
+    <th style="text-align:right">ID</th>
+    <th>Ext Account</th>
+    <th>Stats</th>
+    <th>List...</th>
+</tr>
+@foreach (var extAcct in Model.ExtAccounts.OrderBy(x => x.Platform.Name).ThenBy(x => x.Name))
+{
+<tr>
+    <td>@extAcct.Platform.Name</td>
+    <td style="text-align:right">@extAcct.Id</td>
+    <td>@extAcct.Name</td>
+    <td>@Html.ActionLink("Upload", "UploadStats", "ExtAccounts", new { id = extAcct.Id }, null)</td>
+    <td>
+        @Html.ActionLink("Strategies", "Strategies", "ExtAccounts", new { id = extAcct.Id }, null) |
+        @Html.ActionLink("Creatives", "Index", "TDads", new { acctid = extAcct.Id }, null) |
+        @Html.ActionLink("AdSets", "AdSets", "ExtAccounts", new { id = extAcct.Id }, null)
+    </td>
+</tr>
+}
+</table>
+
+<br />
+Extra Items:
+@Html.ActionLink("This Month", "Index", "ExtraItems", new { campId = Model.Id, month = startOfMonth.ToShortDateString() }, null) |
+@Html.ActionLink("Last Month", "Index", "ExtraItems", new { campId = Model.Id, month = lastMonth.ToShortDateString() }, null) |
+@Html.ActionLink("All", "Index", "ExtraItems", new { campId = Model.Id }, null)
+<br /><br />
+Stats:
+@Html.ActionLink("Budget+Pacing", "Pacing", "CampStats", new { campId = Model.Id }, null) |
+@Html.ActionLink("Raw Stats", "ExtAccount", "Stats", new { campId = Model.Id }, null) |
+@Html.ActionLink("MTD", "MTD", "Stats", new { campId = Model.Id }, null) |
+@Html.ActionLink("StatsGauge", "IndexGauge", "ExtAccounts", new { campId = Model.Id }, null)
+<br /><br />
+Generate:
+@Html.ActionLink("Report Components", "Home", "Reports", new { campId = Model.Id }, null)
+<br /><br />

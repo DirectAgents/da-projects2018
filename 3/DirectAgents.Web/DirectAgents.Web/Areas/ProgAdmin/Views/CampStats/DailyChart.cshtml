@@ -1,0 +1,125 @@
+﻿@model DirectAgents.Domain.Entities.CPProg.Campaign
+
+<h2>Daily Chart</h2>
+
+Advertiser: @Model.Advertiser.Name<br />
+Campaign: @Model.Name
+
+<div class="k-content">
+    <div id="dailyChart"></div>
+</div>
+<div>
+    <button id="btnExportImg">Save as Image</button>&nbsp;
+    <button id="btnExportPDF">Save as PDF</button>
+</div>
+<br />
+@Html.ActionLink("Back", "Home", "Reports", new { campId = Model.Id }, null)
+
+@section scripts {
+<script>
+    $(document).ready(function () {
+        var datasource = CreateDailyDataSource();
+        CreateDailyChart(datasource);
+        datasource.read();
+        SetupExports();
+    });
+
+    function SetupExports() {
+        $('#btnExportImg').click(function() {
+            var chart = $('#dailyChart').getKendoChart();
+            chart.exportImage().done(function(data) {
+                kendo.saveAs({
+                    dataURI: data,
+                    fileName: 'DailyChart_@(Model.Name).png'
+                });
+            });
+        });
+        $('#btnExportPDF').click(function() {
+            var chart = $('#dailyChart').getKendoChart();
+            chart.saveAsPDF();
+        });
+    }
+
+    function CreateDailyDataSource() {
+        return new kendo.data.DataSource({
+            serverPaging: true,
+            serverSorting: true,
+            serverFiltering: true,
+            serverAggregates: true,
+            pageSize: 100,
+            transport: {
+                read: {
+                    type: 'post',
+                    dataType: 'json',
+                    url: '@Url.Action("DailyChartData")',
+                    data: function () {
+                        return {
+                            campid: @Model.Id,
+                            //startdate: $('#summary_startdate').val(),
+                            //enddate: $('#summary_enddate').val(),
+                        };
+                    }
+                }
+            },
+            schema: {
+                data: 'data',
+                total: 'total',
+                aggregates: 'aggregates',
+                model: {
+                    id: 'Id',
+                    fields: {
+                        Date: { type: 'date' },
+                        Impressions: { type: 'number' },
+                        Clicks: { type: 'number' },
+                        TotalConv: { type: 'number' },
+                        Spend: { type: 'number' },
+                        CTR: { type: 'number' },
+                        CPA: { type: 'number' }
+                    }
+                }
+            },
+            sort: { field: "Date", dir: "asc" },
+        });
+    }
+
+    function CreateDailyChart(datasource) {
+        $('#dailyChart').kendoChart({
+            pdf: {
+                fileName: "DailyChart_@(Model.Name).pdf"
+            },
+            dataSource: datasource,
+            autoBind: false,
+            chartArea: {
+                height: 300
+            },
+            theme: $(document).data("kendoSkin") || "default",
+            series: [
+                //{ type: "column", field: "Clicks", name: "Clicks", axis: "clicks", markers: { visible: false }, tooltip: { template: "#= kendo.format('{0:d}', category) #: #= kendo.format('{0:N0}',value) #" } },
+                { type: "column", field: "Impressions", name: "Impressions", axis: "imp", markers: { visible: false }, tooltip: { template: "#= kendo.format('{0:d}', category) #: #= kendo.format('{0:N0}',value) #" } },
+                { type: "line", width: 3, field: "TotalConv", name: "Conversions", axis: "conv", markers: { visible: false }, tooltip: { template: "#= kendo.format('{0:d}', category) #: #= kendo.format('{0:N0}',value) #" } }
+                //{ type: "line", width: 3, field: "Spend", name: "Spend", axis: "spend", markers: { visible: false }, tooltip: { template: "#= kendo.format('{0:d}', category) #: #= kendo.format('{0:C}',value) #" } }
+            ],
+            categoryAxis: {
+                baseUnit: "days",
+                field: "Date",
+                labels: { rotation: -90 },
+                axisCrossingValue: [0, 1000]
+            },
+            valueAxis: [
+                //{ name: "clicks", labels: { format: "N0", step: 2 }, title: { text: "Clicks" } },
+                { name: "imp", labels: { format: "N0", step: 2 }, title: { text: "Impressions" } },
+                { name: "conv", labels: { format: "N0", step: 2 }, title: { text: "Conversions" } }
+                //{ name: "spend", labels: { format: "C", step: 2 }, title: { text: "Spend" } }
+            ],
+            tooltip: {
+                visible: true
+            },
+            legend: {
+                position: "custom",
+                offsetX: 90,
+                offsetY: 0
+            }
+        });
+    }
+</script>
+}

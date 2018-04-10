@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DirectAgents.Domain.Entities.AB.ClientAccount>
+
+<h2>ClientAccounts</h2>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th colspan="2">ProtoCampaigns</th>
+</tr>
+@foreach (var ca in Model)
+{
+    <tr>
+        <td>@ca.Id</td>
+        <td>@ca.Name</td>
+        <td>
+    @foreach (var camp in ca.ProtoCampaigns)
+    {
+        <text>@camp.Id. @camp.Name<br /></text>
+    }
+        </td>
+        <td>
+            @Html.ActionLink("list", "Index", "ProtoCampaigns", new { accountId = ca.Id }, null)
+        </td>
+    </tr>
+}
+</table>

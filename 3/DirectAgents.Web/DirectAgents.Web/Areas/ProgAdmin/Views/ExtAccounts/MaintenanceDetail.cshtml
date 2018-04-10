@@ -1,0 +1,89 @@
+﻿@using DirectAgents.Domain.Entities.CPProg
+@model DirectAgents.Web.Areas.ProgAdmin.Models.AccountMaintenanceVM
+@{
+    string earliestDailyStat = Model.StatsGauge.Daily.EarliestDisp;
+    string latestDailyStat = Model.StatsGauge.Daily.LatestDisp;
+    string earliestStrategyStat = Model.StatsGauge.Strategy.EarliestDisp;
+    string latestStrategyStat = Model.StatsGauge.Strategy.LatestDisp;
+    string earliestCreativeStat = Model.StatsGauge.Creative.EarliestDisp;
+    string latestCreativeStat = Model.StatsGauge.Creative.LatestDisp;
+    string earliestAdSetStat = Model.StatsGauge.AdSet.EarliestDisp;
+    string latestAdSetStat = Model.StatsGauge.AdSet.LatestDisp;
+    string earliestSiteStat = Model.StatsGauge.Site.EarliestDisp;
+    string latestSiteStat = Model.StatsGauge.Site.LatestDisp;
+    string earliestConvStat = Model.StatsGauge.Conv.EarliestDisp;
+    string latestConvStat = Model.StatsGauge.Conv.LatestDisp;
+    //string syncAllUrl = Url.Action("Sync", new { id = Model.ExtAccount.Id, latest = latestDailyStat });
+    string syncDailyUrl = Url.Action("Sync", new { id = Model.ExtAccount.Id, latest = latestDailyStat, level = "daily" });
+    string syncStratUrl = Url.Action("Sync", new { id = Model.ExtAccount.Id, latest = latestStrategyStat, level = "strategy" });
+    string syncCreatUrl = Url.Action("Sync", new { id = Model.ExtAccount.Id, latest = latestCreativeStat, level = "creative" });
+    string syncAdSetUrl = Url.Action("Sync", new { id = Model.ExtAccount.Id, latest = latestAdSetStat, level = "adset" });
+    string syncConvUrl = Url.Action("Sync", new { id = Model.ExtAccount.Id, latest = latestConvStat, level = "conv" });
+}
+
+Daily Stats...
+@if (earliestDailyStat != null) {
+    <text>Earliest: @earliestDailyStat - Latest: @latestDailyStat</text>
+    if (Model.Syncable)
+    {
+        <text>&nbsp;&nbsp;</text>
+        <a href="#" onclick="SyncAccount(@Model.ExtAccount.Id, '@syncDailyUrl'); return false">Sync</a>
+    }
+} else {
+    <text>(none)</text>
+}
+<br />
+Strategy Stats...
+@if (earliestStrategyStat != null) {
+    <text>Earliest: @earliestStrategyStat - Latest: @latestStrategyStat</text>
+    if (Model.Syncable)
+    {
+        <text>&nbsp;&nbsp;</text>
+        <a href="#" onclick="SyncAccount(@Model.ExtAccount.Id, '@syncStratUrl'); return false">Sync</a>
+    }
+} else {
+    <text>(none)</text>
+}
+<br />
+Creative Stats...
+@if (earliestCreativeStat != null) {
+    <text>Earliest: @earliestCreativeStat - Latest: @latestCreativeStat</text>
+    if (Model.Syncable)
+    {
+        <text>&nbsp;&nbsp;</text>
+        <a href="#" onclick="SyncAccount(@Model.ExtAccount.Id, '@syncCreatUrl'); return false">Sync</a>
+    }
+} else {
+    <text>(none)</text>
+}
+<br />
+AdSet Stats...
+@if (earliestAdSetStat != null) {
+    <text>Earliest: @earliestAdSetStat - Latest: @latestAdSetStat</text>
+    if (Model.Syncable && Model.ExtAccount.Platform.Code == Platform.Code_FB)
+    {
+        <text>&nbsp;&nbsp;</text>
+        <a href="#" onclick="SyncAccount(@Model.ExtAccount.Id, '@syncAdSetUrl'); return false">Sync</a>
+    }
+} else {
+    <text>(none)</text>
+}
+<br />
+Site Stats...
+@if (earliestSiteStat != null) {
+    <text>Earliest: @earliestSiteStat - Latest: @latestSiteStat</text>
+} else {
+    <text>(none)</text>
+}
+<br />
+Conv Stats...
+@if (earliestConvStat != null) {
+    <text>Earliest: @earliestConvStat - Latest: @latestConvStat</text>
+} else {
+    <text>(none)</text>
+}
+@*@if (Model.Syncable && Model.ExtAccount.Platform.Code == Platform.Code_DBM)
+{
+    <text>&nbsp;&nbsp;</text>
+    <a href="#" onclick="SyncAccount(@Model.ExtAccount.Id, '@syncConvUrl'); return false">Sync</a>
+}*@

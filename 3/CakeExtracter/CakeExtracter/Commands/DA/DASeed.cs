@@ -33,8 +33,8 @@ namespace CakeExtracter.Commands
             using (var db = new ClientPortalProgContext())
             {
                 var tdSeeder = new TDSeeder(db);
-                //tdSeeder.SeedPlatforms();
                 tdSeeder.SeedNetworks();
+                tdSeeder.SeedPlatforms();
             }
         }
     }

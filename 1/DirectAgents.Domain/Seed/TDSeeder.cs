@@ -46,6 +46,7 @@ namespace DirectAgents.Domain.Seed
             AddNetworkIfNotExist(1, "Facebook");
             AddNetworkIfNotExist(2, "Instagram");
             AddNetworkIfNotExist(3, "Audience Network");
+            AddNetworkIfNotExist(4, "Messenger");
         }
 
         public void AddPlatformIfNotExist(string code, string name)

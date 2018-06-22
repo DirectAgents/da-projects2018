@@ -1,43 +1,16 @@
-/****** Object:  Table [dbo].[SearchConvType]    Script Date: 6/22/2018 6:10:08 AM ******/
+/****** Object:  Table [dbo].[CallDailySummary]    Script Date: 6/22/2018 6:10:07 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[SearchConvType](
-	[SearchConvTypeId] [int] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](255) NOT NULL,
-	[Alias] [nvarchar](255) NULL,
- CONSTRAINT [PK_SearchConvType] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[CallDailySummary](
+	[SearchCampaignId] [int] NOT NULL,
+	[Date] [date] NOT NULL,
+	[Calls] [int] NOT NULL,
+ CONSTRAINT [PK_CallDailySummary] PRIMARY KEY CLUSTERED 
 (
-	[SearchConvTypeId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON),
- CONSTRAINT [IX_SearchConvType] UNIQUE NONCLUSTERED 
-(
-	[Name] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-)
-
-GO
-/****** Object:  Table [dbo].[SearchProfile]    Script Date: 6/22/2018 6:10:08 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[SearchProfile](
-	[SearchProfileId] [int] NOT NULL,
-	[SearchProfileName] [nvarchar](max) NULL,
-	[StartDayOfWeek] [int] NOT NULL CONSTRAINT [DF_SearchProfile_StartDayOfWeek]  DEFAULT ((1)),
-	[ShowSearchChannels] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowSearchChannels]  DEFAULT ((0)),
-	[LCaccid] [nvarchar](100) NULL,
-	[CallMinSeconds] [int] NOT NULL CONSTRAINT [DF_SearchProfile_CallMinSeconds]  DEFAULT ((0)),
-	[ShowRevenue] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowRevenue]  DEFAULT ((0)),
-	[UseConvertedClicks] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_UseConvertedClicks]  DEFAULT ((1)),
-	[ShowViewThrus] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowViewThrus]  DEFAULT ((0)),
-	[ShowCassConvs] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowCassConvs]  DEFAULT ((0)),
-	[UseAllConvs] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_UseAllConvs]  DEFAULT ((0)),
- CONSTRAINT [PK_SearchProfile] PRIMARY KEY CLUSTERED 
-(
-	[SearchProfileId] ASC
+	[SearchCampaignId] ASC,
+	[Date] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
 
@@ -103,6 +76,50 @@ CREATE TABLE [dbo].[SearchCampaign](
 )
 
 GO
+/****** Object:  Table [dbo].[SearchConvSummary]    Script Date: 6/22/2018 6:10:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SearchConvSummary](
+	[SearchCampaignId] [int] NOT NULL,
+	[Date] [datetime] NOT NULL,
+	[SearchConvTypeId] [int] NOT NULL,
+	[Network] [nchar](1) NOT NULL,
+	[Device] [nchar](1) NOT NULL,
+	[Conversions] [float] NOT NULL,
+	[ConVal] [decimal](18, 6) NOT NULL,
+ CONSTRAINT [PK_SearchConvSummary] PRIMARY KEY CLUSTERED 
+(
+	[SearchCampaignId] ASC,
+	[Date] ASC,
+	[SearchConvTypeId] ASC,
+	[Network] ASC,
+	[Device] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
+/****** Object:  Table [dbo].[SearchConvType]    Script Date: 6/22/2018 6:10:08 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[SearchConvType](
+	[SearchConvTypeId] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](255) NOT NULL,
+	[Alias] [nvarchar](255) NULL,
+ CONSTRAINT [PK_SearchConvType] PRIMARY KEY CLUSTERED 
+(
+	[SearchConvTypeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON),
+ CONSTRAINT [IX_SearchConvType] UNIQUE NONCLUSTERED 
+(
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+)
+
+GO
 /****** Object:  Table [dbo].[SearchDailySummary]    Script Date: 6/22/2018 6:10:08 AM ******/
 SET ANSI_NULLS ON
 GO
@@ -132,43 +149,26 @@ CREATE TABLE [dbo].[SearchDailySummary](
 )
 
 GO
-/****** Object:  Table [dbo].[SearchConvSummary]    Script Date: 6/22/2018 6:10:08 AM ******/
+/****** Object:  Table [dbo].[SearchProfile]    Script Date: 6/22/2018 6:10:08 AM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-CREATE TABLE [dbo].[SearchConvSummary](
-	[SearchCampaignId] [int] NOT NULL,
-	[Date] [datetime] NOT NULL,
-	[SearchConvTypeId] [int] NOT NULL,
-	[Network] [nchar](1) NOT NULL,
-	[Device] [nchar](1) NOT NULL,
-	[Conversions] [float] NOT NULL,
-	[ConVal] [decimal](18, 6) NOT NULL,
- CONSTRAINT [PK_SearchConvSummary] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[SearchProfile](
+	[SearchProfileId] [int] NOT NULL,
+	[SearchProfileName] [nvarchar](max) NULL,
+	[StartDayOfWeek] [int] NOT NULL CONSTRAINT [DF_SearchProfile_StartDayOfWeek]  DEFAULT ((1)),
+	[ShowSearchChannels] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowSearchChannels]  DEFAULT ((0)),
+	[LCaccid] [nvarchar](100) NULL,
+	[CallMinSeconds] [int] NOT NULL CONSTRAINT [DF_SearchProfile_CallMinSeconds]  DEFAULT ((0)),
+	[ShowRevenue] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowRevenue]  DEFAULT ((0)),
+	[UseConvertedClicks] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_UseConvertedClicks]  DEFAULT ((1)),
+	[ShowViewThrus] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowViewThrus]  DEFAULT ((0)),
+	[ShowCassConvs] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_ShowCassConvs]  DEFAULT ((0)),
+	[UseAllConvs] [bit] NOT NULL CONSTRAINT [DF_SearchProfile_UseAllConvs]  DEFAULT ((0)),
+ CONSTRAINT [PK_SearchProfile] PRIMARY KEY CLUSTERED 
 (
-	[SearchCampaignId] ASC,
-	[Date] ASC,
-	[SearchConvTypeId] ASC,
-	[Network] ASC,
-	[Device] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
-)
-
-GO
-/****** Object:  Table [dbo].[CallDailySummary]    Script Date: 6/22/2018 6:10:07 AM ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-CREATE TABLE [dbo].[CallDailySummary](
-	[SearchCampaignId] [int] NOT NULL,
-	[Date] [date] NOT NULL,
-	[Calls] [int] NOT NULL,
- CONSTRAINT [PK_CallDailySummary] PRIMARY KEY CLUSTERED 
-(
-	[SearchCampaignId] ASC,
-	[Date] ASC
+	[SearchProfileId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
 )
 
